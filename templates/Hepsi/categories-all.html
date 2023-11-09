@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "CollectionPage",
+  "name": "ALL CATEGORY",
+  "description": "{{ description }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "hasPart": [
+    {% for category in Categories_ALL %}
+    {
+      "@type": "CollectionPage",
+      "name": "{{ category.short_title }}",
+      "description": "{{ category.Hikaye_meta_description }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/kids-story-categories-detail/{{ category.slug }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>{{ H1 }}</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">All Category</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Heading / End -->
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <div class="content col-md-8">
+                {% for Category in Categories_ALL %}
+                    <div class="col-sm-6 col-md-6" data-animation="fadeInLeft" data-animation-delay="0">
+                        <div class="job-listing-box" style="margin-bottom: 20px;">
+                            <figure class="job-listing-img">
+                                <a href="{% url 'kategori_detay' kategori_slug=Category.slug %}">
+                                    <img src="{% static 'images/bedtime-story/categories/'|add:Category.slug|add:'.webp' %}" alt="{{ Category.short_title }}">
+
+                                </a>
+                            </figure>
+                            <div class="job-listing-body">
+                                <div class="name">
+                                    <a href="{% url 'kategori_detay' kategori_slug=Category.slug %}">
+                                        {{ Category.short_title }}
+                                    </a>
+                                </div>
+                                <p>{{ Category.ozet_kisa }}</p>
+                                <!-- Hikaye sayısını göster -->
+                                <p>Number of Stories: {{ Category.story_count }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Her iki kategoriden sonra bir satır sonu ekleyin -->
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="clearfix"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <br>
+
+
+            <aside class="sidebar col-md-4">
+
+                <hr class="visible-sm visible-xs lg">
+
+               {% include 'parcali/sagNav.html' %}
+            </aside>
+        </div>
+
+        </div>
+    </section>
+    <!-- Page Content / End -->
+
+
+{% endblock content %}

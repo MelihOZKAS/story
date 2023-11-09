@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+
+
+
+{% block extra_head %}
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  },
+  "headline": "{{ GelenPostStory.title }}",
+  "description": "{{ GelenPostStory.meta_description }}",
+  "datePublished": "{{ GelenPostStory.olusturma_tarihi.isoformat }}",
+  "dateModified": "{{ GelenPostStory.guncelleme_tarihi.isoformat }}",
+  {% if GelenPostStory.youtube %}
+  "video": {
+    "@type": "VideoObject",
+    "name": "{{ GelenPostStory.title }}", // Video adını buraya ekleyin
+    "description": "{{ GelenPostStory.meta_description }}", // Video açıklamasını buraya ekleyin
+    "uploadDate": "{{ GelenPostStory.olusturma_tarihi.isoformat }}", // Video yükleme tarihini buraya ekleyin
+    "thumbnailUrl": "{{ thumbnail_url }}", // Video küçük resim URL'sini
+    "embedUrl": "{{ GelenPostStory.youtube }}"
+    // Diğer video bilgilerini buraya ekleyin
+  },
+  {% endif %}
+  "keywords": "{{ GelenPostStory.keywords }}",
+  // Ek özellikler
+  "articleSection": "{{ TumKategori }}", // Bölüm veya kategori
+  "isFamilyFriendly": "true", // Aile dostu olup olmadığı
+  "interactionStatistic": { // Etkileşim istatistikleri
+    "@type": "InteractionCounter",
+    "interactionType": { "@type": "http://schema.org/ReadAction" },
+    "userInteractionCount": "{{ GelenPostStory.okunma_sayisi }}" // Görüntülenme sayısı
+  }
+}
+</script>
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+
+
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>{{ H1 }}</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        {% if Tur == "Blog" %}
+                            <li class="active">Blog</li>
+                        {% elif Tur == "Story" %}
+                            <li>
+                                <a href="{% url 'kategori_detay' kategori_slug=GelenPostStory.Hikaye_Turu.slug %}">{{ GelenPostStory.Hikaye_Turu.short_title }}</a>
+                            </li>
+                            <li class="active">Post</li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Heading / End -->
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <div class="row">
+                <div class="content col-md-8">
+
+                    <!-- Post (Standard Format) -->
+                    <article class="entry entry__standard entry__with-icon">
+                        <figure class="alignnone entry-thumb">
+                            <span><img src="{{ GelenPostStory.resim.url }}" alt="{{ GelenPostStory.title }}"></span>
+                        </figure>
+                        <header class="entry-header">
+                            <div class="entry-icon visible-md visible-lg">
+                                <span class="date-lg">{{ GelenPostStory.olusturma_tarihi|date:"d" }}</span>
+                                <span class="date-sm">{{ GelenPostStory.olusturma_tarihi|date:"b, Y" }}</span>
+                                <i class="entypo text-doc"></i>
+                            </div>
+                            <h2>{{ GelenPostStory.title }}</h2>
+                            {% if Tur == "Story" %}
+                                <div class="entry-meta">
+                                    <span class="entry-category"><i class="fa fa-folder"></i> <a
+                                            href="{% url 'kategori_detay' kategori_slug=GelenPostStory.Hikaye_Turu.slug %}">{{ GelenPostStory.Hikaye_Turu.short_title }}</a></span>
+
+                                </div>
+                            {% endif %}
+                        </header>
+                        <div class="entry-content">
+
+                            {% if GelenPostStory.youtube %}
+                                <h3>Embark on a Journey of Imagination with Our Stories on YouTube - We Kindly Invite
+                                    You to Subscribe and Become Part of Our Storytelling Family! 😇</h3>
+
+                                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                                    <iframe style="position: absolute; top:0; left: 0; width: 100%; height: 100%;"
+                                            src="{{ GelenPostStory.youtube }}"
+                                            title="{{ GelenPostStory.title }} - Kids Bedtime Story"
+                                            frameborder="0"
+                                            allowfullscreen></iframe>
+                                </div>
+                                <br/>
+                                <script src="https://apis.google.com/js/platform.js"></script>
+
+                                <div style="display: flex; align-items: center;">
+                                    <div class="g-ytsubscribe" data-channelid="UC9hXHVxKKL3sBL92eHVcE2w"
+                                         data-layout="full" data-count="default"></div>
+                                    <p style="margin-left: 20px; font-weight: bold; position: relative; top: 10px;">
+                                        Please subscribe and <br> support us! 😇</p>
+                                </div>
+
+                                <br>
+                                <br>
+                                <br>
+
+                            {% endif %}
+
+
+
+                            {{ GelenPostStory.icerik|safe }}
+                        </div>
+
+
+                        <!-- 360 image test /
+                                            <h2 class="text-center">360 Ayakkabı Detayı</h2>
+                                            <br>
+
+                                            <iframe src="https://mmedya.sirv.com/ayakkab%C4%B11.spin" width="500" height="500" frameborder="0" allowfullscreen></iframe>
+                        End -->
+
+                    </article>
+                    <!-- Post (Standard Format) / End -->
+
+                    <!-- Author -->
+                    <!--
+                    <div class="post-author clearfix">
+                        <div class="alignleft">
+                            <img src="http://placehold.it/100x100" alt="" class="img-circle">
+                        </div>
+                        <h4>John Doe</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nisi ac mi malesuada
+                            vestibulum. Phasellus tempor nunc eleifend cursus molestie. Mauris lectus arcu, pellentesque
+                            at sodales sit amet, condimentum id nunc. Donec ornare mattis suscipit. Praesent fermentum
+                            accumsan vulputate.</p>
+                    </div>
+                    -->
+                    <!-- Author / End -->
+
+
+                </div>
+
+                <aside class="sidebar col-md-4">
+
+                    <hr class="visible-sm visible-xs lg">
+
+                    {% include 'parcali/sagNav.html' %}
+
+
+                </aside>
+            </div>
+
+        </div>
+    </section>
+    <!-- Page Content / End -->
+
+
+{% endblock content %}

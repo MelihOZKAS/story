@@ -1,0 +1,17 @@
+{% load static %}
+
+<!-- Widget :: Categories -->
+<div class="widget_categories widget widget__sidebar">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+        <ul>
+            {% for category in Categories_ALL %}
+                <li>
+                    <a href="{% url 'kategori_detay' kategori_slug=category.slug %}">{{ category.short_title }}</a>
+                    ({{ category.story_count }})
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- /Widget :: Categories -->

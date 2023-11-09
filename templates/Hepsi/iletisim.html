@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+
+
+{% block content %}
+
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Contacts</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Contacts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Heading / End -->
+
+    <!-- Page Content -->
+    <section class="page-content">
+
+        <div class="container">
+
+            <!-- Google Map -->
+            <div class="googlemap-wrapper">
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d737.1035943318557!2d-71.1708665302863!3d42.35500749819957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37815a1a17d4f%3A0x5bbedbbf40e5de8a!2s69%20Presentation%20Rd%2C%20Boston%2C%20MA%2002135!5e0!3m2!1sen!2sus!4v1699552357677!5m2!1sen!2sus"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <!-- Google Map / End -->
+
+        <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <hr class="visible-sm visible-xs lg">
+                <!-- Widget :: Contacts Info -->
+                <div class="contacts-widget widget widget__sidebar">
+                    <h3 class="widget-title">Contact Info</h3>
+                    <div class="widget-content">
+                        <ul class="contacts-info-list">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                <div class="info-item">
+                                    69 Presentation Rd, Boston, MA 02135
+                                </div>
+                            </li>
+                            <!--    <li>
+                                    <i class="fa fa-phone"></i>
+                                    <div class="info-item">
+                                        +1700 124-5678<br>
+                                        +1700 124-5678
+                                    </div>
+                                </li>   -->
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <span class="info-item">
+												<a href="mailto:servereymus@gmail.com">servereymus@gmail.com</a>
+											</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Widget :: Contacts Info -->
+            </div>
+            <div class="col-md-8">
+                <h2>Contact Form</h2>
+                <form id="contact-form" class="contact-form" method="post">
+                    {% csrf_token %}
+
+                    <div class="alert alert-success hidden" id="contact-alert-success">
+                        <strong>Success!</strong> Thank you for your message. Reply will be in a while!
+                    </div>
+                    <div class="alert alert-danger hidden" id="contact-alert-error">
+                        <strong>Error!</strong> Something went wrong sending your message.
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Name <span class="required">*</span></label>
+                                <input type="text"
+                                       value=""
+                                       data-msg-required="Please enter your name."
+                                       class="form-control"
+                                       name="InputName" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email <span class="required">*</span></label>
+                                <input type="email"
+                                       value=""
+                                       data-msg-required="Please enter your email address."
+                                       data-msg-email="Please enter a valid email address."
+                                       class="form-control"
+                                       name="InputEmail"
+                                       id="email">
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text"
+                                       value=""
+                                       data-msg-required="Please enter the subject."
+                                       class="form-control"
+                                       name="InputSubject"
+                                       id="subject">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label>Message <span class="required">*</span></label>
+                                <textarea
+                                        data-msg-required="Please enter your message."
+                                        rows="11"
+                                        class="form-control"
+                                        name="InputMessage"
+                                        id="message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <input type="submit" name="submit" value="Send Message" class="btn btn-primary"
+                               data-loading-text="Loading...">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        </div>
+
+    </section>
+    <!-- Page Content / End -->
+
+{% endblock content %}

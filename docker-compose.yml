@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  postgresstory:
+    container_name: postgresstory
+    hostname: postgresstory
+    image: postgres:latest
+    env_file:
+      - Tales/docker.env
+    ports:
+      - "5440:5432"
+    volumes:
+      - "postgresql-data-story:/var/lib/postgresql/data"
+    networks:
+      - main_story
+    command: -p 5440
+  app_story:
+    container_name: app_story
+    hostname: app_story
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - Tales/docker.env
+    volumes:
+      - static-data-story:/srv/public
+      - .:/srv/app_story
+    expose:
+      - 8010
+    depends_on:
+      - postgresstory
+    command: gunicorn Tales.wsgi:application --bind 0.0.0.0:8010
+    networks:
+      - main_story
+      - bridge_network
+
+networks:
+  main_story:
+  bridge_network:
+    name: nginx_network
+    driver: bridge
+
+volumes:
+  postgresql-data-story:
+  static-data-story:

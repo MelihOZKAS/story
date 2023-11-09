@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+
+
+{% block content %}
+
+    <!-- Slider -->
+    <section class="slider-holder">
+        <div class="container">
+            <h2>What Are Cookies</h2>
+            <p>As is common practice with almost all professional websites, this site uses cookies, which are tiny files
+                that are downloaded to your computer, to improve your experience. This page describes what information
+                they gather, how we use it and why we sometimes need to store these cookies. We will also share how you
+                can prevent these cookies from being stored however this may downgrade or 'break' certain elements of
+                the site's functionality.</p>
+
+            <h2>How We Use Cookies</h2>
+            <p>We use cookies for a variety of reasons detailed below. Unfortunately, in most cases there are no
+                industry standard options for disabling cookies without completely disabling the functionality and
+                features they add to this site. It is recommended that you leave on all cookies if you are not sure
+                whether you need them or not in case they are used to provide a service that you use.</p>
+
+            <h2>Google AdSense and Cookies</h2>
+            <p>Our website uses Google AdSense, a service which uses cookies to serve targeted advertisements based on
+                user's prior visits to our website or other websites. Google's use of advertising cookies enables it and
+                its partners to serve ads to our users based on their visit to our sites and/or other sites on the
+                Internet. Users may opt out of personalized advertising by visiting Ads Settings. Alternatively, users
+                can opt out of a third-party vendor's use of cookies for personalized advertising by visiting
+                www.aboutads.info. For more information on how Google AdSense uses cookies, please visit the <a
+                        href="https://policies.google.com/technologies/ads">Google
+                    Privacy Policy.</a></p>
+
+            <h2>Controlling Cookies</h2>
+            <p>You can control the setting of cookies by adjusting the settings on your browser (see your browser Help
+                for how to do this). Be aware that disabling cookies will affect the functionality of this and many
+                other websites that you visit. Disabling cookies will usually result in also disabling certain
+                functionality and features of this site. Therefore it is recommended that you do not disable
+                cookies.</p>
+
+            <h2>Changes to This Cookie Policy</h2>
+            <p>We may update our Cookie Policy from time to time. Thus, we advise you to review this page periodically
+                for any changes. We will notify you of any changes by posting the new Cookie Policy on this page.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions or suggestions about our Cookie Policy, do not hesitate to contact us.</p>
+
+        </div>
+    </section>
+    <!-- Slider / End -->
+
+
+
+{% endblock content %}

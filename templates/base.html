@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie7 no-js" lang="en">     <![endif]-->
+<!--[if lte IE 8]>
+<html class="ie8 no-js" lang="en">     <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie no-js" lang="en">  <!--<![endif]-->
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{% block title %}Site Başlığı{% endblock %}</title>
+    <meta name="description" content="{% block description %}Site description{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}Site keywords{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+    <!-- Robots Etiketi -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
+
+
+    <!-- Open Graph Etiketleri (Facebook, LinkedIn) -->
+    <meta property="og:title" content="{% block ogtitle %}OG TITLE{% endblock %}">
+    <meta property="og:description" content="{% block ogDes %}OG DES{% endblock %}">
+    <meta property="og:image" content="{% static 'images/bedtime-story.png' %}">
+    <meta property="og:url" content="{% block ogurl %}OG url{% endblock %}">
+
+
+    <!-- Twitter Card Etiketleri -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{% block twaccountsite %}tw accounts{% endblock %}">
+    <meta name="twitter:creator" content="{% block twcreator %}tw creator{% endblock %}">
+    <meta name="twitter:title" content="{% block twtitle %}tw title{% endblock %}">
+    <meta name="twitter:description" content="{% block twdesc %}tw description{% endblock %}">
+    <meta name="twitter:image" content="{% static 'images/bedtime-story.png' %}">
+
+
+
+    <!-- Basic Page Needs
+    ================================================== -->
+
+       <!-- <meta name="author" content="https://www.melihozkas.com"> -->
+
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Base + Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/font-awesome/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/entypo/css/entypo.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.carousel.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.theme.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'vendor/flexslider/flexslider.css' %}" media="screen">
+
+    <!-- Theme CSS-->
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme-elements.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+
+    <!-- Head Libs -->
+    <script src="{% static 'vendor/modernizr.js' %}"></script>
+
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="{% static 'vendor/respond.min.js' %}"></script>
+	<![endif]-->
+
+    <!--[if IE]>
+		<link rel="stylesheet" href="{% static 'css/ie.css' %}">
+	<![endif]-->
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+
+
+
+
+
+
+    <!-- schema.org -->
+    {% block extra_head %}{% endblock %}
+
+
+
+</head>
+<body class="boxed">
+
+<div class="site-wrapper site-wrapper__boxed">
+
+    <!-- Header -->
+    <header class="header header-menu-fullw">
+        <div class="header-main">
+            <div class="container">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="{% url 'home' %}"><img src="{% static 'images/kids-bedtime.png' %}" alt="Kids Bedtime Story Logo"></a>
+                    <!-- <h1><a href="index.html"><strong>Baby</strong>sitter</a></h1> -->
+                    <p class="tagline hidden-xs hidden-sm">Best Bedtime Stories for Kids</p>
+                </div>
+                <!-- Logo / End -->
+
+                <button type="button" class="navbar-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Banner -->
+                <div class="head-info">
+                    <ul class="head-info-list">
+                        <li><span>Please Subscribe to Us on YouTube</span> <a href="https://www.youtube.com/@KidsStoriesHubBedtime" target="_blank">@KidsStoriesHubBedtime</a></li>
+
+
+                    </ul>
+                    <ul class="social-links social-links__rounded social-links__colored">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                        <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                        <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+                        <li><a href="https://www.youtube.com/@KidsStoriesHubBedtime" target="_blank"><i class="fa fa-youtube"></i></a></li>
+
+                        <!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
+                        <!-- <li><a href="#"><i class="fa fa-rss"></i></a></li> -->
+                    </ul>
+
+                </div>
+                <!-- Banner / End -->
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-main">
+            <div class="container">
+                <ul data-breakpoint="992" class="flexnav">
+                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="kids-bedtime-stories" %}">Bedtime Stories</a></li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="fairy-tales-bedtime-stories-for-kids" %}">Fairy Tales</a></li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="family-kids-bedtime-stories" %}">Family</a></li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="mothers-kids-bedtime-stories" %}">Mothers</a></li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="magic-bedtime-stories-for-kids" %}">Magic</a></li>
+                    <li><a href="{% url 'tüm_kategoriler' %}">All Category</a></li>
+                    <li><a href="{% url 'blog' %}">Blog <i class="fa fa-star"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Navigation / End -->
+
+    </header>
+    <!-- Header / End -->
+
+
+    <!-- section main content -->
+
+
+    <!-- Main -->
+    <div class="main" role="main">
+
+        {% block content %}
+
+        {% endblock content %}
+
+
+
+        <!-- Footer -->
+        {% include 'parcali/footer.html' %}
+        <!-- Footer / End -->
+
+    </div>
+    <!-- Main / End -->
+</div>
+
+
+<!-- Javascript Files
+================================================== -->
+<script src="{% static 'vendor/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap.js' %}"></script>
+<script src="{% static 'vendor/jquery.flexnav.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.hoverIntent.minified.js' %}"></script>
+<script src="{% static 'vendor/jquery.flickrfeed.js' %}"></script>
+<script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'vendor/owl-carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'vendor/jquery.fitvids.js' %}"></script>
+<script src="{% static 'vendor/jquery.appear.js' %}"></script>
+<script src="{% static 'vendor/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'vendor/flexslider/jquery.flexslider-min.js' %}"></script>
+
+<!-- Newsletter Form -->
+<script src="{% static 'vendor/jquery.validate.js' %}"></script>
+<script src="{% static 'js/newsletter.js' %}"></script>
+
+<script src="{% static 'js/custom.js' %}"></script>
+
+<script>
+    jQuery(function ($) {
+        $('body').addClass('loading');
+    });
+
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "fade",
+            controlNav: true,
+            directionNav: true,
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

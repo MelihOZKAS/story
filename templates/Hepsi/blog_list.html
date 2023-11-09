@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ sagUst }}",
+  "description": "{{ description }}",
+  "keywords": "{{ keywords }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "hasPart": [
+    {% for storyx in Story_ALL %}
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ storyx.title }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/kids-bedtime-story/{{ storyx.slug }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>{{ H1 }}</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">{{ sagUst }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Page Heading / End -->
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <div class="row">
+                <div class="content col-md-8">
+
+
+                    {% for story in Story_ALL %}
+                        <!-- Post (Standard Format) -->
+                        <article class="entry entry__standard entry__with-icon">
+                            <figure class="alignnone entry-thumb">
+                                <a href="{% url 'postagit' story_slug=story.slug %}"><img src="{{ story.resim.url }}" alt="{{ story.Hikaye_Turu.short_title }}"></a>
+                            </figure>
+                            <header class="entry-header">
+                                <div class="entry-icon visible-md visible-lg">
+                                    <span class="date-lg">{{ story.olusturma_tarihi|date:"d" }}</span>
+                                    <span class="date-sm">{{ story.olusturma_tarihi|date:"b, Y" }}</span>
+                                    <i class="entypo text-doc"></i>
+                                </div>
+
+                                <h2><a href="{% url 'postagit' story_slug=story.slug %}">{{ story.title }}</a></h2>
+                                <div class="entry-meta">
+                                <span class="entry-category"><i class="fa fa-folder"></i> <a
+                                        href="{% url 'kategori_detay' kategori_slug=story.Hikaye_Turu.slug %}">{{ story.Hikaye_Turu.short_title }}</a></span>
+
+                                </div>
+                            </header>
+                            <div class="excerpt">{{ story.icerik|truncatechars:100|safe }}
+                            </div>
+                            <footer class="entry-footer">
+                                <a href="{% url 'postagit' story_slug=story.slug %}" class="btn btn-primary">Read More</a>
+                            </footer>
+                        </article>
+                        <!-- Post (Standard Format) / End -->
+
+                    {% endfor %}
+
+
+
+
+
+
+
+                    <!-- Paginator / Begin -->
+                    <div class="text-center">
+                        <ul class="pagination-custom list-unstyled list-inline">
+                            {% if Story_ALL.has_previous %}
+                                <li><a href="?page={{ Story_ALL.previous_page_number }}" class="btn btn-sm">«</a></li>
+                            {% endif %}
+                            {% for i in Story_ALL.paginator.page_range %}
+                                {% if Story_ALL.number == i %}
+                                    <li class="active"><a href="?page={{ i }}" class="btn btn-sm">{{ i }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ i }}" class="btn btn-sm">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if Story_ALL.has_next %}
+                                <li><a href="?page={{ Story_ALL.next_page_number }}" class="btn btn-sm">»</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <!-- Paginator / End -->
+
+                </div>
+
+                <aside class="sidebar col-md-4">
+
+                    <hr class="visible-sm visible-xs lg">
+
+                    {% include 'parcali/sagNav.html' %}
+
+                </aside>
+            </div>
+
+        </div>
+    </section>
+    <!-- Page Content / End -->
+
+
+{% endblock content %}

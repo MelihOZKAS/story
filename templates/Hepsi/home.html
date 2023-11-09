@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+
+
+{% block content %}
+
+    <!-- Slider -->
+    <section class="slider-holder">
+        <div class="container">
+            <div class="cta-txt">
+                <h1 class="text-center">Welcome to Our Children's Fairy Tale and Story Website</h1>
+                <p>Step into a world of enchantment and imagination as you explore our collection of bedtime
+                    stories, fairy tales, and more. Welcome to a realm where dreams come to life!</p>
+            </div>
+            <div class="flexslider carousel">
+                <ul class="slides">
+                    <li>
+                        <a href="{% url 'en-cok-okunan' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-7.webp' %}"
+                                alt="Most Read Children's Stories"/> </a>
+                        <div class="flexslider-desc">
+                            <h2>Most Read Children's Stories</h2>
+                            <a href="{% url 'en-cok-okunan' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'video' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-2.webp' %}"
+                                alt="Youtube Kids Bedtime Story"/> </a>
+                        <div class="flexslider-desc">
+                            <h2>Kids Stories with YouTube Videos</h2>
+                            <a href="{% url 'video' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'en-son-eklenen' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-3.webp' %}"
+                                alt="New Kids Stories Added"/> </a>
+                        <div class="flexslider-desc">
+                            <h2>New Kids Stories Added</h2>
+                            <a href="{% url 'en-son-eklenen' %}" class="link">View All Categories <i
+                                    class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'kategori_detay' kategori_slug='kids-bedtime-stories' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-6.webp' %}"
+                                alt="Bedtime Stories For Kids"/> </a>
+                        <div class="flexslider-desc">
+                            <h2>Bedtime Stories For Kids</h2>
+                            <a href="{% url 'kategori_detay' kategori_slug='kids-bedtime-stories' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'kategori_detay' kategori_slug='family-kids-bedtime-stories' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-8.webp' %}"
+                                alt="Family Stories for Kids"/> </a>
+                        <div class="flexslider-desc">
+                            <h2>Family Stories for Kids</h2>
+                            <a href="{% url 'kategori_detay' kategori_slug='family-kids-bedtime-stories' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'kategori_detay' kategori_slug='fairy-tales-bedtime-stories-for-kids' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-5.webp' %}"
+                                alt="Fairy Tales for Kids"/></a>
+                        <div class="flexslider-desc">
+                            <h2>Fairy Tales for Kids</h2>
+                            <a href="{% url 'kategori_detay' kategori_slug='fairy-tales-bedtime-stories-for-kids' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Slider / End -->
+
+    <!-- Page Content -->
+    <section class="page-content">
+
+        <div class="container">
+            <div style="display: flex; justify-content: space-between;">
+                <h2>Recently Added Stories</h2>
+                <a href="{% url 'en-son-eklenen' %}" style="font-size: 16px"><strong>All Story</strong></a>
+            </div>
+
+            <div class="row">
+
+                {% for Story in endStory %}
+                    <div class="col-xs-6 col-sm-3 col-md-3" data-animation="fadeInLeft" data-animation-delay="0">
+                        <div class="job-listing-box" style="margin-bottom: 20px;">
+                            <figure class="job-listing-img">
+                                <a href="{% url 'postagit' story_slug=Story.slug %}"><img
+                                        src="{% static 'images/bedtime-story/categories/'|add:Story.Hikaye_Turu.slug|add:'.webp' %}" alt="{{ Story.title }}" width="255" height="255" ></a>
+                            </figure>
+                            <div class="job-listing-body">
+                                <div class="name"><a href="{% url 'postagit' story_slug=Story.slug %}">{{ Story.title }}</a></div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+
+            </div>
+            <br>
+
+
+        </div>
+
+        <div class="container ">
+
+            <br>
+            <div style="display: flex; justify-content: space-between;">
+                <h2>Popular Categories</h2>
+                <a href="{% url 'tüm_kategoriler' %}" style="font-size: 16px"><strong>All Categories</strong></a>
+            </div>
+
+
+            <div class="row">
+
+                <!-- my_template.html dosyanızda -->
+                {% for category, color in categories_with_colors %}
+                    <div class="col-md-4">
+                        <!-- Icon Box -->
+                        <a href="{% url 'kategori_detay' category.slug %}">
+                            <div class="icon-box boxed circled icon-box-color__{{ color }}">
+                                <div class="icon">
+                                    {{ forloop.counter }}
+                                </div>
+                                <div class="icon-box-body">
+                                    <h2>{{ category.short_title }}</h2>
+                                    <p>{{ category.ozet_kisa }}</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Icon Box / End -->
+                    </div>
+                {% endfor %}
+
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- Page Content / End -->
+
+
+{% endblock content %}
