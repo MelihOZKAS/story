@@ -67,7 +67,7 @@
                         <article class="entry entry__standard entry__with-icon">
                             <figure class="alignnone entry-thumb">
                                 <a href="{% url 'blogGit' blog_slug=story.slug %}"><img
-                                        src="{{ story.resim.url }}" alt="{{ story.title }}">width="858" height="400"</a>
+                                        src="{{ story.resim.url }}" loading="lazy"  alt="{{ story.title }}" width="858" height="400"></a>
                             </figure>
                             <header class="entry-header">
                                 <div class="entry-icon visible-md visible-lg">
