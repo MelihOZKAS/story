@@ -18,6 +18,76 @@
 
 {% block content %}
 
+    <!-- Slider -->
+    <section class="slider-holder">
+        <div class="container">
+            <div class="cta-txt">
+                <h1 class="text-center">Welcome to Our Children's Fairy Tale and Story Website</h1>
+                <p>Step into a world of enchantment and imagination as you explore our collection of bedtime
+                    stories, fairy tales, and more. Welcome to a realm where dreams come to life!</p>
+            </div>
+            <div class="flexslider carousel">
+                <ul class="slides">
+                    <li>
+                        <a href="{% url 'en-cok-okunan' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-7.webp' %}"
+                               loading="lazy"   alt="Most Read Children's Stories" width="1122" height="480"/>  </a>
+                        <div class="flexslider-desc">
+                            <h2>Most Read Children's Stories</h2>
+                            <a href="{% url 'en-cok-okunan' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'video' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-2.webp' %}"
+                               loading="lazy"   alt="Youtube Kids Bedtime Story" width="1122" height="480"/>   </a>
+                        <div class="flexslider-desc">
+                            <h2>Kids Stories with YouTube Videos</h2>
+                            <a href="{% url 'video' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'en-son-eklenen' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-3.webp' %}"
+                               loading="lazy"   alt="New Kids Stories Added" width="1122" height="480"/>   </a>
+                        <div class="flexslider-desc">
+                            <h2>New Kids Stories Added</h2>
+                            <a href="{% url 'en-son-eklenen' %}" class="link">View All Categories <i
+                                    class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'kategori_detay' kategori_slug='kids-bedtime-stories' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-6.webp' %}"
+                               loading="lazy"   alt="Bedtime Stories For Kids" width="1122" height="480"/>  </a>
+                        <div class="flexslider-desc">
+                            <h2>Bedtime Stories For Kids</h2>
+                            <a href="{% url 'kategori_detay' kategori_slug='kids-bedtime-stories' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'kategori_detay' kategori_slug='family-kids-bedtime-stories' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-8.webp' %}"
+                                loading="lazy"  alt="Family Stories for Kids" width="1122" height="480"/>  </a>
+                        <div class="flexslider-desc">
+                            <h2>Family Stories for Kids</h2>
+                            <a href="{% url 'kategori_detay' kategori_slug='family-kids-bedtime-stories' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'kategori_detay' kategori_slug='fairy-tales-bedtime-stories-for-kids' %}"> <img
+                                src="{% static 'images/bedtime-story/big-banner/kids-bedtimes-story-banner-5.webp' %}"
+                               loading="lazy"   alt="Fairy Tales for Kids" width="1122" height="480"/>  </a>
+                        <div class="flexslider-desc">
+                            <h2>Fairy Tales for Kids</h2>
+                            <a href="{% url 'kategori_detay' kategori_slug='fairy-tales-bedtime-stories-for-kids' %}" class="link">View All Categories <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Slider / End -->
 
     <!-- Page Content -->
     <section class="page-content">
