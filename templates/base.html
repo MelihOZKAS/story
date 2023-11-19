@@ -16,7 +16,7 @@
 
     <!-- Robots Etiketi -->
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"/>
 
 
     <!-- Open Graph Etiketleri (Facebook, LinkedIn) -->
@@ -35,11 +35,10 @@
     <meta name="twitter:image" content="{% static 'images/bedtime-story.png' %}">
 
 
-
     <!-- Basic Page Needs
     ================================================== -->
 
-       <!-- <meta name="author" content="https://www.melihozkas.com"> -->
+    <!-- <meta name="author" content="https://www.melihozkas.com"> -->
 
 
     <!-- Mobile Specific Metas
@@ -50,7 +49,7 @@
     <!-- CSS
     ================================================== -->
     <!-- Base + Vendors CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="preload" href="{% static 'css/bootstrap.min.css' %}" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="{% static 'css/fonts/font-awesome/css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts/entypo/css/entypo.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/owl-carousel/owl.carousel.css' %}" media="screen">
@@ -83,13 +82,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
 
 
-
-
-
-
     <!-- schema.org -->
     {% block extra_head %}{% endblock %}
-
 
 
 </head>
@@ -104,7 +98,8 @@
 
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="{% url 'home' %}"><img src="{% static 'images/kids-bedtime.png' %}" loading="lazy" alt="Kids Bedtime Story Logo" width="220" height="57">   </a>
+                    <a href="{% url 'home' %}"><img src="{% static 'images/kids-bedtime.png' %}" loading="lazy"
+                                                    alt="Kids Bedtime Story Logo" width="220" height="57"> </a>
                     <!-- <h1><a href="index.html"><strong>Baby</strong>sitter</a></h1> -->
                     <p class="tagline hidden-xs hidden-sm">Best Bedtime Stories for Kids</p>
                 </div>
@@ -117,21 +112,20 @@
                 <!-- Banner -->
                 <div class="head-info">
                     <ul class="head-info-list">
-                        <li><span>Please Subscribe to Us on YouTube</span> <a href="https://www.youtube.com/@KidsStoriesHubBedtime" target="_blank">@KidsStoriesHubBedtime</a></li>
+                        <li><span>Please Subscribe to Us on YouTube</span> <a
+                                href="https://www.youtube.com/@KidsStoriesHubBedtime" target="_blank">@KidsStoriesHubBedtime</a>
+                        </li>
 
 
                     </ul>
                     <ul class="social-links social-links__rounded social-links__colored">
-                        <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                        <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
-                        <!-- <li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
-                        <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
-                        <li><a href="https://www.youtube.com/@KidsStoriesHubBedtime" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="https://twitter.com/" target="_blank" aria-label="Twitter"><i
+                                class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.youtube.com/@KidsStoriesHubBedtime" target="_blank"
+                               aria-label="YouTube"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i
+                                class="fa fa-instagram"></i></a></li>
 
-                        <!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
-                        <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-                        <!-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
-                        <!-- <li><a href="#"><i class="fa fa-rss"></i></a></li> -->
                     </ul>
 
                 </div>
@@ -144,11 +138,15 @@
             <div class="container">
                 <ul data-breakpoint="992" class="flexnav">
                     <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'kategori_detay' kategori_slug="kids-bedtime-stories" %}">Bedtime Stories</a></li>
-                    <li><a href="{% url 'kategori_detay' kategori_slug="fairy-tales-bedtime-stories-for-kids" %}">Fairy Tales</a></li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="kids-bedtime-stories" %}">Bedtime Stories</a>
+                    </li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="fairy-tales-bedtime-stories-for-kids" %}">Fairy
+                        Tales</a></li>
                     <li><a href="{% url 'kategori_detay' kategori_slug="family-kids-bedtime-stories" %}">Family</a></li>
-                    <li><a href="{% url 'kategori_detay' kategori_slug="mothers-kids-bedtime-stories" %}">Mothers</a></li>
-                    <li><a href="{% url 'kategori_detay' kategori_slug="magic-bedtime-stories-for-kids" %}">Magic</a></li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="mothers-kids-bedtime-stories" %}">Mothers</a>
+                    </li>
+                    <li><a href="{% url 'kategori_detay' kategori_slug="magic-bedtime-stories-for-kids" %}">Magic</a>
+                    </li>
                     <li><a href="{% url 'tüm_kategoriler' %}">All Category</a></li>
                     <li><a href="{% url 'blog' %}">Blog <i class="fa fa-star"></i></a></li>
                 </ul>
