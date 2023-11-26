@@ -8,6 +8,7 @@ urlpatterns = [
     path('most-read-childrens-stories/', views.cokokunan, name='en-cok-okunan'),#En çok okunan
     path('kids-stories-youtube-videos/', views.video, name='video'),#Youtube Videoları
     path('blog/', views.blog, name='blog'),#Blog
+    path("oto-shared/", views.Oto_Paylas),
     path("add-story/", views.apiyle_ekle),
 
     path('contact/', views.iletisim, name='iletisim'),#Blog

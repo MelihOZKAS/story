@@ -420,6 +420,25 @@ Sitemap: https://www.kidsstorieshub.com/sitemap.xml
 
 
 
+
+def Oto_Paylas(request):
+    post = Story.objects.filter(status="oto").order_by('id').first()
+
+    if post is not None:
+        if post.yayin_tarihi is None or post.yayin_tarihi <= timezone.now():
+            post.status = "Yayinda"
+            post.aktif = True
+            post.olusturma_tarihi = timezone.now()  # eklenme tarihini güncelle
+            post.save()
+            return HttpResponse(f'Şükürler Olsun "{post.title}" Paylaşıldı.')
+    else:
+        return HttpResponse('Paylaşılacak Post Bulunamadı.')
+
+
+
+
+
+
 @csrf_exempt
 def apiyle_ekle(request):
     if request.method == 'POST':
