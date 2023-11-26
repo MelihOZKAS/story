@@ -8,6 +8,16 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.db.models import Count
 
+def create_unique_title_slug(title):
+    slug = slugify(title)
+    unique_slug = slug
+    unique_title = title
+    num = 1
+    while Story.objects.filter(slug=unique_slug).exists() or Story.objects.filter(title=unique_title).exists():
+        unique_slug = '{}-{}'.format(slug, num)
+        unique_title = '{} {}'.format(title, num)
+        num += 1
+    return unique_title, unique_slug
 
 def get_youtube_id(url):
     # YouTube video URL'sinden video ID'sini çıkaran bir regex deseni
@@ -407,3 +417,24 @@ User-agent: *
 Allow: /
 Sitemap: https://www.kidsstorieshub.com/sitemap.xml
 """
+
+
+
+@csrf_exempt
+def apiyle_ekle(request):
+    if request.method == 'POST':
+        # Gelen POST isteğindeki değerleri alın
+        title = request.POST.get('title')
+        icerik = request.POST.get('icerik')
+        kategorisi = request.POST.get('kategorisi')
+        key = request.POST.get('kew')
+
+        hikaye_turu = StoryCategory.objects.get(short_title=kategorisi)
+
+        title, slug = create_unique_title_slug(title)
+        siir_masal = Story(title=title, Hikaye_Turu=hikaye_turu, icerik=icerik, slug=slug,keywords=key , status="Taslak")
+        siir_masal.save()
+        if siir_masal.id is None:
+            return HttpResponse("Model kaydedilemedi.")
+        else:
+            return HttpResponse("Model başarıyla kaydedildi. ID: " + str(siir_masal.id))
