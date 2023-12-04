@@ -57,7 +57,7 @@ def home(request):
 
 
 def kategori(request):
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     title = "Explore Various Categories of Bedtime Stories | Read & Listen Free"
     H1 = "Discover a World of Bedtime Stories"
     description = "Dive into our diverse collection of bedtime stories. Explore tales of friendship, motherhood, problem-solving, and exciting animal adventures."
@@ -105,7 +105,7 @@ def kategori_icerik_list(request, kategori_slug):
     story_categori = get_object_or_404(StoryCategory, slug=kategori_slug)
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", Hikaye_Turu=story_categori).order_by(
         '-olusturma_tarihi')
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     title = story_categori.Title
     H1 = story_categori.H1
     description = story_categori.Hikaye_meta_description
@@ -136,7 +136,7 @@ def kategori_icerik_list(request, kategori_slug):
 
 def enson_eklenen_blog_list(request):#Tamam...
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
 
     title = "Newly Added Children’s Stories | KidsStoriesHub.com"
     H1 = "Newly Added Magical Stories for Children"
@@ -168,7 +168,7 @@ def enson_eklenen_blog_list(request):#Tamam...
 
 def cokokunan(request):#Tamam
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-okunma_sayisi')
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
 
     title = "Top Children’s Stories: Most Read & Loved Tales for Kids"
     H1 = "Most Popular Children’s Stories"
@@ -200,7 +200,7 @@ def cokokunan(request):#Tamam
 
 def video(request):#Tamam
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", youtube__isnull=False).exclude(youtube__exact='').order_by('-olusturma_tarihi')
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
 
     title = "Bedtime Stories with Videos for Kids on KidsStoriesHub.com"
     H1 = "Bedtime Video Stories for Children"
@@ -240,7 +240,7 @@ def post_getir(request, story_slug):
     GelenPostStory.okunma_sayisi += 1
     GelenPostStory.save()
 
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     title = GelenPostStory.title
     H1 = GelenPostStory.h1
     description = GelenPostStory.meta_description
@@ -279,7 +279,7 @@ def blog_getir(request, blog_slug):
     GelenPostStory.okunma_sayisi += 1
     GelenPostStory.save()
 
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     title = GelenPostStory.title
     H1 = GelenPostStory.h1
     description = GelenPostStory.meta_description
