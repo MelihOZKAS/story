@@ -74,13 +74,13 @@ def kategori(request):
 
 def blog(request):
     Story_ALL = Blog.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')
-    Categories_ALL = StoryCategory.objects.annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     title = "Bedtime Stories Blog for Kids at KidsStoriesHub.com"
     H1 = "Bedtime Stories Blog for Children"
     description = "Explore our blog at KidsStoriesHub.com for engaging bedtime stories and tips. Dive into the world of imagination and learn the art of storytelling."
     keywords = "bedtime stories, kids blog, children’s blog, English stories, kids bedtime stories, storytelling tips, educational blog, bedtime tales, storytime blog, kids literature"
 
-    paginator = Paginator(Story_ALL, 3)  # 10 içerik göstermek için
+    paginator = Paginator(Story_ALL, 10)  # 10 içerik göstermek için
     page_number = request.GET.get('page')
     Story_ALL = paginator.get_page(page_number)
 
@@ -111,7 +111,7 @@ def kategori_icerik_list(request, kategori_slug):
     description = story_categori.Hikaye_meta_description
     keywords = story_categori.Hikaye_keywords
 
-    paginator = Paginator(Story_ALL, 3)  # 10 içerik göstermek için
+    paginator = Paginator(Story_ALL, 10)  # 10 içerik göstermek için
     page_number = request.GET.get('page')
     Story_ALL = paginator.get_page(page_number)
 
@@ -143,7 +143,7 @@ def enson_eklenen_blog_list(request):#Tamam...
     description = "Explore the newest collection of captivating stories for kids on KidsStoriesHub.com. Dive into a world of imagination and adventure with our latest tales."
     keywords = "kids stories, latest stories, children’s tales, kids literature, new stories, English stories, kids books, storytime, educational stories, bedtime stories”"
 
-    paginator = Paginator(Story_ALL, 3)  # 10 içerik göstermek için
+    paginator = Paginator(Story_ALL, 10)  # 10 içerik göstermek için
     page_number = request.GET.get('page')
     Story_ALL = paginator.get_page(page_number)
 
@@ -175,7 +175,7 @@ def cokokunan(request):#Tamam
     description = "Discover the top children’s stories that are loved and cherished by kids worldwide. These popular tales for children are a must-read!"
     keywords = "top children’s stories, popular children’s stories, loved tales, kids' favorites, must-read children’s stories"
 
-    paginator = Paginator(Story_ALL, 3)  # 10 içerik göstermek için
+    paginator = Paginator(Story_ALL, 10)  # 10 içerik göstermek için
     page_number = request.GET.get('page')
     Story_ALL = paginator.get_page(page_number)
 
@@ -207,7 +207,7 @@ def video(request):#Tamam
     description = "Immerse your child in the world of dreams with our bedtime video stories at KidsStoriesHub.com. Experience the magic of storytelling like never before."
     keywords = "bedtime stories, video stories, kids videos, children’s videos, English stories, kids bedtime stories, storytime videos, educational videos, bedtime tales, animated stories"
 
-    paginator = Paginator(Story_ALL, 3)  # 10 içerik göstermek için
+    paginator = Paginator(Story_ALL, 10)  # 10 içerik göstermek için
     page_number = request.GET.get('page')
     Story_ALL = paginator.get_page(page_number)
 
