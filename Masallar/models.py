@@ -109,7 +109,7 @@ class Blog(models.Model):
     okunma_sayisi = models.PositiveBigIntegerField(default=0)
     #olusturma_tarihi = models.DateTimeField(auto_now_add=True)
     olusturma_tarihi = models.DateTimeField(default=timezone.now)
-    guncelleme_tarihi = models.DateTimeField(auto_now=True)
+    guncelleme_tarihi = models.DateTimeField(auto_now=True, editable=True)
     class Meta:
         verbose_name_plural = "BlogPost"
     def __str__(self):
