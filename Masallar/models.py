@@ -108,7 +108,7 @@ class Blog(models.Model):
     small_banner = models.BooleanField(default=False,help_text=HELP_TEXTS["small_banner"])
     okunma_sayisi = models.PositiveBigIntegerField(default=0)
     #olusturma_tarihi = models.DateTimeField(auto_now_add=True)
-    olusturma_tarihi = models.DateTimeField(default=timezone.now, editable=True)
+    olusturma_tarihi = models.DateTimeField(null=True, blank=True, help_text="Postanın yayınlanacağı tarih ve saat")
     guncelleme_tarihi = models.DateTimeField(auto_now=True)
     class Meta:
         verbose_name_plural = "BlogPost"
