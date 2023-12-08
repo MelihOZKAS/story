@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from ckeditor.fields import RichTextField
 from Tales.custom_storages import ImageSettingStorage
+from django.utils import timezone
 
 status_cho = (
     ("Taslak", "Taslak"),
@@ -106,7 +107,8 @@ class Blog(models.Model):
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])
     small_banner = models.BooleanField(default=False,help_text=HELP_TEXTS["small_banner"])
     okunma_sayisi = models.PositiveBigIntegerField(default=0)
-    olusturma_tarihi = models.DateTimeField(auto_now_add=True)
+    #olusturma_tarihi = models.DateTimeField(auto_now_add=True)
+    olusturma_tarihi = models.DateTimeField(default=timezone.now)
     guncelleme_tarihi = models.DateTimeField(auto_now=True)
     class Meta:
         verbose_name_plural = "BlogPost"
