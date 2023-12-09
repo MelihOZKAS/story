@@ -7,6 +7,8 @@ from django.views.decorators.http import require_GET
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.db.models import Count
+from django.views import View
+
 
 def create_unique_title_slug(title):
     slug = slugify(title)
@@ -457,3 +459,9 @@ def apiyle_ekle(request):
             return HttpResponse("Model kaydedilemedi.")
         else:
             return HttpResponse("Model başarıyla kaydedildi. ID: " + str(siir_masal.id))
+
+
+class StoryPreviewView(View):
+    def get(self, request, *args, **kwargs):
+        story = Story.objects.get(slug=kwargs['slug'])
+        return HttpResponse(story.icerik)

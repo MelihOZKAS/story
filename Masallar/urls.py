@@ -15,6 +15,7 @@ urlpatterns = [
     path('cookie-policy/', views.cerez, name='cerez'),#Blog
     path('privacy-policy/', views.gizlilik, name='gizlilik'),#Blog
     path('about/', views.hakkinda, name='hakkinda'),#Blog
+    path('story-preview/<slug:slug>/', views.StoryPreviewView.as_view(), name='story_preview'),
 
     path('oto-add-categories/', views.oto_hikayekategoriekle),#Kategorileri otomatik ekler
 
