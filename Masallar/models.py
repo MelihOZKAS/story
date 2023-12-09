@@ -58,7 +58,7 @@ class StoryCategory(models.Model):
     class Meta:
         verbose_name_plural = "Story Category"
     def __str__(self):
-        return self.Title
+        return self.short_title
 
 
 # Create your models here.
