@@ -55,7 +55,7 @@ class HepsiAdmin(admin.ModelAdmin):
     # get_masalKategorisi.short_description = 'Masal Kategorileri'
 
     def hikayeyi_gor(self, obj):
-        return format_html('<a class="btn btn-success" href="/story-preview/{}">Hikayeyi Gör</a>', obj.slug)
+        return format_html('<a style="padding: 5px 10px; background-color: #198754; color: white; text-decoration: none;" href="/story-preview/{}">Hikayeyi Gör</a>', obj.slug)
 
     hikayeyi_gor.short_description = 'Story View'
     def update_slug(self, request, queryset):
