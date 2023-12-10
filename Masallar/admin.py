@@ -41,7 +41,7 @@ class HepsiAdmin(admin.ModelAdmin):
     list_display = ("title", "youtube", "okunma_sayisi", "Hikaye_Turu", "seo_check", "hikayeyi_gor", "status", "yayin_tarihi", "olusturma_tarihi", "guncelleme_tarihi","small_banner","banner","aktif",)#"get_hikayeKategorisi", "get_masalKategorisi",
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ("title",)
-    list_filter = ("status","aktif","banner","small_banner",)
+    list_filter = ("Hikaye_Turu", "status","aktif","banner","small_banner",)
     list_editable = ("status","aktif","banner","small_banner","Hikaye_Turu" ,)
 
     actions = ['update_slug', 'update_creation_date']
@@ -55,9 +55,7 @@ class HepsiAdmin(admin.ModelAdmin):
     # get_masalKategorisi.short_description = 'Masal Kategorileri'
 
     def hikayeyi_gor(self, obj):
-        return format_html(
-            '<a style="padding: 5px 10px; background-color: #198754; color: white; text-decoration: none; display: inline-block;" href="/story-preview/{}">Hikayeyi Gör</a>',
-            obj.slug)
+        return format_html('<a target="_blank" style="padding: 5px 10px; background-color: #198754; color: white; text-decoration: none; display: inline-block; text-align: center; border-radius: 5px;" href="/story-preview/{}">Hikayeyi Gör</a>', obj.slug)
 
     hikayeyi_gor.short_description = 'Story View'
     def update_slug(self, request, queryset):
