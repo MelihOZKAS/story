@@ -56,12 +56,8 @@ class HepsiAdmin(admin.ModelAdmin):
 
     def hikayeyi_gor(self, obj):
         return format_html(
-            '<a href="/story-preview/{}">'
-            '<button class="btn btn-primary btn-lg" style="color: white;">'
-            'Hikayeyi Gör</button>'
-            '</a>',
-            obj.slug,
-        )
+            '<a style="padding: 5px 10px; background-color: #198754; color: white; text-decoration: none; display: inline-block;" href="/story-preview/{}">Hikayeyi Gör</a>',
+            obj.slug)
 
     hikayeyi_gor.short_description = 'Story View'
     def update_slug(self, request, queryset):
