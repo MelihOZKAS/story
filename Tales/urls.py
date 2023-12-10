@@ -39,6 +39,8 @@ urlpatterns = [
     path('sitemap.xml/', index, {'sitemaps': sitemaps}),
     path('sitemap-<section>.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path("robots.txt/",robots_txt, name="robots"),
+    path("Ads.txt/", ads, name="ads"),
+    path("ads.txt/", ads, name="ads"),
 
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
