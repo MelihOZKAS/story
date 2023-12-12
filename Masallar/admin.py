@@ -38,11 +38,11 @@ def create_unique_title_slug(title):
 
 
 class HepsiAdmin(admin.ModelAdmin):
-    list_display = ("title", "youtube", "okunma_sayisi", "Hikaye_Turu", "seo_check", "hikayeyi_gor", "status", "yayin_tarihi", "olusturma_tarihi", "guncelleme_tarihi","small_banner","banner","aktif",)#"get_hikayeKategorisi", "get_masalKategorisi",
+    list_display = ("title", "youtube", "okunma_sayisi", "Hikaye_Turu", "seo_check", "hikayeyi_gor", "kisa", "uzun", "status", "yayin_tarihi", "olusturma_tarihi", "guncelleme_tarihi","small_banner","banner","aktif",)#"get_hikayeKategorisi", "get_masalKategorisi",
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ("title",)
     list_filter = ("Hikaye_Turu", "status","aktif","banner","small_banner",)
-    list_editable = ("status","aktif","banner","small_banner","Hikaye_Turu" ,)
+    list_editable = ("status","aktif","banner","small_banner","Hikaye_Turu" ,"kisa", "uzun",)
 
     actions = ['update_slug', 'update_creation_date']
 
