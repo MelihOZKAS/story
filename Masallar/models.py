@@ -76,6 +76,8 @@ class Story(models.Model):
     keywords = models.CharField(max_length=255,blank=True,verbose_name="Anahtar Kelimeler",help_text=HELP_TEXTS["keywords"])
     yayin_tarihi = models.DateTimeField(null=True, blank=True, help_text="Postanın yayınlanacağı tarih ve saat")
     status = models.CharField(max_length=10, choices=status_cho, default="Taslak", help_text=HELP_TEXTS["status"])
+    kisa = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
+    uzun = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     aktif = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])
     small_banner = models.BooleanField(default=False,help_text=HELP_TEXTS["small_banner"])
