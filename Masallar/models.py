@@ -77,6 +77,7 @@ class Story(models.Model):
     yayin_tarihi = models.DateTimeField(null=True, blank=True, help_text="Postanın yayınlanacağı tarih ve saat")
     status = models.CharField(max_length=10, choices=status_cho, default="Taslak", help_text=HELP_TEXTS["status"])
     kisa = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
+    normal = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     uzun = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     aktif = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])

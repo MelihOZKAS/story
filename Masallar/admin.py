@@ -44,7 +44,7 @@ class HepsiAdmin(admin.ModelAdmin):
     list_filter = ("Hikaye_Turu", "status","aktif","banner","small_banner",)
     list_editable = ("status","aktif","banner","small_banner","Hikaye_Turu" ,"kisa", "uzun",)
 
-    actions = ['update_slug', 'update_creation_date']
+    actions = ['update_slug', 'update_creation_date', 'uzunYap']
 
     # def get_hikayeKategorisi(self, obj):
     #    return ", ".join([hikaye.HikayeKategoriAdi for hikaye in obj.hikayeKategorisi.all()])
@@ -71,6 +71,14 @@ class HepsiAdmin(admin.ModelAdmin):
             obj.save()
 
     update_creation_date.short_description = 'Oluşturma tarihlerini güncelle.'
+
+    def uzunYap(self, request, queryset):
+        for obj in queryset:
+            obj.kisa = False
+            obj.uzun = True
+            obj.save()
+
+    update_creation_date.short_description = 'Hepsini UzunYap'
 
     def seo_check(self, obj):
         checks = []
