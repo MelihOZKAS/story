@@ -78,7 +78,7 @@ class HepsiAdmin(admin.ModelAdmin):
             obj.uzun = True
             obj.save()
 
-    update_creation_date.short_description = 'Hepsini UzunYap'
+    uzunYap.short_description = 'Hepsini UzunYap'
 
     def seo_check(self, obj):
         checks = []
