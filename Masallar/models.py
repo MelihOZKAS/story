@@ -11,6 +11,13 @@ status_cho = (
     ("oto", "oto"),
     ("manuel", "manuel"),
 )
+
+boyutu = (
+    ("Kısa", "Kısa"),
+    ("Normal", "Normal"),
+    ("Uzun", "Uzun"),
+)
+
 HELP_TEXTS = {
     "title": "Masal Hiyenin başlığını girin.",
     "h1": "İçeriğin H1 Seo uyumlu girilmesi Lazım.",
@@ -76,9 +83,10 @@ class Story(models.Model):
     keywords = models.CharField(max_length=255,blank=True,verbose_name="Anahtar Kelimeler",help_text=HELP_TEXTS["keywords"])
     yayin_tarihi = models.DateTimeField(null=True, blank=True, help_text="Postanın yayınlanacağı tarih ve saat")
     status = models.CharField(max_length=10, choices=status_cho, default="Taslak", help_text=HELP_TEXTS["status"])
-    kisa = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
-    normal = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
-    uzun = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
+    uzunluk = models.CharField(max_length=25, choices=boyutu, default="Kısa", help_text=HELP_TEXTS["status"])
+    #kisa = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
+    #normal = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
+    #uzun = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     aktif = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])
     small_banner = models.BooleanField(default=False,help_text=HELP_TEXTS["small_banner"])
