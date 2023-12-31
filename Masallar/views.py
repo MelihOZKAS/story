@@ -452,13 +452,13 @@ def apiyle_ekle(request):
         icerik = request.POST.get('icerik')
         kategorisi = request.POST.get('kategorisi')
         key = request.POST.get('kew')
-        uzun = request.POST.get('uzun')
-        kisa = request.POST.get('kisa')
+        uzunluk = request.POST.get('uzunluk')
+
 
         hikaye_turu = StoryCategory.objects.get(short_title=kategorisi)
 
         title, slug = create_unique_title_slug(title)
-        siir_masal = Story(title=title, Hikaye_Turu=hikaye_turu, icerik=icerik, slug=slug,keywords=key , status="Taslak", uzun=uzun, kisa=kisa)
+        siir_masal = Story(title=title, Hikaye_Turu=hikaye_turu, icerik=icerik, slug=slug,keywords=key , status="Taslak", uzunluk=uzunluk)
         siir_masal.save()
         if siir_masal.id is None:
             return HttpResponse("Model kaydedilemedi.")
