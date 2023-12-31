@@ -38,7 +38,7 @@ def create_unique_title_slug(title):
 
 
 class HepsiAdmin(admin.ModelAdmin):
-    list_display = ("id", "title", "youtube", "okunma_sayisi", "Hikaye_Turu", "seo_check", "hikayeyi_gor", "uzunluk",
+    list_display = ("id", "title", "youtube", "okunma_sayisi", "Hikaye_Turu", "seo_check", "hikayeyi_gor","kelime_sayisi", "uzunluk",
                     "status", "yayin_tarihi", "olusturma_tarihi", "guncelleme_tarihi","small_banner","banner","aktif",)#"get_hikayeKategorisi", "get_masalKategorisi",
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ("title",)

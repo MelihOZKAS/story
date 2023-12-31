@@ -94,6 +94,9 @@ class Story(models.Model):
     #olusturma_tarihi = models.DateTimeField(auto_now_add=True)
     olusturma_tarihi = models.DateTimeField(default=timezone.now, editable=True)
     guncelleme_tarihi = models.DateTimeField(auto_now=True)
+
+    def kelime_sayisi(self):
+        return len(self.icerik.split())
     class Meta:
         verbose_name_plural = "Post"
     def __str__(self):
