@@ -8,6 +8,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.db.models import Count
 from django.views import View
+from django.db.models import Q
+
 
 
 def create_unique_title_slug(title):
@@ -424,17 +426,17 @@ Sitemap: https://www.kidsstorieshub.com/sitemap.xml
 
 
 def Oto_Paylas(request):
-    post = Story.objects.filter(status="oto").order_by('id').first()
+    post = Story.objects.filter(Q(status="oto") & (Q(yayin_tarihi__lte=timezone.now()) | Q(yayin_tarihi=None))).first()
 
     if post is not None:
-        if post.yayin_tarihi is None or post.yayin_tarihi <= timezone.now():
-            post.status = "Yayinda"
-            post.aktif = True
-            post.olusturma_tarihi = timezone.now()  # eklenme tarihini güncelle
-            post.save()
-            return HttpResponse(f'Şükürler Olsun "{post.title}" Paylaşıldı.')
+        post.status = "Yayinda"
+        post.aktif = True
+        post.olusturma_tarihi = timezone.now()  # eklenme tarihini güncelle
+        post.save()
+        return HttpResponse(f'Şükürler Olsun "{post.title}" Paylaşıldı.')
     else:
         return HttpResponse('Paylaşılacak Post Bulunamadı.')
+
 
 
 
