@@ -7,6 +7,7 @@ from django.utils import timezone
 status_cho = (
     ("Taslak", "Taslak"),
     ("Hazir", "Hazir"),
+    ("YoutubeHazir", "YoutubeHazir"),
     ("Yayinda", "Yayinda"),
     ("oto", "oto"),
     ("manuel", "manuel"),
