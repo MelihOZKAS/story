@@ -26,6 +26,17 @@ sitemaps = {
     'Story': StorySitemap,
     'Blog-Post': BlogSitemap,
     'Kids-Bedtime-Story': StoryBedtime,
+    'Kids-Animals-Story': StoryAnimals,
+    'Kids-Responsibility-Story': StoryResponsibility,
+    'Kids-Family-Story': StoryFamily,
+    'Kids-Bravery-Courage-Story': StoryBravery,
+    'Kids-Sisters-Story': StorySisters,
+    'Kids-Fairy-Tales-Story': StoryFairyTales,
+    'Kids-Magic-Story': StoryMagic,
+    'Kids-Fathers-Story': StoryFathers,
+    'Kids-Problem-Solving-Story': StoryProblem,
+    'Kids-Mothers-Story': StoryMothers,
+    'Kids-Friendship-Story': StoryFriendship,
 }
 
 def handler404(request, *args, **argv):
