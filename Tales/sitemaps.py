@@ -31,8 +31,7 @@ class StorySitemap(Sitemap):
     def location(self, obj):
         return reverse('postagit', args=[obj.slug])
 
-    #def youtube(self, obj):
-    #    return obj.youtube if obj.youtube else None
+
 
 
 
@@ -50,3 +49,20 @@ class BlogSitemap(Sitemap):
 
     def location(self, obj):
         return reverse('blogGit', args=[obj.slug])
+
+
+
+
+class StoryBedtime(Sitemap):
+    changefreq = "daily"
+    priority = 1.0
+    protocol = 'https'
+
+    def items(self):
+        return Story.objects.filter(aktif=True,Hikaye_Turu__short_title="Bedtime Stories", status="Yayinda")
+
+    def lastmod(self, obj):
+        return obj.guncelleme_tarihi
+
+    def location(self, obj):
+        return reverse('postagit', args=[obj.slug])

@@ -25,6 +25,7 @@ sitemaps = {
     'Story-Categories': StoryCategorySitemap,
     'Story': StorySitemap,
     'Blog-Post': BlogSitemap,
+    'Kids-Bedtime-Story': StoryBedtime,
 }
 
 def handler404(request, *args, **argv):
