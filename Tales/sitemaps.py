@@ -67,7 +67,6 @@ class StoryBedtime(Sitemap):
     def location(self, obj):
         return reverse('postagit', args=[obj.slug])
 
-
 class StoryAnimals(Sitemap):
     changefreq = "daily"
     priority = 1.0
