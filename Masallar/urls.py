@@ -10,6 +10,7 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),#Blog
     path("oto-shared/", views.Oto_Paylas),
     path("add-story/", views.apiyle_ekle),
+    path("test-page/", views.NewHome),
 
     path('contact/', views.iletisim, name='iletisim'),#Blog
     path('cookie-policy/', views.cerez, name='cerez'),#Blog

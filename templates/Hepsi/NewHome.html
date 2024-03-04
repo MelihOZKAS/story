@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+
+
+{% block content %}
+
+    <!-- Slider -->
+    <section class="slider-holder">
+        <div class="container">
+            <div class="cta-txt">
+                <h1 class="text-center">Welcome to Our Children's Fairy Tale and Story Website</h1>
+                <p>Step into a world of enchantment and imagination as you explore our collection of bedtime
+                    stories, fairy tales, and more. Welcome to a realm where dreams come to life!</p>
+            </div>
+        </div>
+    </section>
+    <!-- Slider / End -->
+
+    <!-- Page Content -->
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <div class="row">
+                <div class="content col-md-8">
+
+                    <!-- Post (Standard Format) -->
+                    <article class="entry entry__standard entry__with-icon">
+                        <figure class="alignnone entry-thumb">
+                            <a href="https://www.kidsstorieshub.com/kids-story-categories-detail/kids-bedtime-stories/"><img
+                                    src="{% static 'images/bedtime-story/big-banner/Bedtime-Story.webp' %}"
+                                    loading="lazy"
+                                    alt="Bedtime Stories with a Touch of Magic Entertaining and Educational Stories for Kids"
+                                    width="858" height="400"> </a>
+                        </figure>
+
+
+                        <h2><a href="{% url 'kategori_detay' kategori_slug="kids-bedtime-stories" %}">Bedtime Stories with a Touch of Magic Entertaining and Educational Stories for Kids</a></h2>
+                        <div class="entry-meta">
+                                <span class="entry-category"><i class="fa fa-folder"></i> <a
+                                        href="{% url 'kategori_detay' kategori_slug="kids-bedtime-stories" %}">Enchanting Bedtime Stories for Kids | Read & Listen Free</a></span>
+
+                        </div>
+
+                        <div class="excerpt">Immerse in enchanting Bedtime Stories, offering soothing tales and dreams
+                            that captivate young hearts. Discover a world of wonder and tranquility.
+                        </div>
+                        <footer class="entry-footer">
+                            <a href="{% url 'kategori_detay' kategori_slug="kids-bedtime-stories" %}" class="btn btn-primary">Read
+                                More</a>
+                        </footer>
+                    </article>
+                    <!-- Post (Standard Format) / End -->
+
+                </div>
+
+                <aside class="sidebar col-md-4">
+
+                    <hr class="visible-sm visible-xs lg">
+
+                    {% include 'parcali/sagNav.html' %}
+
+                </aside>
+            </div>
+
+        </div>
+    </section>
+    <!-- Page Content / End -->
+
+
+{% endblock content %}

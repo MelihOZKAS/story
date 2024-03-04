@@ -76,6 +76,7 @@ class Story(models.Model):
     h1 = models.CharField(max_length=255,blank=True, help_text=HELP_TEXTS["h1"])
     Hikaye_Turu = models.ForeignKey(StoryCategory, null=True, on_delete=models.SET_NULL)
     icerik = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    #ai_fikri = models.TextField(blank=True, verbose_name="Ai Oneri")
     resim = models.ImageField(upload_to=kapak_resmi_upload_to,
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
