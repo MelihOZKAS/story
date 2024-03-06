@@ -55,6 +55,8 @@ def home(request):
 
 
 def NewHome(request):
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     title = "Bedtime Stories for Kids of All Ages - KidsStoriesHub"
     description = "Explore KidsStoriesHub.com for captivating bedtime stories. Dive into a world of imagination and learning with our vast collection of stories for children."
     keywords = "bedtime story, story, bedtime stories for kids, short bedtime stories, bedtime stories to read online, bedtime stories to read online free, free bedtime stories, story for kids, story books, short story bedtime stories to read, bedtime story books, kids books online"
@@ -68,6 +70,7 @@ def NewHome(request):
         categories_with_colors.append((category, color))
 
     context = {
+        'Categories_ALL': Categories_ALL,
         'title': title,
         'description': description,
         'keywords': keywords,
