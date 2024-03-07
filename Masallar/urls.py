@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path("", views.NewHome, name="home"),
     path('kids-story-categories/', views.kategori, name='tüm_kategoriler'),#Hikaye Kategorileri
     path('new-kids-stories-added/', views.enson_eklenen_blog_list, name='en-son-eklenen'),#En Son Eklenenler
     path('most-read-childrens-stories/', views.cokokunan, name='en-cok-okunan'),#En çok okunan
@@ -10,7 +10,7 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),#Blog
     path("oto-shared/", views.Oto_Paylas),
     path("add-story/", views.apiyle_ekle),
-    path("test-page/", views.NewHome),
+    #path("test-page/", views.NewHome),
 
     path('contact/', views.iletisim, name='iletisim'),#Blog
     path('cookie-policy/', views.cerez, name='cerez'),#Blog
