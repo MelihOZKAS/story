@@ -22,6 +22,7 @@
         <ul class="latest-posts-list">
             {% for randomstory in Random_Story %}
                 <li>
+                <figure class="thumbnail"><a href="{% url 'postagit' story_slug=randomstory.slug %}"><img src="{{ randomstory.resim.url }}" alt="{{ randomstory.title }}" style="width:110px; height:80px;"></a></figure>
                     <!-- <span class="date">24/07/2013</span> -->
                     <h4 class="title"><a href="{% url 'postagit' story_slug=randomstory.slug %}">{{ randomstory.title }}</a>
                     </h4>
