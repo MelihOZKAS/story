@@ -14,4 +14,20 @@
         </ul>
     </div>
 </div>
+
+<!-- Widget :: Latest Posts -->
+<div class="latest-posts-widget widget widget__sidebar">
+    <h3 class="widget-title">Random Children's Stories</h3>
+    <div class="widget-content">
+        <ul class="latest-posts-list">
+            {% for _randomstory in Random_Story %}
+                <li>
+                    <!-- <span class="date">24/07/2013</span> -->
+                    <h4 class="title" style="border-bottom: 2px solid black;"><a href="{% url 'postagit' story_slug=_randomstory.slug %}">{{ _randomstory.title }}</a>
+                    </h4>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 <!-- /Widget :: Categories -->

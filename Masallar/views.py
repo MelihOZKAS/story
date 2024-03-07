@@ -57,10 +57,12 @@ def home(request):
 def NewHome(request):
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
         story_count=Count('story'))
+
+
     title = "Bedtime Stories for Kids of All Ages - KidsStoriesHub"
     description = "Explore KidsStoriesHub.com for captivating bedtime stories. Dive into a world of imagination and learning with our vast collection of stories for children."
     keywords = "bedtime story, story, bedtime stories for kids, short bedtime stories, bedtime stories to read online, bedtime stories to read online free, free bedtime stories, story for kids, story books, short story bedtime stories to read, bedtime story books, kids books online"
-
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     endStory = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')[:8]
     story_categories = StoryCategory.objects.filter(Aktif=True, Banner=True)[:6]  # Banner=True olan StoryCategory nesnelerini alır
     colors = ['primary', 'secondary', 'tertiary', 'quaternary', 'senary']
@@ -71,6 +73,7 @@ def NewHome(request):
 
     context = {
         'Categories_ALL': Categories_ALL,
+        'Random_Story' : Random_Story,
         'title': title,
         'description': description,
         'keywords': keywords,
@@ -85,6 +88,7 @@ def NewHome(request):
 
 def kategori(request):
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Explore Various Categories of Bedtime Stories | Read & Listen Free"
     H1 = "Discover a World of Bedtime Stories"
     description = "Dive into our diverse collection of bedtime stories. Explore tales of friendship, motherhood, problem-solving, and exciting animal adventures."
@@ -96,12 +100,14 @@ def kategori(request):
         'description': description,
         'keywords': keywords,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
     }
     return render(request, 'Hepsi/categories-all.html', context)
 
 def blog(request):
     Story_ALL = Blog.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Bedtime Stories Blog for Kids at KidsStoriesHub.com"
     H1 = "Bedtime Stories Blog for Children"
     description = "Explore our blog at KidsStoriesHub.com for engaging bedtime stories and tips. Dive into the world of imagination and learn the art of storytelling."
@@ -126,6 +132,7 @@ def blog(request):
         'keywords': keywords,
         'Story_ALL': Story_ALL,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
     }
     return render(request, 'Hepsi/Blog-blog_list.html', context)
 def kategori_icerik_list(request, kategori_slug):
@@ -133,6 +140,7 @@ def kategori_icerik_list(request, kategori_slug):
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", Hikaye_Turu=story_categori).order_by(
         '-olusturma_tarihi')
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = story_categori.Title
     H1 = story_categori.H1
     description = story_categori.Hikaye_meta_description
@@ -157,6 +165,7 @@ def kategori_icerik_list(request, kategori_slug):
         'keywords': keywords,
         'Story_ALL': Story_ALL,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
     }
     return render(request, 'Hepsi/blog_list.html', context)
 
@@ -164,6 +173,7 @@ def kategori_icerik_list(request, kategori_slug):
 def enson_eklenen_blog_list(request):#Tamam...
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
 
     title = "Newly Added Children’s Stories | KidsStoriesHub.com"
     H1 = "Newly Added Magical Stories for Children"
@@ -189,6 +199,7 @@ def enson_eklenen_blog_list(request):#Tamam...
         'keywords': keywords,
         'Story_ALL': Story_ALL,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
     }
     return render(request, 'Hepsi/blog_list.html', context)
 
@@ -196,7 +207,7 @@ def enson_eklenen_blog_list(request):#Tamam...
 def cokokunan(request):#Tamam
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-okunma_sayisi')
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
-
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Top Children’s Stories: Most Read & Loved Tales for Kids"
     H1 = "Most Popular Children’s Stories"
     description = "Discover the top children’s stories that are loved and cherished by kids worldwide. These popular tales for children are a must-read!"
@@ -221,6 +232,7 @@ def cokokunan(request):#Tamam
         'keywords': keywords,
         'Story_ALL': Story_ALL,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
     }
     return render(request, 'Hepsi/blog_list.html', context)
 
@@ -228,7 +240,7 @@ def cokokunan(request):#Tamam
 def video(request):#Tamam
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", youtube__isnull=False).exclude(youtube__exact='').order_by('-olusturma_tarihi')
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
-
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Bedtime Stories with Videos for Kids on KidsStoriesHub.com"
     H1 = "Bedtime Video Stories for Children"
     description = "Immerse your child in the world of dreams with our bedtime video stories at KidsStoriesHub.com. Experience the magic of storytelling like never before."
@@ -253,6 +265,7 @@ def video(request):#Tamam
         'keywords': keywords,
         'Story_ALL': Story_ALL,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
     }
     return render(request, 'Hepsi/blog_list.html', context)
 
@@ -268,6 +281,7 @@ def post_getir(request, story_slug):
     GelenPostStory.save()
 
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = GelenPostStory.title
     H1 = GelenPostStory.h1
     description = GelenPostStory.meta_description
@@ -291,6 +305,7 @@ def post_getir(request, story_slug):
         'description': description,
         'keywords': keywords,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
         'GelenPostStory': GelenPostStory,
         'TumKategori': category_names_str,
         'thumbnail_url': thumbnail_url,
@@ -307,6 +322,7 @@ def blog_getir(request, blog_slug):
     GelenPostStory.save()
 
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = GelenPostStory.title
     H1 = GelenPostStory.h1
     description = GelenPostStory.meta_description
@@ -325,6 +341,7 @@ def blog_getir(request, blog_slug):
         'description': description,
         'keywords': keywords,
         'Categories_ALL': Categories_ALL,
+        'Random_Story': Random_Story,
         'GelenPostStory': GelenPostStory,
         'TumKategori': Tur,
         'thumbnail_url': thumbnail_url,
