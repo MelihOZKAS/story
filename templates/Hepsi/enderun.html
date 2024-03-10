@@ -7,6 +7,8 @@
 {% block ogtitle %}{{ title }}{% endblock %}
 {% block ogDes %}{{ description }}{% endblock %}
 {% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+{% block yazar %}Tommy Tony{% endblock %}
+{% block ogtype %}article{% endblock %}
 
 {% block twaccountsite %}@Melih{% endblock %}
 {% block twcreator %}@Melih{% endblock %}
@@ -22,7 +24,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "mainEntityOfPage": {
-    "@type": "WebPage",
+    "@type": "Article",
     "@id": "{{ request.build_absolute_uri }}"
   },
   "headline": "{{ GelenPostStory.title }}",
@@ -32,22 +34,22 @@
   {% if GelenPostStory.youtube %}
   "video": {
     "@type": "VideoObject",
-    "name": "{{ GelenPostStory.title }}", // Video adını buraya ekleyin
-    "description": "{{ GelenPostStory.meta_description }}", // Video açıklamasını buraya ekleyin
-    "uploadDate": "{{ GelenPostStory.olusturma_tarihi.isoformat }}", // Video yükleme tarihini buraya ekleyin
-    "thumbnailUrl": "{{ thumbnail_url }}", // Video küçük resim URL'sini
+    "name": "{{ GelenPostStory.title }}",
+    "description": "{{ GelenPostStory.meta_description }}",
+    "uploadDate": "{{ GelenPostStory.olusturma_tarihi.isoformat }}",
+    "thumbnailUrl": "{{ thumbnail_url }}",
     "embedUrl": "{{ GelenPostStory.youtube }}"
-    // Diğer video bilgilerini buraya ekleyin
+
   },
   {% endif %}
   "keywords": "{{ GelenPostStory.keywords }}",
-  // Ek özellikler
-  "articleSection": "{{ TumKategori }}", // Bölüm veya kategori
-  "isFamilyFriendly": "true", // Aile dostu olup olmadığı
-  "interactionStatistic": { // Etkileşim istatistikleri
+
+  "articleSection": "{{ TumKategori }}",
+  "isFamilyFriendly": "true",
+  "interactionStatistic": {
     "@type": "InteractionCounter",
     "interactionType": { "@type": "http://schema.org/ReadAction" },
-    "userInteractionCount": "{{ GelenPostStory.okunma_sayisi }}" // Görüntülenme sayısı
+    "userInteractionCount": "{{ GelenPostStory.okunma_sayisi }}"
   }
 }
 </script>

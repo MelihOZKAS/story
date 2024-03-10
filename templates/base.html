@@ -17,6 +17,7 @@
     <!-- Robots Etiketi -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://{{ request.get_host }}{{ request.path }}"/>
+    <meta name="author" content="{% block yazar %}Kids Bedtime Story{% endblock %}">
 
 
     <!-- Open Graph Etiketleri (Facebook, LinkedIn) -->
@@ -24,6 +25,7 @@
     <meta property="og:description" content="{% block ogDes %}OG DES{% endblock %}">
     <meta property="og:image" content="{% static 'images/bedtime-story.png' %}">
     <meta property="og:url" content="{% block ogurl %}OG url{% endblock %}">
+    <meta property="og:type" content="{% block ogtype %}website{% endblock %}">
 
 
     <!-- Twitter Card Etiketleri -->
