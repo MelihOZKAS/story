@@ -9,6 +9,7 @@ urlpatterns = [
     path('kids-stories-youtube-videos/', views.video, name='video'),#Youtube Videoları
     path('blog/', views.blog, name='blog'),#Blog
     path("oto-shared/", views.Oto_Paylas),
+    path("index-ver/", views.indexing_var_mi, name="indexver"),
     path("add-story/", views.apiyle_ekle),
     #path("test-page/", views.NewHome),
 

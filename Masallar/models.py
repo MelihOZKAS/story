@@ -87,6 +87,7 @@ class Story(models.Model):
     status = models.CharField(max_length=10, choices=status_cho, default="Taslak", help_text=HELP_TEXTS["status"])
     uzunluk = models.CharField(max_length=25, choices=boyutu, default="Kısa", help_text=HELP_TEXTS["status"])
     aktif = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
+    indexing = models.BooleanField(default=False, help_text="Indexlensin mi?")
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])
     small_banner = models.BooleanField(default=False,help_text=HELP_TEXTS["small_banner"])
     okunma_sayisi = models.PositiveBigIntegerField(default=0)
