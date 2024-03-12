@@ -138,7 +138,7 @@ def blog(request):
 def kategori_icerik_list(request, kategori_slug):
     story_categori = get_object_or_404(StoryCategory, slug=kategori_slug)
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", Hikaye_Turu=story_categori).order_by(
-        '-olusturma_tarihi')
+        '-olusturma_tarihi')[:100]
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = story_categori.Title
@@ -171,7 +171,7 @@ def kategori_icerik_list(request, kategori_slug):
 
 
 def enson_eklenen_blog_list(request):#Tamam...
-    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')
+    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')[:100]
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
 
@@ -206,7 +206,7 @@ def enson_eklenen_blog_list(request):#Tamam...
 
 
 def cokokunan(request):#Tamam
-    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-okunma_sayisi')
+    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-okunma_sayisi')[:100]
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Top Children’s Stories: Most Read & Loved Tales for Kids"
@@ -224,6 +224,7 @@ def cokokunan(request):#Tamam
     else:
         title = f"{title} - {page_number}"
         description = f"{description} - Page {page_number}"
+        H1 = f"{H1} - Page {page_number}"
 
     context = {
         'title': title,
@@ -257,6 +258,7 @@ def video(request):#Tamam
     else:
         title = f"{title} - {page_number}"
         description = f"{description} - Page {page_number}"
+        H1 = f"{H1} - Page {page_number}"
 
     context = {
         'title': title,
@@ -447,7 +449,6 @@ def hakkinda(request):
         'title': title,
         'description': description,
         'keywords': keywords,
-
     }
     return render(request, 'Hepsi/hakkinda.html', context)
 
