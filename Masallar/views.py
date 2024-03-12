@@ -190,6 +190,7 @@ def enson_eklenen_blog_list(request):#Tamam...
     else:
         title = f"{title} - {page_number}"
         description = f"{description} - Page {page_number}"
+        H1 = f"{H1} - Page {page_number}"
 
     context = {
         'title': title,
