@@ -279,9 +279,8 @@ def post_getir(request, story_slug):
     GelenPostStory = get_object_or_404(Story, slug=story_slug)
     thumbnail_url = None
 
-    # Increment the okunma_sayisi field by 1
     GelenPostStory.okunma_sayisi += 1
-    GelenPostStory.save()
+    GelenPostStory.save(update_fields=['okunma_sayisi'])
 
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
@@ -322,7 +321,7 @@ def blog_getir(request, blog_slug):
 
     # Increment the okunma_sayisi field by 1
     GelenPostStory.okunma_sayisi += 1
-    GelenPostStory.save()
+    GelenPostStory.save(update_fields=['okunma_sayisi'])
 
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
