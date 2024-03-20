@@ -28,7 +28,7 @@
     {
       "@type": "BlogPosting",
       "headline": "{{ storyx.title }}",
-      "url": "{{ request.scheme }}://{{ request.get_host }}/kids-bedtime-story/{{ storyx.slug }}"
+      "url": "{{ request.scheme }}://{{ request.get_host }}/kids-bedtime-story/{{ storyx.slug }}/"
     }{% if not forloop.last %},{% endif %}
     {% endfor %}
   ]

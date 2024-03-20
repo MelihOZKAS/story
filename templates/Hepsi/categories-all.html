@@ -27,7 +27,7 @@
       "@type": "CollectionPage",
       "name": "{{ category.short_title }}",
       "description": "{{ category.Hikaye_meta_description }}",
-      "url": "{{ request.scheme }}://{{ request.get_host }}/kids-story-categories-detail/{{ category.slug }}"
+      "url": "{{ request.scheme }}://{{ request.get_host }}/kids-story-categories-detail/{{ category.slug }}/"
     }{% if not forloop.last %},{% endif %}
     {% endfor %}
   ]
