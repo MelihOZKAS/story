@@ -128,7 +128,8 @@
                     <!-- Post (Standard Format) -->
                     <article class="entry entry__standard entry__with-icon">
                         <figure class="alignnone entry-thumb">
-                            <span><img src="{{ GelenPostStory.resim.url }}" loading="lazy"  alt="{{ GelenPostStory.title }}" width="858" height="400" > </span>
+                            <span><img src="{{ GelenPostStory.resim.url }}" loading="lazy"
+                                       alt="{{ GelenPostStory.title }}" width="858" height="400"> </span>
                         </figure>
                         <header class="entry-header">
                             <div class="entry-icon visible-md visible-lg">
@@ -177,15 +178,29 @@
 
 
                             {{ GelenPostStory.icerik|safe }}
+
+                            {% if GelenPostStory.icerik2 %}
+                                <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ GelenPostStory.resim2.url }}" loading="lazy"
+                                               alt="{{ GelenPostStory.title }} - 2" width="858" height="400"> </span>
+                                </figure>
+
+                                {{ GelenPostStory.icerik2|safe }}
+
+                            {% endif %}
+
+                            {% if GelenPostStory.icerik3 %}
+                                <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ GelenPostStory.resim3.url }}" loading="lazy"
+                                               alt="{{ GelenPostStory.title }} - 3" width="858" height="400"> </span>
+                                </figure>
+
+                                {{ GelenPostStory.icerik3|safe }}
+
+                            {% endif %}
+
+
                         </div>
-
-
-                        <!-- 360 image test /
-                                            <h2 class="text-center">360 Ayakkabı Detayı</h2>
-                                            <br>
-
-                                            <iframe src="https://mmedya.sirv.com/ayakkab%C4%B11.spin" width="500" height="500" frameborder="0" allowfullscreen></iframe>
-                        End -->
 
                     </article>
                     <!-- Post (Standard Format) / End -->

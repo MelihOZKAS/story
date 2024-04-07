@@ -76,8 +76,16 @@ class Story(models.Model):
     h1 = models.CharField(max_length=255,blank=True, help_text=HELP_TEXTS["h1"])
     Hikaye_Turu = models.ForeignKey(StoryCategory, null=True, on_delete=models.SET_NULL)
     icerik = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik2 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik3 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     #ai_fikri = models.TextField(blank=True, verbose_name="Ai Oneri")
     resim = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim2 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim3 = models.ImageField(upload_to=kapak_resmi_upload_to,
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
     youtube = models.URLField(blank=True)
@@ -108,10 +116,19 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=255, unique=True, blank=True,help_text=HELP_TEXTS["slug"])
     h1 = models.CharField(max_length=255,blank=True, help_text=HELP_TEXTS["h1"])
     icerik = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik2 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik3 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    #ai_fikri = models.TextField(blank=True, verbose_name="Ai Oneri")
     resim_name = models.CharField(max_length=255,null=True, help_text=HELP_TEXTS["title"])
     resim = models.ImageField(upload_to=kapak_resmi_upload_to,
                               storage=ImageSettingStorage(),
                               help_text=HELP_TEXTS["kapak_resmi"], null=True, blank=True)
+    resim2 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim3 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
     youtube = models.URLField(blank=True)
     meta_description = models.TextField(blank=True,verbose_name="Meta Açıklama",help_text=HELP_TEXTS["meta_description"])
     keywords = models.CharField(max_length=255,blank=True,verbose_name="Anahtar Kelimeler",help_text=HELP_TEXTS["keywords"])
