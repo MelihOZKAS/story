@@ -180,6 +180,7 @@
                             {{ GelenPostStory.icerik|safe }}
 
                             {% if GelenPostStory.icerik2 %}
+                                {% include 'parcali/yatayreklam.html' %}
                                 <figure class="alignnone entry-thumb">
                                     <span><img src="{{ GelenPostStory.resim2.url }}" loading="lazy"
                                                alt="{{ GelenPostStory.title }} - 2" width="858" height="400"> </span>
@@ -190,6 +191,7 @@
                             {% endif %}
 
                             {% if GelenPostStory.icerik3 %}
+                                {% include 'parcali/yatayreklam.html' %}
                                 <figure class="alignnone entry-thumb">
                                     <span><img src="{{ GelenPostStory.resim3.url }}" loading="lazy"
                                                alt="{{ GelenPostStory.title }} - 3" width="858" height="400"> </span>
