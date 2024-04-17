@@ -179,12 +179,21 @@
 
                             {{ GelenPostStory.icerik|safe }}
 
-                            {% if GelenPostStory.icerik2 %}
-                                {% include 'parcali/yatayreklam.html' %}
+
+                            {% if GelenPostStory.resim2 %}
+                                <br>
                                 <figure class="alignnone entry-thumb">
                                     <span><img src="{{ GelenPostStory.resim2.url }}" loading="lazy"
                                                alt="{{ GelenPostStory.title }} - 2" width="858" height="400"> </span>
                                 </figure>
+                                <br>
+                            {% endif %}
+
+                            {% if GelenPostStory.icerik2 %}
+                                {% include 'parcali/yatayreklam.html' %}
+
+
+
 
                                 {{ GelenPostStory.icerik2|safe }}
 
