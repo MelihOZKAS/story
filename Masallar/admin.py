@@ -41,7 +41,7 @@ class HepsiAdmin(admin.ModelAdmin):
     list_display = ("id", "title", "youtube", "okunma_sayisi", "Hikaye_Turu", "seo_check", "hikayeyi_gor","kelime_sayisi", "uzunluk",
                     "status", "yayin_tarihi", "olusturma_tarihi", "guncelleme_tarihi","small_banner","banner","aktif",)#"get_hikayeKategorisi", "get_masalKategorisi",
     prepopulated_fields = {'slug': ('title',)}
-    search_fields = ("title",)
+    search_fields = ("title", "slug",)
     list_filter = ("Hikaye_Turu", "uzunluk", "status","aktif","banner","small_banner",)
     list_editable = ("status","aktif","banner","small_banner","Hikaye_Turu","uzunluk",)
 
