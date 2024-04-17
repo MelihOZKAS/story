@@ -192,20 +192,22 @@
                             {% if GelenPostStory.icerik2 %}
                                 {% include 'parcali/yatayreklam.html' %}
 
-
-
-
                                 {{ GelenPostStory.icerik2|safe }}
 
                             {% endif %}
 
-                            {% if GelenPostStory.icerik3 %}
-                                {% include 'parcali/yatayreklam.html' %}
+
+                            {% if GelenPostStory.resim3 %}
+                                <br>
                                 <figure class="alignnone entry-thumb">
                                     <span><img src="{{ GelenPostStory.resim3.url }}" loading="lazy"
                                                alt="{{ GelenPostStory.title }} - 3" width="858" height="400"> </span>
                                 </figure>
+                                <br>
+                            {% endif %}
 
+                            {% if GelenPostStory.icerik3 %}
+                                {% include 'parcali/yatayreklam.html' %}
                                 {{ GelenPostStory.icerik3|safe }}
 
                             {% endif %}
