@@ -10,6 +10,7 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),#Blog
     path("oto-shared/", views.Oto_Paylas),
     path("index-ver/", views.indexing_var_mi, name="indexver"),
+    path("facebook-cek/", views.facebook_var_mi, name="facebookver"),
     path("add-story/", views.apiyle_ekle),
     #path("test-page/", views.NewHome),
 
