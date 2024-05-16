@@ -88,6 +88,9 @@ class Story(models.Model):
     resim3 = models.ImageField(upload_to=kapak_resmi_upload_to,
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim4 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
     youtube = models.URLField(blank=True)
     meta_description = models.TextField(blank=True,verbose_name="Meta Açıklama",help_text=HELP_TEXTS["meta_description"])
     keywords = models.CharField(max_length=255,blank=True,verbose_name="Anahtar Kelimeler",help_text=HELP_TEXTS["keywords"])
@@ -96,6 +99,9 @@ class Story(models.Model):
     uzunluk = models.CharField(max_length=25, choices=boyutu, default="Kısa", help_text=HELP_TEXTS["status"])
     aktif = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     indexing = models.BooleanField(default=False, help_text="Indexlensin mi?")
+    facebook = models.BooleanField(default=True)
+    twitter = models.BooleanField(default=True)
+    pinte = models.BooleanField(default=True)
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])
     small_banner = models.BooleanField(default=False,help_text=HELP_TEXTS["small_banner"])
     okunma_sayisi = models.PositiveBigIntegerField(default=0)
@@ -118,6 +124,14 @@ class Blog(models.Model):
     icerik = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     icerik2 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     icerik3 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik4 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik5 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik6 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik7 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik8 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik9 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik10 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik11 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     #ai_fikri = models.TextField(blank=True, verbose_name="Ai Oneri")
     resim_name = models.CharField(max_length=255,null=True, help_text=HELP_TEXTS["title"])
     resim = models.ImageField(upload_to=kapak_resmi_upload_to,
@@ -129,12 +143,19 @@ class Blog(models.Model):
     resim3 = models.ImageField(upload_to=kapak_resmi_upload_to,
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim4 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
     youtube = models.URLField(blank=True)
     meta_description = models.TextField(blank=True,verbose_name="Meta Açıklama",help_text=HELP_TEXTS["meta_description"])
     keywords = models.CharField(max_length=255,blank=True,verbose_name="Anahtar Kelimeler",help_text=HELP_TEXTS["keywords"])
     yayin_tarihi = models.DateTimeField(null=True, blank=True, help_text="Postanın yayınlanacağı tarih ve saat")
     status = models.CharField(max_length=10, choices=status_cho, default="Taslak", help_text=HELP_TEXTS["status"])
     aktif = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
+    indexing = models.BooleanField(default=True, help_text="Indexlensin mi?")
+    facebook = models.BooleanField(default=True)
+    twitter = models.BooleanField(default=True)
+    pinte = models.BooleanField(default=True)
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])
     small_banner = models.BooleanField(default=False,help_text=HELP_TEXTS["small_banner"])
     okunma_sayisi = models.PositiveBigIntegerField(default=0)
