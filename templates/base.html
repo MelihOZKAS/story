@@ -23,7 +23,9 @@
     <!-- Open Graph Etiketleri (Facebook, LinkedIn) -->
     <meta property="og:title" content="{% block ogtitle %}OG TITLE{% endblock %}">
     <meta property="og:description" content="{% block ogDes %}OG DES{% endblock %}">
-    <meta property="og:image" content="{% static 'images/bedtime-story.png' %}">
+    <!--<meta property="og:image" content="{% static 'images/bedtime-story.png' %}"> -->
+    {% block sosyal_post_image %}
+        <meta property="og:image" content="{% static 'images/bedtime-story.png' %}">{% endblock %}
     <meta property="og:url" content="{% block ogurl %}OG url{% endblock %}">
     <meta property="og:type" content="{% block ogtype %}website{% endblock %}">
 
@@ -34,14 +36,20 @@
     <meta name="twitter:creator" content="{% block twcreator %}tw creator{% endblock %}">
     <meta name="twitter:title" content="{% block twtitle %}tw title{% endblock %}">
     <meta name="twitter:description" content="{% block twdesc %}tw description{% endblock %}">
-    <meta name="twitter:image" content="{% static 'images/bedtime-story.png' %}">
+    <!-- <meta name="twitter:image" content="{% static 'images/bedtime-story.png' %}"> -->
+    {% block tt_post_image %}
+        <meta name="twitter:image" content="{% static 'images/bedtime-story.png' %}">{% endblock %}
+    <meta property="og:image:width" content="800"/>
+    <meta property="og:image:height" content="400"/>
+    <meta property="og:site_name" content="Kids Stories Hub">
+    <meta name="twitter:card" content="summary_large_image">
 
 
     <!-- Basic Page Needs
     ================================================== -->
 
     <!-- <meta name="author" content="https://www.melihozkas.com"> -->
-    <meta name="yandex-verification" content="a1f65db0029ca724" />
+    <meta name="yandex-verification" content="a1f65db0029ca724"/>
 
 
     <!-- Mobile Specific Metas
@@ -94,11 +102,15 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-065YS9N2RK"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-065YS9N2RK');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-065YS9N2RK');
     </script>
 
 
@@ -215,8 +227,6 @@
 <script src="{% static 'js/newsletter.js' %}"></script>
 
 <script src="{% static 'js/custom.js' %}"></script>
-
-
 
 
 </body>

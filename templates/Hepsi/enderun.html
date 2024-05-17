@@ -9,11 +9,15 @@
 {% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
 {% block yazar %}Tommy Tony{% endblock %}
 {% block ogtype %}article{% endblock %}
+{% block sosyal_post_image %}
+    <meta property="og:image" content="{{ GelenPostStory.resim.url }}">{% endblock %}
 
 {% block twaccountsite %}@Melih{% endblock %}
 {% block twcreator %}@Melih{% endblock %}
 {% block twtitle %}{{ title }}{% endblock %}
 {% block twdesc %}{{ description }}{% endblock %}
+{% block tt_post_image %}
+    <meta name="twitter:image" content="{{ GelenPostStory.resim.url }}">{% endblock %}
 
 
 
