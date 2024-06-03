@@ -535,9 +535,25 @@ def facebook_var_mi(request):
         post.facebook = False
         icerik = post.h1
         if not icerik:
-            icerik = "Haberin devamı için tıklayın!"
-        post.save(update_fields=['okunma_sayisi', 'indexing', 'facebook', 'twitter'])
+            icerik = "%100 Free kids stories"
+        post.save(update_fields=['okunma_sayisi', 'indexing', 'facebook', 'twitter', 'pinte'])
         return HttpResponse(
             f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} You can visit our website for more children's fairy tales and stories!")
+    else:
+        return HttpResponse("post bulunamadı.")
+
+
+@csrf_exempt
+def pinterest_var_mi(request):
+    post = Story.objects.filter(pinte=True, aktif=True, status="Yayinda").first()
+    if post is not None:
+        # post'un facebook durumunu False yapayı unutmamak lazımmm dimi.
+        post.pinte = False
+        icerik = post.h1
+        if not icerik:
+            icerik = "%100 Free kids stories"
+        post.save(update_fields=['okunma_sayisi', 'indexing', 'facebook', 'twitter', 'pinte'])
+        return HttpResponse(
+            f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} You can visit our website for more children's fairy tales and stories!!={post.title}!={post.Hikaye_Turu.short_title}!={post.resim}")
     else:
         return HttpResponse("post bulunamadı.")
