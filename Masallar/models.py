@@ -109,7 +109,12 @@ class Story(models.Model):
     guncelleme_tarihi = models.DateTimeField(auto_now=True)
 
     def kelime_sayisi(self):
-        return len(self.icerik.split())
+        toplam_kelime_sayisi = 0
+        icerikler = [self.icerik, self.icerik2, self.icerik3]
+        for icerik in icerikler:
+            if icerik:
+                toplam_kelime_sayisi += len(icerik.split())
+        return toplam_kelime_sayisi
     class Meta:
         verbose_name_plural = "Post"
     def __str__(self):
