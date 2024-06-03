@@ -554,6 +554,6 @@ def pinterest_var_mi(request):
             icerik = "%100 Free kids stories"
         post.save(update_fields=['okunma_sayisi', 'indexing', 'facebook', 'twitter', 'pinte'])
         return HttpResponse(
-            f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} You can visit our website for more children's fairy tales and stories!!={post.title}!={post.Hikaye_Turu.short_title}!={post.resim}")
+            f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} You can visit our website for more children's fairy tales and stories!!={post.title}!={post.Hikaye_Turu.short_title}!={post.resim.url}")
     else:
         return HttpResponse("post bulunamadı.")
