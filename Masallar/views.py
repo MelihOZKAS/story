@@ -557,3 +557,20 @@ def pinterest_var_mi(request):
             f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} You can visit our website for more children's fairy tales and stories!!={post.title}!={post.Hikaye_Turu.short_title}!={post.resim.url}")
     else:
         return HttpResponse("post bulunamadı.")
+
+
+@csrf_exempt
+def twitter_var_mi(request):
+    post = Story.objects.filter(twitter=True, aktif=True, status="Yayinda").first()
+    if post is not None:
+        # post'un indexing durumunu False yapayı unutmamak lazımmm dimi.
+        post.twitter = False
+        icerik = post.h1
+        kategorisi = post.Hikaye_Turu
+        hashtag = "#" + kategorisi.short_title if kategorisi.short_title else ""
+        if not icerik:
+            icerik = "Free Kids Stories"
+        post.save(update_fields=['okunma_sayisi', 'SosyalDik', 'SosyalKare', 'indexing', 'editor', 'banner', 'facebook', 'twitter'])
+        return HttpResponse(f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} {hashtag} Click here to read this children's story for free!")
+    else:
+        return HttpResponse("Paylaşılacak Twitter içerik bulunamadı")
