@@ -570,7 +570,7 @@ def twitter_var_mi(request):
         hashtag = "#" + kategorisi.short_title if kategorisi.short_title else ""
         if not icerik:
             icerik = "Free Kids Stories"
-        post.save(update_fields=['okunma_sayisi', 'SosyalDik', 'SosyalKare', 'indexing', 'editor', 'banner', 'facebook', 'twitter'])
+        post.save(update_fields=['okunma_sayisi', 'indexing', 'facebook', 'twitter', 'pinte'])
         return HttpResponse(f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} {hashtag} Click here to read this children's story for free!")
     else:
         return HttpResponse("Paylaşılacak Twitter içerik bulunamadı")
