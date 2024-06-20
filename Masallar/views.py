@@ -9,7 +9,12 @@ from django.utils import timezone
 from django.db.models import Count
 from django.views import View
 from django.db.models import Q
+import requests
+import environ
+import json
 
+env = environ.Env(DEBUG=(bool,False))
+environ.Env.read_env()
 
 
 def create_unique_title_slug(title):
@@ -399,16 +404,27 @@ def iletisim(request):
     }
 
     if request.method == 'POST':
-        name = request.POST.get('InputName')
-        email = request.POST.get('InputEmail')
-        title = request.POST.get('InputSubject')
-        icerik = request.POST.get('InputMessage')
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': f"{env('RECAPTCHA_PRIVATE_KEY')}",
+            'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+        if result['success']:
+            name = request.POST.get('InputName')
+            email = request.POST.get('InputEmail')
+            title = request.POST.get('InputSubject')
+            icerik = request.POST.get('InputMessage')
 
-        iletisim_obj = iletisimmodel(name=name, email=email, title=title, icerik=icerik)
-        iletisim_obj.save()
+            iletisim_obj = iletisimmodel(name=name, email=email, title=title, icerik=icerik)
+            iletisim_obj.save()
 
-        return HttpResponse('We have recorded your contact request.<a href="{}" class="btn btn-primary">Click here to return to the homepage</a>'.format(reverse('home')))
-
+            return HttpResponse('We have recorded your contact request.<a href="{}" class="btn btn-primary">Click here to return to the homepage</a>'.format(reverse('home')))
+        else:
+            return HttpResponse(
+                'Human Control Error! <a href="{}" class="btn btn-primary">Click here to return to the Content</a>'.format(
+                    reverse('iletisim')))
 
     return render(request, 'Hepsi/iletisim.html', context)
 def cerez(request):
