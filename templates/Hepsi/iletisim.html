@@ -14,7 +14,11 @@
 {% block twtitle %}{{ title }}{% endblock %}
 {% block twdesc %}{{ description }}{% endblock %}
 
-
+{% block extra_head %}
+    <!-- Recapcha bitiş -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Recapcha bitiş -->
+{% endblock %}
 
 {% block content %}
 
