@@ -297,6 +297,25 @@ def post_getir(request, story_slug):
 
     category_names_str = GelenPostStory.Hikaye_Turu.short_title
 
+
+    contents = [GelenPostStory.icerik, GelenPostStory.icerik2, GelenPostStory.icerik3]
+    articleBody = ' '.join(filter(None, contents))
+
+
+    resimler = []
+    if GelenPostStory.resim:
+        resimler.append(GelenPostStory.resim.url)
+    if GelenPostStory.resim2:
+        resimler.append(GelenPostStory.resim2.url)
+    if GelenPostStory.resim3:
+        resimler.append(GelenPostStory.resim3.url)
+    if GelenPostStory.resim4:
+        resimler.append(GelenPostStory.resim4.url)
+    if not resimler:  # Eğer resimler listesi boşsa
+        resimler.append("{% static 'images/bedtime-story.png' %}")
+
+
+
     if GelenPostStory.youtube:
         youtube_id = get_youtube_id(GelenPostStory.youtube)
         thumbnail_url = f"https://img.youtube.com/vi/{youtube_id}/0.jpg"
@@ -316,6 +335,8 @@ def post_getir(request, story_slug):
         'GelenPostStory': GelenPostStory,
         'TumKategori': category_names_str,
         'thumbnail_url': thumbnail_url,
+        'resimler': resimler,
+        'articleBody': articleBody,
     }
     return render(request, 'Hepsi/enderun.html', context)
 
@@ -336,6 +357,22 @@ def blog_getir(request, blog_slug):
     keywords = GelenPostStory.keywords
     Tur = "Blog"
 
+    contents = [GelenPostStory.icerik, GelenPostStory.icerik2, GelenPostStory.icerik3]
+    articleBody = ' '.join(filter(None, contents))
+
+
+    resimler = []
+    if GelenPostStory.resim:
+        resimler.append(GelenPostStory.resim.url)
+    if GelenPostStory.resim2:
+        resimler.append(GelenPostStory.resim2.url)
+    if GelenPostStory.resim3:
+        resimler.append(GelenPostStory.resim3.url)
+    if GelenPostStory.resim4:
+        resimler.append(GelenPostStory.resim4.url)
+    if not resimler:  # Eğer resimler listesi boşsa
+        resimler.append("{% static 'images/bedtime-story.png' %}")
+
     if GelenPostStory.youtube:
         youtube_id = get_youtube_id(GelenPostStory.youtube)
         thumbnail_url = f"https://img.youtube.com/vi/{youtube_id}/0.jpg"
@@ -352,6 +389,8 @@ def blog_getir(request, blog_slug):
         'GelenPostStory': GelenPostStory,
         'TumKategori': Tur,
         'thumbnail_url': thumbnail_url,
+        'resimler': resimler,
+        'articleBody': articleBody,
     }
     return render(request, 'Hepsi/enderun.html', context)
 

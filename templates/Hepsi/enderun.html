@@ -32,9 +32,23 @@
     "@id": "{{ request.build_absolute_uri }}"
   },
   "headline": "{{ GelenPostStory.title }}",
+  "name": "{{ GelenPostStory.title }}",
+  "alternateName": "{{ GelenPostStory.h1 }}",
   "description": "{{ GelenPostStory.meta_description }}",
+  "inLanguage": "en",
+  "articleBody": "{{ articleBody }}",
   "datePublished": "{{ GelenPostStory.olusturma_tarihi.isoformat }}",
   "dateModified": "{{ GelenPostStory.guncelleme_tarihi.isoformat }}",
+  "image": [
+  {% for resim_url in resimler %}
+    {
+      "@type": "ImageObject",
+      "url": "{{ resim_url|safe }}",
+      "width": 800,
+      "height": 400
+    }{% if not forloop.last %},{% endif %}
+  {% endfor %}
+  ],
   {% if GelenPostStory.youtube %}
   "video": {
     "@type": "VideoObject",
