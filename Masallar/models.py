@@ -78,6 +78,9 @@ class Story(models.Model):
     icerik = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     icerik2 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     icerik3 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik4 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik5 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
+    icerik6 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     #ai_fikri = models.TextField(blank=True, verbose_name="Ai Oneri")
     resim = models.ImageField(upload_to=kapak_resmi_upload_to,
                                     storage=ImageSettingStorage(),
@@ -89,6 +92,12 @@ class Story(models.Model):
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
     resim4 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim5 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim6 = models.ImageField(upload_to=kapak_resmi_upload_to,
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
     youtube = models.URLField(blank=True)
@@ -149,6 +158,12 @@ class Blog(models.Model):
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
     resim4 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim5 = models.ImageField(upload_to=kapak_resmi_upload_to,
+                                    storage=ImageSettingStorage(),
+                                    help_text=HELP_TEXTS["resim"], null=True, blank=True)
+    resim6 = models.ImageField(upload_to=kapak_resmi_upload_to,
                                     storage=ImageSettingStorage(),
                                     help_text=HELP_TEXTS["resim"], null=True, blank=True)
     youtube = models.URLField(blank=True)
