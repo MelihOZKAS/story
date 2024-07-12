@@ -216,19 +216,17 @@
 
 
                             {% if GelenPostStory.resim3 %}
-                                <br>
-                                <figure class="alignnone entry-thumb">
+                                <figure class="alignnone entry-thumb mt-4">
                                     <span><img src="{{ GelenPostStory.resim3.url }}" loading="lazy"
                                                alt="{{ GelenPostStory.title }} - 3" width="858" height="400"> </span>
                                 </figure>
-                                <br>
                             {% endif %}
 
                             {% if GelenPostStory.icerik3 %}
                                 {% include 'parcali/yatayreklam.html' %}
                                 {{ GelenPostStory.icerik3|safe }}
-
                             {% endif %}
+
 
                             {% if GelenPostStory.resim4 %}
                                 <br>
@@ -237,6 +235,36 @@
                                                alt="{{ GelenPostStory.title }} - 4" width="858" height="400"> </span>
                                 </figure>
                                 <br>
+                            {% endif %}
+
+                            {% if GelenPostStory.icerik4 %}
+                                <div class="mt-4"> {{ GelenPostStory.icerik4|safe }}</div>
+                            {% endif %}
+
+                            {% if GelenPostStory.resim5 %}
+                                <br>
+                                <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ GelenPostStory.resim5.url }}" loading="lazy"
+                                               alt="{{ GelenPostStory.title }} - 5" width="858" height="400"> </span>
+                                </figure>
+                                <br>
+                            {% endif %}
+
+                            {% if GelenPostStory.icerik5 %}
+                                <div class="mt-4"> {{ GelenPostStory.icerik5|safe }}</div>
+                            {% endif %}
+
+                            {% if GelenPostStory.resim6 %}
+                                <br>
+                                <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ GelenPostStory.resim6.url }}" loading="lazy"
+                                               alt="{{ GelenPostStory.title }} - 6" width="858" height="400"> </span>
+                                </figure>
+                                <br>
+                            {% endif %}
+
+                            {% if GelenPostStory.icerik6 %}
+                                <div class="mt-4"> {{ GelenPostStory.icerik6|safe }}</div>
                             {% endif %}
 
 
