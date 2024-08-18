@@ -135,7 +135,7 @@ class Story(models.Model):
 
     def kelime_sayisi(self):
         toplam_kelime_sayisi = 0
-        icerikler = [self.icerik, self.icerik2, self.icerik3]
+        icerikler = [self.icerik, self.icerik2, self.icerik3, self.icerik4, self.icerik5, self.icerik6, self.icerik7, self.icerik8, self.icerik9, self.icerik10]
         for icerik in icerikler:
             if icerik:
                 toplam_kelime_sayisi += len(icerik.split())

@@ -370,6 +370,23 @@ def blog_getir(request, blog_slug):
         resimler.append(GelenPostStory.resim3.url)
     if GelenPostStory.resim4:
         resimler.append(GelenPostStory.resim4.url)
+    if GelenPostStory.resim5:
+        resimler.append(GelenPostStory.resim5.url)
+    if GelenPostStory.resim6:
+        resimler.append(GelenPostStory.resim6.url)
+    if GelenPostStory.resim7:
+        resimler.append(GelenPostStory.resim7.url)
+    if GelenPostStory.resim8:
+        resimler.append(GelenPostStory.resim8.url)
+    if GelenPostStory.resim9:
+        resimler.append(GelenPostStory.resim9.url)
+    if GelenPostStory.resim10:
+        resimler.append(GelenPostStory.resim10.url)
+
+
+
+
+
     if not resimler:  # Eğer resimler listesi boşsa
         resimler.append("{% static 'images/bedtime-story.png' %}")
 
