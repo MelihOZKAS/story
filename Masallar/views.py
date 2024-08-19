@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,get_object_or_404,reverse
+from django.shortcuts import render, HttpResponse, get_object_or_404, reverse
 from .models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.text import slugify
@@ -13,7 +13,7 @@ import requests
 import environ
 import json
 
-env = environ.Env(DEBUG=(bool,False))
+env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
 
 
@@ -28,9 +28,10 @@ def create_unique_title_slug(title):
         num += 1
     return unique_title, unique_slug
 
+
 def get_youtube_id(url):
     # YouTube video URL'sinden video ID'sini çıkaran bir regex deseni
-    link = url.replace("https://www.youtube.com/embed/","")
+    link = url.replace("https://www.youtube.com/embed/", "")
     youtube_id = link.split("?")
     return youtube_id[0] if youtube_id else None
 
@@ -42,7 +43,8 @@ def home(request):
     keywords = "bedtime story, story, bedtime stories for kids, short bedtime stories, bedtime stories to read online, bedtime stories to read online free, free bedtime stories, story for kids, story books, short story bedtime stories to read, bedtime story books, kids books online"
 
     endStory = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')[:8]
-    story_categories = StoryCategory.objects.filter(Aktif=True, Banner=True)[:6]  # Banner=True olan StoryCategory nesnelerini alır
+    story_categories = StoryCategory.objects.filter(Aktif=True, Banner=True)[
+                       :6]  # Banner=True olan StoryCategory nesnelerini alır
     colors = ['primary', 'secondary', 'tertiary', 'quaternary', 'senary']
     categories_with_colors = []
     for index, category in enumerate(story_categories):
@@ -63,13 +65,13 @@ def NewHome(request):
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
         story_count=Count('story'))
 
-
     title = "Bedtime Stories for Kids of All Ages - KidsStoriesHub"
     description = "Explore KidsStoriesHub.com for captivating bedtime stories. Dive into a world of imagination and learning with our vast collection of stories for children."
     keywords = "bedtime story, story, bedtime stories for kids, short bedtime stories, bedtime stories to read online, bedtime stories to read online free, free bedtime stories, story for kids, story books, short story bedtime stories to read, bedtime story books, kids books online"
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     endStory = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')[:8]
-    story_categories = StoryCategory.objects.filter(Aktif=True, Banner=True)[:6]  # Banner=True olan StoryCategory nesnelerini alır
+    story_categories = StoryCategory.objects.filter(Aktif=True, Banner=True)[
+                       :6]  # Banner=True olan StoryCategory nesnelerini alır
     colors = ['primary', 'secondary', 'tertiary', 'quaternary', 'senary']
     categories_with_colors = []
     for index, category in enumerate(story_categories):
@@ -78,7 +80,7 @@ def NewHome(request):
 
     context = {
         'Categories_ALL': Categories_ALL,
-        'Random_Story' : Random_Story,
+        'Random_Story': Random_Story,
         'title': title,
         'description': description,
         'keywords': keywords,
@@ -88,11 +90,9 @@ def NewHome(request):
     return render(request, 'Hepsi/NewHome.html', context)
 
 
-
-
-
 def kategori(request):
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Explore Various Categories of Bedtime Stories | Read & Listen Free"
     H1 = "Discover a World of Bedtime Stories"
@@ -109,9 +109,11 @@ def kategori(request):
     }
     return render(request, 'Hepsi/categories-all.html', context)
 
+
 def blog(request):
     Story_ALL = Blog.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Bedtime Stories Blog for Kids at KidsStoriesHub.com"
     H1 = "Bedtime Stories Blog for Children"
@@ -140,11 +142,14 @@ def blog(request):
         'Random_Story': Random_Story,
     }
     return render(request, 'Hepsi/Blog-blog_list.html', context)
+
+
 def kategori_icerik_list(request, kategori_slug):
     story_categori = get_object_or_404(StoryCategory, slug=kategori_slug)
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", Hikaye_Turu=story_categori).order_by(
-        '-olusturma_tarihi')[:100]
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+        '-guncelleme_tarihi')[:100]
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = story_categori.Title
     H1 = story_categori.H1
@@ -175,9 +180,10 @@ def kategori_icerik_list(request, kategori_slug):
     return render(request, 'Hepsi/blog_list.html', context)
 
 
-def enson_eklenen_blog_list(request):#Tamam...
-    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-olusturma_tarihi')[:100]
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+def enson_eklenen_blog_list(request):  # Tamam...
+    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-guncelleme_tarihi')[:100]
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
 
     title = "Newly Added Children’s Stories | KidsStoriesHub.com"
@@ -210,9 +216,10 @@ def enson_eklenen_blog_list(request):#Tamam...
     return render(request, 'Hepsi/blog_list.html', context)
 
 
-def cokokunan(request):#Tamam
+def cokokunan(request):  # Tamam
     Story_ALL = Story.objects.filter(aktif=True, status="Yayinda").order_by('-okunma_sayisi')[:100]
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Top Children’s Stories: Most Read & Loved Tales for Kids"
     H1 = "Most Popular Children’s Stories"
@@ -244,9 +251,11 @@ def cokokunan(request):#Tamam
     return render(request, 'Hepsi/blog_list.html', context)
 
 
-def video(request):#Tamam
-    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", youtube__isnull=False).exclude(youtube__exact='').order_by('-olusturma_tarihi')
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+def video(request):  # Tamam
+    Story_ALL = Story.objects.filter(aktif=True, status="Yayinda", youtube__isnull=False).exclude(
+        youtube__exact='').order_by('-olusturma_tarihi')
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = "Bedtime Stories with Videos for Kids on KidsStoriesHub.com"
     H1 = "Bedtime Video Stories for Children"
@@ -278,8 +287,6 @@ def video(request):#Tamam
     return render(request, 'Hepsi/blog_list.html', context)
 
 
-
-
 def post_getir(request, story_slug):
     GelenPostStory = get_object_or_404(Story, slug=story_slug)
     thumbnail_url = None
@@ -287,7 +294,8 @@ def post_getir(request, story_slug):
     GelenPostStory.okunma_sayisi += 1
     GelenPostStory.save(update_fields=['okunma_sayisi'])
 
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = GelenPostStory.title
     H1 = GelenPostStory.h1
@@ -297,10 +305,8 @@ def post_getir(request, story_slug):
 
     category_names_str = GelenPostStory.Hikaye_Turu.short_title
 
-
     contents = [GelenPostStory.icerik, GelenPostStory.icerik2, GelenPostStory.icerik3]
     articleBody = ' '.join(filter(None, contents))
-
 
     resimler = []
     if GelenPostStory.resim:
@@ -311,10 +317,20 @@ def post_getir(request, story_slug):
         resimler.append(GelenPostStory.resim3.url)
     if GelenPostStory.resim4:
         resimler.append(GelenPostStory.resim4.url)
+    if GelenPostStory.resim5:
+        resimler.append(GelenPostStory.resim5.url)
+    if GelenPostStory.resim6:
+        resimler.append(GelenPostStory.resim6.url)
+    if GelenPostStory.resim7:
+        resimler.append(GelenPostStory.resim7.url)
+    if GelenPostStory.resim8:
+        resimler.append(GelenPostStory.resim8.url)
+    if GelenPostStory.resim9:
+        resimler.append(GelenPostStory.resim9.url)
+    if GelenPostStory.resim10:
+        resimler.append(GelenPostStory.resim10.url)
     if not resimler:  # Eğer resimler listesi boşsa
         resimler.append("{% static 'images/bedtime-story.png' %}")
-
-
 
     if GelenPostStory.youtube:
         youtube_id = get_youtube_id(GelenPostStory.youtube)
@@ -322,7 +338,6 @@ def post_getir(request, story_slug):
 
     if not GelenPostStory:
         category_names_str = "Bedtime Story"
-
 
     context = {
         'Tur': Tur,
@@ -349,7 +364,8 @@ def blog_getir(request, blog_slug):
     GelenPostStory.okunma_sayisi += 1
     GelenPostStory.save(update_fields=['okunma_sayisi'])
 
-    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(story_count=Count('story'))
+    Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
+        story_count=Count('story'))
     Random_Story = Story.objects.filter(aktif=True, status="Yayinda").order_by('?')[:8]
     title = GelenPostStory.title
     H1 = GelenPostStory.h1
@@ -359,7 +375,6 @@ def blog_getir(request, blog_slug):
 
     contents = [GelenPostStory.icerik, GelenPostStory.icerik2, GelenPostStory.icerik3]
     articleBody = ' '.join(filter(None, contents))
-
 
     resimler = []
     if GelenPostStory.resim:
@@ -374,18 +389,6 @@ def blog_getir(request, blog_slug):
         resimler.append(GelenPostStory.resim5.url)
     if GelenPostStory.resim6:
         resimler.append(GelenPostStory.resim6.url)
-    if GelenPostStory.resim7:
-        resimler.append(GelenPostStory.resim7.url)
-    if GelenPostStory.resim8:
-        resimler.append(GelenPostStory.resim8.url)
-    if GelenPostStory.resim9:
-        resimler.append(GelenPostStory.resim9.url)
-    if GelenPostStory.resim10:
-        resimler.append(GelenPostStory.resim10.url)
-
-
-
-
 
     if not resimler:  # Eğer resimler listesi boşsa
         resimler.append("{% static 'images/bedtime-story.png' %}")
@@ -393,7 +396,6 @@ def blog_getir(request, blog_slug):
     if GelenPostStory.youtube:
         youtube_id = get_youtube_id(GelenPostStory.youtube)
         thumbnail_url = f"https://img.youtube.com/vi/{youtube_id}/0.jpg"
-
 
     context = {
         'Tur': Tur,
@@ -411,15 +413,66 @@ def blog_getir(request, blog_slug):
     }
     return render(request, 'Hepsi/enderun.html', context)
 
+
 @csrf_exempt
 def oto_hikayekategoriekle(request):
     # Eklemek istediğiniz öğelerin listesi
-    short_title = ["Friendship","Mothers","Problem Solving","Fathers","Magic","Fairy Tales","Sisters","Bravery & Courage","Family","Responsibility","Bedtime Stories","Animals"]
-    short_H1 = ["Discover Heartwarming Kids' Bedtime Stories Filled with Themes of Friendship and Camaraderie","Embrace Heartwarming Bedtime Moments with Kids' Stories Starring Loving Mothers","Explore Bedtime Kids' Stories Focused on Creative Problem Solving","Discover Heartwarming Bedtime Stories Featuring Beloved Father Figures for Kids","Experience Enchanting Bedtime Stories Full of Magic for Kids","Explore Magical Bedtime Fairy Tales for Kids A World of Imagination Awaits","Enjoy Heartwarming Bedtime Stories with Sisterly Bonds A World of Adventures Awaits","Dive into Inspiring Bedtime Stories of Bravery and Courage Where Bedtime Meets Heroic Tales","Discover Bedtime Adventures with Family Uniting Loved Ones Through Heartwarming Stories","Bedtime Stories on Responsibility Guiding Kids Towards a Sense of Duty and Care","Bedtime Stories with a Touch of Magic Entertaining and Educational Stories for Kids","Discover Enchanting Kids' Bedtime Stories Filled with Animal Characters"]
-    Slug = ["kids-bedtime-friendship-stories","mothers-kids-bedtime-stories","problem-solving-bedtime-stories-for-kids","fathers-bedtime-stories-for-kids","magic-bedtime-stories-for-kids","fairy-tales-bedtime-stories-for-kids","sisters-kids-bedtime-stories","bravery-courage-bedtime-stories-for-kids","family-kids-bedtime-stories","responsibility-bedtime-stories-for-kids","kids-bedtime-stories","kids-bedtime-stories-about-animals"]
-    title = ["Kids Friendship Tales for Bedtime | Read & Listen Free","Mother's Love Kids Bedtime Stories | Read & Listen Free","Problem-Solving Kids Bedtime Tales | Read & Listen Free","Father's Role: Kids Bedtime Stories | Read & Listen Free","Magical Tales for Kids at Bedtime | Read & Listen Free","Fairy Tales for Kids at Bedtime | Read & Listen Free","Sisterhood in Kids Bedtime Stories | Read & Listen Free","Bravery & Courage in Bedtime Tales | Read & Listen Free","Family Love in Kids Bedtime Stories | Read & Listen Free","Teaching Responsibility Bedtime Stories | Read & Listen Free","Enchanting Bedtime Stories for Kids | Read & Listen Free","Kids Bedtime Stories About Animals | Read & Listen Free"]
-    desc = ["Discover the power of true friendship with heartwarming friendship stories. Explore the bonds of camaraderie and loyalty that warm your heart.","Explore the love, sacrifices, and nurturing warmth of motherhood through heart-touching mothers' stories. Celebrate the essence of maternal bonds.","Dive into captivating tales of ingenious solutions and life lessons in these problem-solving stories. Discover the art of overcoming challenges.","Explore heartwarming tales that celebrate fathers' love, wisdom, and enduring bonds. Discover the beauty of fatherhood in these stories.","Embark on enchanting adventures and discover the allure of magic in captivating stories. Let your imagination soar with these magical tales.","Delve into a world of wonder with timeless fairy tales. Immerse yourself in enchanting stories filled with magic, heroes, and adventure.","Discover enchanting stories celebrating the unbreakable bonds of sisterhood. Explore tales of love, loyalty, and shared adventures.","Explore captivating Bravery & Courage stories showcasing remarkable feats, resilience, and heroic acts of valor. Find inspiration in tales of bravery.","Discover Family Stories celebrating love, unity, and cherished moments. Delve into heartwarming tales of togetherness and adventures.","Embrace Responsibility Stories, highlighting accountability, ethics, and valuable life lessons. Explore narratives of duty, morals, and personal growth.","Immerse in enchanting Bedtime Stories, offering soothing tales and dreams that captivate young hearts. Discover a world of wonder and tranquility.","Discover the enchanting world of animals through our bedtime stories. Dive into adventures and learn valuable lessons from the animal kingdom."]
-    short_desc = ["Stories of friendship teach children valuable lessons about camaraderie.","Stories about mothers highlight the love and sacrifice of a mother.","Problem-solving stories teach children how to tackle challenges.","Stories about fathers showcase what fathers can do for their children.","Magic stories expand children’s imagination and transport them to a magical world.","Fairy tales take children to a fantastical and magical world.","Stories about sisters emphasize the bond and love between siblings.","Stories of bravery and courage teach children how to face their fears.","Family stories emphasize the importance of familial bonds and love.","Stories about responsibility teach children how to fulfill their duties.","Bedtime stories soothe children and prepare them for sleep.","Explore captivating animal tales and learn about nature."]
+    short_title = ["Friendship", "Mothers", "Problem Solving", "Fathers", "Magic", "Fairy Tales", "Sisters",
+                   "Bravery & Courage", "Family", "Responsibility", "Bedtime Stories", "Animals"]
+    short_H1 = ["Discover Heartwarming Kids' Bedtime Stories Filled with Themes of Friendship and Camaraderie",
+                "Embrace Heartwarming Bedtime Moments with Kids' Stories Starring Loving Mothers",
+                "Explore Bedtime Kids' Stories Focused on Creative Problem Solving",
+                "Discover Heartwarming Bedtime Stories Featuring Beloved Father Figures for Kids",
+                "Experience Enchanting Bedtime Stories Full of Magic for Kids",
+                "Explore Magical Bedtime Fairy Tales for Kids A World of Imagination Awaits",
+                "Enjoy Heartwarming Bedtime Stories with Sisterly Bonds A World of Adventures Awaits",
+                "Dive into Inspiring Bedtime Stories of Bravery and Courage Where Bedtime Meets Heroic Tales",
+                "Discover Bedtime Adventures with Family Uniting Loved Ones Through Heartwarming Stories",
+                "Bedtime Stories on Responsibility Guiding Kids Towards a Sense of Duty and Care",
+                "Bedtime Stories with a Touch of Magic Entertaining and Educational Stories for Kids",
+                "Discover Enchanting Kids' Bedtime Stories Filled with Animal Characters"]
+    Slug = ["kids-bedtime-friendship-stories", "mothers-kids-bedtime-stories",
+            "problem-solving-bedtime-stories-for-kids", "fathers-bedtime-stories-for-kids",
+            "magic-bedtime-stories-for-kids", "fairy-tales-bedtime-stories-for-kids", "sisters-kids-bedtime-stories",
+            "bravery-courage-bedtime-stories-for-kids", "family-kids-bedtime-stories",
+            "responsibility-bedtime-stories-for-kids", "kids-bedtime-stories", "kids-bedtime-stories-about-animals"]
+    title = ["Kids Friendship Tales for Bedtime | Read & Listen Free",
+             "Mother's Love Kids Bedtime Stories | Read & Listen Free",
+             "Problem-Solving Kids Bedtime Tales | Read & Listen Free",
+             "Father's Role: Kids Bedtime Stories | Read & Listen Free",
+             "Magical Tales for Kids at Bedtime | Read & Listen Free",
+             "Fairy Tales for Kids at Bedtime | Read & Listen Free",
+             "Sisterhood in Kids Bedtime Stories | Read & Listen Free",
+             "Bravery & Courage in Bedtime Tales | Read & Listen Free",
+             "Family Love in Kids Bedtime Stories | Read & Listen Free",
+             "Teaching Responsibility Bedtime Stories | Read & Listen Free",
+             "Enchanting Bedtime Stories for Kids | Read & Listen Free",
+             "Kids Bedtime Stories About Animals | Read & Listen Free"]
+    desc = [
+        "Discover the power of true friendship with heartwarming friendship stories. Explore the bonds of camaraderie and loyalty that warm your heart.",
+        "Explore the love, sacrifices, and nurturing warmth of motherhood through heart-touching mothers' stories. Celebrate the essence of maternal bonds.",
+        "Dive into captivating tales of ingenious solutions and life lessons in these problem-solving stories. Discover the art of overcoming challenges.",
+        "Explore heartwarming tales that celebrate fathers' love, wisdom, and enduring bonds. Discover the beauty of fatherhood in these stories.",
+        "Embark on enchanting adventures and discover the allure of magic in captivating stories. Let your imagination soar with these magical tales.",
+        "Delve into a world of wonder with timeless fairy tales. Immerse yourself in enchanting stories filled with magic, heroes, and adventure.",
+        "Discover enchanting stories celebrating the unbreakable bonds of sisterhood. Explore tales of love, loyalty, and shared adventures.",
+        "Explore captivating Bravery & Courage stories showcasing remarkable feats, resilience, and heroic acts of valor. Find inspiration in tales of bravery.",
+        "Discover Family Stories celebrating love, unity, and cherished moments. Delve into heartwarming tales of togetherness and adventures.",
+        "Embrace Responsibility Stories, highlighting accountability, ethics, and valuable life lessons. Explore narratives of duty, morals, and personal growth.",
+        "Immerse in enchanting Bedtime Stories, offering soothing tales and dreams that captivate young hearts. Discover a world of wonder and tranquility.",
+        "Discover the enchanting world of animals through our bedtime stories. Dive into adventures and learn valuable lessons from the animal kingdom."]
+    short_desc = ["Stories of friendship teach children valuable lessons about camaraderie.",
+                  "Stories about mothers highlight the love and sacrifice of a mother.",
+                  "Problem-solving stories teach children how to tackle challenges.",
+                  "Stories about fathers showcase what fathers can do for their children.",
+                  "Magic stories expand children’s imagination and transport them to a magical world.",
+                  "Fairy tales take children to a fantastical and magical world.",
+                  "Stories about sisters emphasize the bond and love between siblings.",
+                  "Stories of bravery and courage teach children how to face their fears.",
+                  "Family stories emphasize the importance of familial bonds and love.",
+                  "Stories about responsibility teach children how to fulfill their duties.",
+                  "Bedtime stories soothe children and prepare them for sleep.",
+                  "Explore captivating animal tales and learn about nature."]
 
     # Listelerin aynı uzunlukta olduğunu kontrol et
     assert len(short_title) == len(short_H1) == len(Slug) == len(title) == len(desc)
@@ -447,10 +500,6 @@ def oto_hikayekategoriekle(request):
     return HttpResponse('Hikayeler başarıyla eklendi.')
 
 
-
-
-
-
 def iletisim(request):
     context = {
         'title': "Enchanting Kids Bedtime Stories - Contact Us",
@@ -476,18 +525,21 @@ def iletisim(request):
             iletisim_obj = iletisimmodel(name=name, email=email, title=title, icerik=icerik)
             iletisim_obj.save()
 
-            return HttpResponse('We have recorded your contact request.<a href="{}" class="btn btn-primary">Click here to return to the homepage</a>'.format(reverse('home')))
+            return HttpResponse(
+                'We have recorded your contact request.<a href="{}" class="btn btn-primary">Click here to return to the homepage</a>'.format(
+                    reverse('home')))
         else:
             return HttpResponse(
                 'Human Control Error! <a href="{}" class="btn btn-primary">Click here to return to the Content</a>'.format(
                     reverse('iletisim')))
 
     return render(request, 'Hepsi/iletisim.html', context)
+
+
 def cerez(request):
     title = "Kids’ Bedtime Stories - Cookie Policy"
     description = "Our cookie policy ensures a sweet experience while you journey through the world of kids’ bedtime stories. Learn more about our use of cookies."
     keywords = "bedtime stories for kids,short bedtime stories,bedtime stories to read online,bedtime stories to read online free,free bedtime stories,story for kids,story books,short story bedtime stories to read,bedtime story books,kids books online,short bedtime stories free,bedtime stories to read free,online stories,bedtime stories to read,bed story"
-
 
     context = {
         'title': title,
@@ -496,11 +548,11 @@ def cerez(request):
     }
     return render(request, 'Hepsi/cerez.html', context)
 
+
 def gizlilik(request):
     title = "Kids’ Bedtime Stories - Privacy Policy"
     description = "Navigate through our kids’ bedtime stories with peace of mind. Our privacy policy ensures your adventures are safe and secure. Magic story"
     keywords = "bedtime stories to read online,bedtime stories to read online free,free bedtime stories,story for kids,story books,short story bedtime stories to read,bedtime story books,kids books online"
-
 
     context = {
         'title': title,
@@ -510,11 +562,11 @@ def gizlilik(request):
     }
     return render(request, 'Hepsi/gizlilik.html', context)
 
+
 def hakkinda(request):
     title = "About Us - Kids’ Bedtime Stories"
     description = "Learn more about our mission to bring enchanting kids’ bedtime stories to life. We’re dedicated to sparking imagination and dreams."
     keywords = "kids books online,short bedtime stories free,bedtime stories to read free,online stories,bedtime stories to read,bed story"
-
 
     context = {
         'title': title,
@@ -524,18 +576,16 @@ def hakkinda(request):
     return render(request, 'Hepsi/hakkinda.html', context)
 
 
-
 @require_GET
 def robots_txt(request):
     return HttpResponse(robots_txt_content, content_type="text/plain")
+
 
 robots_txt_content = """
 User-agent: *
 Allow: /
 Sitemap: https://www.kidsstorieshub.com/sitemap.xml
 """
-
-
 
 
 def Oto_Paylas(request):
@@ -550,6 +600,7 @@ def Oto_Paylas(request):
         return HttpResponse(f'Şükürler Olsun "{post.title}" Paylaşıldı.')
     else:
         return HttpResponse('Paylaşılacak Post Bulunamadı.')
+
 
 @csrf_exempt
 def indexing_var_mi(request):
@@ -566,6 +617,7 @@ def indexing_var_mi(request):
 def ads(request):
     return HttpResponse(ads_content, content_type="text/plain")
 
+
 ads_content = """google.com, pub-7065951693101615, DIRECT, f08c47fec0942fa0"""
 
 
@@ -579,11 +631,11 @@ def apiyle_ekle(request):
         key = request.POST.get('kew')
         uzunluk = request.POST.get('uzunluk')
 
-
         hikaye_turu = StoryCategory.objects.get(short_title=kategorisi)
 
         title, slug = create_unique_title_slug(title)
-        siir_masal = Story(title=title, Hikaye_Turu=hikaye_turu, icerik=icerik, slug=slug,keywords=key , status="Taslak", uzunluk=uzunluk)
+        siir_masal = Story(title=title, Hikaye_Turu=hikaye_turu, icerik=icerik, slug=slug, keywords=key,
+                           status="Taslak", uzunluk=uzunluk)
         siir_masal.save()
         if siir_masal.id is None:
             return HttpResponse("Model kaydedilemedi.")
@@ -595,8 +647,6 @@ class StoryPreviewView(View):
     def get(self, request, *args, **kwargs):
         story = Story.objects.get(slug=kwargs['slug'])
         return HttpResponse(story.icerik)
-
-
 
 
 @csrf_exempt
@@ -643,6 +693,7 @@ def twitter_var_mi(request):
         if not icerik:
             icerik = "Free Kids Stories"
         post.save(update_fields=['okunma_sayisi', 'indexing', 'facebook', 'twitter', 'pinte'])
-        return HttpResponse(f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} {hashtag.replace(' ','' )} Click here to read this children's story for free!")
+        return HttpResponse(
+            f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} {hashtag.replace(' ', '')} Click here to read this children's story for free!")
     else:
         return HttpResponse("Paylaşılacak Twitter içerik bulunamadı")
