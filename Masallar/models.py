@@ -125,6 +125,7 @@ class Story(models.Model):
     aktif = models.BooleanField(default=False, help_text=HELP_TEXTS["aktif"])
     indexing = models.BooleanField(default=False, help_text="Indexlensin mi?")
     facebook = models.BooleanField(default=True)
+    linkedin = models.BooleanField(default=True, help_text="Linkedin de Paylaşılsın mı ?")
     twitter = models.BooleanField(default=True)
     pinte = models.BooleanField(default=True)
     banner = models.BooleanField(default=False, help_text=HELP_TEXTS["banner"])
