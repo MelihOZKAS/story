@@ -597,6 +597,7 @@ def Oto_Paylas(request):
 
     if post is not None:
         post.status = "Yayinda"
+        post.resimText = ""
         post.aktif = True
         post.indexing = True  # indekslendi olarak işaretle
         post.olusturma_tarihi = timezone.now()  # eklenme tarihini güncelle
