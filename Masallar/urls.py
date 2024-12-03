@@ -7,6 +7,7 @@ urlpatterns = [
     path('new-kids-stories-added/', views.enson_eklenen_blog_list, name='en-son-eklenen'),  # En Son Eklenenler
     path('most-read-childrens-stories/', views.cokokunan, name='en-cok-okunan'),  # En çok okunan
     path('kids-stories-youtube-videos/', views.video, name='video'),  # Youtube Videoları
+    path('ekle/', views.ekle, name='ekle'),
     path('blog/', views.blog, name='blog'),
     path("oto-shared/", views.Oto_Paylas),
     path("index-ver/", views.indexing_var_mi, name="indexver"),

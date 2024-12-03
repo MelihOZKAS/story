@@ -11,7 +11,11 @@ from django.views import View
 from django.db.models import Q
 import requests
 import environ
+import random
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseBadRequest, \
+    HttpResponseServerError
 import json
+from django.db.utils import IntegrityError
 
 env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
@@ -713,3 +717,94 @@ def twitter_var_mi(request):
             f"https://www.kidsstorieshub.com/kids-bedtime-story/{post.slug}/!={icerik} {hashtag.replace(' ', '')} Click here to read this children's story for free!")
     else:
         return HttpResponse("Paylaşılacak Twitter içerik bulunamadı")
+
+
+
+
+@csrf_exempt
+def ekle(request):
+    if request.method != "POST":
+        return HttpResponseBadRequest("Invalid request method")
+
+    # Gelen verileri al
+    title = request.POST.get('title')
+    h1 = request.POST.get('h1')
+    slug = request.POST.get('slug')
+    description = request.POST.get('description')
+    keywords = request.POST.get('keywords')
+    ozet = request.POST.get('ozet')
+    sss = request.POST.get('sss')
+    resim = request.POST.get('resim')
+    content1 = request.POST.get('content1')
+    content2 = request.POST.get('content2')
+    content3 = request.POST.get('content3')
+    content4 = request.POST.get('content4')
+    content5 = request.POST.get('content5')
+    content6 = request.POST.get('content6')
+    content7 = request.POST.get('content7')
+    content8 = request.POST.get('content8')
+    content9 = request.POST.get('content9')
+    content10 = request.POST.get('content10')
+
+    # short_title al ve kategori belirle
+    short_title = request.POST.get('short_title')
+    kategori = None
+    if short_title == "bedtime":
+        kategori = StoryCategory.objects.filter(short_title="Bedtime Stories").first()
+    elif short_title == "peri":
+        kategori = StoryCategory.objects.filter(short_title="Fairy Tales").first()
+    elif short_title == "macera":
+        kategori = StoryCategory.objects.filter(short_title="macera-masallari").first()
+    elif short_title == "hayvan":
+        kategori = StoryCategory.objects.filter(short_title="Animals")
+    elif short_title == "magic":
+        kategori = StoryCategory.objects.filter(short_title="Magic")
+
+    if resim:
+        resim = f"3D cinematic film (caricature:0 2) [[{resim}]]"
+
+    # Gerekli alanların doğrulanması
+    if not title or not slug:
+        return HttpResponseBadRequest("Title and slug are required")
+
+    try:
+        # Yeni bir Post oluştur
+        post = Story.objects.create(
+            title=title,
+            h1=h1,
+            slug=slugify(title),
+            meta_description=description,
+            keywords=keywords,
+            resimText=resim,
+            icerik=content1,
+            icerik2=content2,
+            icerik3=content3,
+            icerik4=content4,
+            icerik5=content5,
+            icerik6=content6,
+            icerik7=content7,
+            icerik8=content8,
+            icerik9=content9,
+            icerik10=content10,
+            Hikaye_Turu=kategori,
+        )
+
+        # Slug çakışmalarını engelle
+        for _ in range(5):  # 5 deneme hakkı
+            try:
+                post.save()
+                break
+            except IntegrityError:
+                random_number = random.randint(3, 100)
+                post.slug = f"{slugify(slug)}-{random_number}" if slug else f"{slugify(title)}-{random_number}"
+
+
+        # Başarı yanıtı
+        return JsonResponse({
+            "status": "success",
+            "message": "Post created successfully",
+            "post_id": post.id,
+        })
+
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)}, status=500)
