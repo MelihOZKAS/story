@@ -756,9 +756,9 @@ def ekle(request):
     elif short_title == "macera":
         kategori = StoryCategory.objects.filter(short_title="macera-masallari").first()
     elif short_title == "hayvan":
-        kategori = StoryCategory.objects.filter(short_title="Animals")
+        kategori = StoryCategory.objects.filter(short_title="Animals").first()
     elif short_title == "magic":
-        kategori = StoryCategory.objects.filter(short_title="Magic")
+        kategori = StoryCategory.objects.filter(short_title="Magic").first()
 
     if resim:
         resim = f"3D cinematic film (caricature:0 2) [[{resim}]]"
