@@ -28,7 +28,7 @@
             </div>
 
 
-        <!--    <div class="flexslider carousel">
+            <!--    <div class="flexslider carousel">
                 <ul class="slides">
                     <li>
                         <a href="{% url 'en-cok-okunan' %}"> <img
@@ -107,6 +107,22 @@
 
             <div class="row">
 
+                <div class="col-xs-6 col-sm-3 col-md-3" data-animation="fadeInLeft" data-animation-delay="0">
+                    <div class="job-listing-box" style="margin-bottom: 20px;">
+                        <figure class="job-listing-img">
+                            <a href="{% url 'app' %}"><img
+                                    src="https://magicstory.s3.amazonaws.com/static/yeni/assets/images/kids-story-app.png"
+                                    loading="lazy" alt="Mobill App" width="255" height="255"></a>
+                        </figure>
+                        <div class="job-listing-body">
+                            <div class="name"><a href="{% url 'app' %}">Most Read Children's Stories</a>
+                            </div>
+                            <p>Free Download</p>
+                        </div>
+
+                    </div>
+                </div>
+
 
                 <div class="col-xs-6 col-sm-3 col-md-3" data-animation="fadeInLeft" data-animation-delay="0">
                     <div class="job-listing-box" style="margin-bottom: 20px;">
@@ -166,7 +182,7 @@
                             <div class="job-listing-body">
                                 <div class="name"><a
                                         href="{% url 'postagit' story_slug=Story.slug %}">{{ Story.title }}</a></div>
-                             <!--   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                                <!--   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                             </div>
 
                         </div>
