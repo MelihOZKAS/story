@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block ogtitle %}{{ title }}{% endblock %}
+{% block ogDes %}{{ description }}{% endblock %}
+{% block ogurl %}{{ request.build_absolute_uri }}{% endblock %}
+<meta property="og:image" content='https://magicstory.s3.amazonaws.com/static/yeni/assets/images/kids-story-app.png'>
+<meta property="og:image:width" content="960"/>
+<meta property="og:image:height" content="640"/>
+
+{% block twaccountsite %}@Melih{% endblock %}
+{% block twcreator %}@Melih{% endblock %}
+{% block twtitle %}{{ title }}{% endblock %}
+{% block twdesc %}{{ description }}{% endblock %}
+
+
+
+{% block content %}
+
+    <main>
+        <!-- **************** MAIN CONTENT START **************** -->
+        <section id="contact" class="contact mb-5">
+            <div class="container" data-aos="fade-up">
+
+                <div class="col-md-10 text-center">
+                    {# 1. Otomatik Yönlendirme Sistemi #}
+                    <script>
+                        (function () {
+                            function platformDetect() {
+                                const ua = navigator.userAgent.toLowerCase();
+                                const isIOS = /iphone|ipad|ipod/.test(ua);
+                                const isAndroid = /android/.test(ua);
+
+                                // iOS için özel kontrol
+                                if (isIOS && !window.MSStream) {
+                                    return 'ios';
+                                }
+                                return isAndroid ? 'android' : 'other';
+                            }
+
+                            function redirect() {
+                                const platform = platformDetect();
+                                const iosUrl = "https://apps.apple.com/app/story-unfolds/id6739774052";
+                                const androidUrl = "https://play.google.com/store/apps/details?id=com.storyunfolds.app";
+
+                                if (platform === 'ios') {
+                                    // iOS için direkt App Store'a yönlendirme
+                                    window.location.href = iosUrl;
+                                } else if (platform === 'android') {
+                                    // Android için Play Store'a direkt yönlendirme
+                                    const intentUrl = "intent://details?id=com.storyunfolds.app#Intent;scheme=market;action=android.intent.action.VIEW;package=com.android.vending;end";
+                                    window.location.href = intentUrl;
+
+                                    // Eğer intent başarısız olursa normal linke yönlendir
+                                    setTimeout(function () {
+                                        window.location.href = androidUrl;
+                                    }, 500);
+                                }
+                            }
+
+                            // Sayfa yüklendiğinde ve 1 saniye sonra kontrol
+                            window.addEventListener('load', redirect);
+                            setTimeout(redirect, 1000);
+                        })();
+                    </script>
+
+                    {# 2. Manuel İndirme Butonları #}
+                    <div class="mt-4">
+                        <h1 class="display-5 fw-bold mb-4">Children's Story App Free Download</h1>
+
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-5">
+                                <a href="https://apps.apple.com/app/story-unfolds/id6739774052"
+                                   class="d-block text-decoration-none"
+                                   onclick="window.open(this.href, '_blank'); return false;">
+                                    <img src="{% static 'yeni/assets/images/app-store.png' %}"
+                                         alt="App Store'dan İndir"
+                                         class="img-fluid"
+                                         style="width: 200px; height: auto;">
+                                </a>
+                            </div>
+                            <div class="col-md-5">
+                                <a href="https://play.google.com/store/apps/details?id=com.storyunfolds.app"
+                                   class="d-block text-decoration-none"
+                                   onclick="window.open(this.href, '_blank'); return false;">
+                                    <img src="{% static 'yeni/assets/images/google-play.png' %}"
+                                         alt="Google Play'den İndir"
+                                         class="img-fluid"
+                                         style="width: 200px; height: auto;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# 3. SEO Optimize Açıklama Metni #}
+                    <div class="mt-5 text-start">
+                        <h2 class="h4 mb-3">Read Tales - Educational and Fun Stories for Kids</h2>
+                        <p class="lead"> The <strong>Read Tales</strong> app offers hundreds of carefully selected
+                            stories and fairy tales for your children. Filled with <strong>bedtime stories</strong>,
+                            <strong>children's tales</strong>, and <strong>educational stories</strong>, this app not
+                            only sparks your child's imagination but also teaches them valuable life lessons and moral
+                            values. </p>
+                        <p><strong>Why Choose Read Tales?</strong><br> - Fresh and original story content updated
+                            regularly<br> - Stories tailored to support child development<br> - Educational and
+                            instructive tales that teach kindness, honesty, and more<br> - User-friendly interface
+                            designed for kids and parents alike<br> - Completely free and ad-free for a seamless
+                            experience<br> - Offline access to stories, perfect for travel or bedtime<br> - Beautifully
+                            illustrated tales to captivate young minds<br> - Audio stories for kids who love to listen
+                            and learn </p>
+                        <p><strong>Read Tales</strong> is the perfect companion for your child's growth and
+                            entertainment. Whether it's <strong>fairy tales</strong>, <strong>bedtime stories</strong>,
+                            or <strong>moral stories</strong>, this app has it all. Give your child the gift of
+                            imagination and learning. Download the <strong>Read Tales</strong> app today and make
+                            storytelling a part of your daily routine! </p>
+                        <p><strong>Key Features:</strong><br> - <strong>Wide Variety of Stories:</strong> From classic
+                            fairy tales to modern adventures, there's something for every child.<br> - <strong>Parental
+                                Controls:</strong> Customize the app to suit your child's age and interests.<br> -
+                            <strong>Interactive Elements:</strong> Fun animations and sounds to keep kids engaged.<br> -
+                            <strong>Multilingual Support:</strong> Stories available in multiple languages for bilingual
+                            families.<br> - <strong>Daily New Content:</strong> Fresh stories added regularly to keep
+                            the experience exciting. </p>
+                        <p><strong>Read Tales</strong> is more than just an app—it's a gateway to a world of wonder and
+                            learning. Perfect for kids of all ages, this app is your one-stop destination for <strong>children's
+                                stories</strong>, <strong>fairy tales</strong>, and <strong>educational content</strong>.
+                            Download now and let the magic of storytelling begin! </p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+
+
+{% endblock content %}

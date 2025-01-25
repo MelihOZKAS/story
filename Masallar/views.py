@@ -584,6 +584,18 @@ def hakkinda(request):
 def robots_txt(request):
     return HttpResponse(robots_txt_content, content_type="text/plain")
 
+def app(request):
+    title = "Mobil App- Kids Stories Hub - Free Kids Story Read"
+    description = "Kids Stories Hub Free fairy tales and new edu games, %100 free mobil app - Kids Story Tales And Free Games"
+    keywords = "mobil app, Kids Stort, Free Story, kids story"
+    h1 = "Mobile App Free Downloand"
+    context = {
+        'title': title,
+        'description': description,
+        'keywords': keywords,
+        'h1': h1,
+    }
+    return render(request, 'Hepsi/app.html', context)
 
 robots_txt_content = """
 User-agent: *
