@@ -39,9 +39,9 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+#SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
 
 
 
@@ -50,7 +50,6 @@ SECURE_HSTS_PRELOAD = True
 
 
 INSTALLED_APPS = [
-
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -62,7 +61,6 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "whitenoise.runserver_nostatic",
     "storages",
-
 ]
 
 MIDDLEWARE = [
@@ -176,6 +174,7 @@ else:
 
     DEFAULT_FILE_STORAGE = 'resume.custom_storages.MediaStorage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_IS_GZIPPED = True  # ✅ S3'te otomatik GZip
 
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_OBJECT_PARAMETERS = {
