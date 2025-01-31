@@ -99,19 +99,51 @@ def NewHome(request):
     }
     return render(request, 'Hepsi/NewHome.html', context)
 
-
+@cache_page(60 * 15)  # 15 dakika cache
 def NewTestHome(request):
-    title = "Bedtime Stories for Kids of All Ages - KidsStoriesHub"
-    description = "Explore KidsStoriesHub.com for captivating bedtime stories. Dive into a world of imagination and learning with our vast collection of stories for children."
-    keywords = "bedtime story, story, bedtime stories for kids, short bedtime stories, bedtime stories to read online, bedtime stories to read online free, free bedtime stories, story for kids, story books, short story bedtime stories to read, bedtime story books, kids books online"
+    cache_key = 'home_page_data_optimized'
+    context = cache.get(cache_key)
+
+    if not context:
+        # Son 8 Hikaye (Sadece Gerekli Alanlar)
+        latest_stories = (
+            Story.objects
+            .filter(aktif=True, status="Yayinda")
+            .select_related('Hikaye_Turu')  # ForeignKey için optimize
+            .only(
+                'h1',
+                'slug',
+                'olusturma_tarihi',
+                'Hikaye_Turu__short_title',  # İlişkili modelden alan
+                'Hikaye_Turu__slug'
+            )
+            .order_by('-olusturma_tarihi')[:8]
+        )
+
+        # Tüm Kategoriler (Sıralı ve Sadeleştirilmiş)
+        categories = (
+            StoryCategory.objects
+            .order_by(F('sirasi').asc(nulls_last=True))  # NULL'ları sona at
+            .only('short_title', 'slug')
+        )
+
+        # SEO Meta
+        meta = {
+            'title': "Bedtime Stories for Kids - KidsStoriesHub",
+            'description': "Discover magical bedtime stories for children...",
+            'keywords': "bedtime stories, kids stories, short stories"
+        }
+
+        context = {
+            'latest_stories': latest_stories,
+            'categories': categories,
+            **meta
+        }
+
+        cache.set(cache_key, context, 60 * 15)
 
 
-    context = {
-        'title': title,
-        'description': description,
-        'keywords': keywords,
 
-    }
     return render(request, 'newbase.html', context)
 
 def kategori(request):
