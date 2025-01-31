@@ -66,7 +66,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -75,11 +74,18 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
-CACHE_MIDDLEWARE_SECONDS = 900  # 15 dakika
 
 
+# settings.py
+SECURE_CONTENT_TYPE_NOSNIFF = True  # XSS koruması (MUTLAKA AKTİF)
+CSRF_COOKIE_SECURE = True           # HTTPS üzerinde CSRF cookie
+SESSION_COOKIE_SECURE = True        # HTTPS üzerinde session cookie
+# HTTPS aktifse ekleyin (CDN/Reverse Proxy ile bile olsa)
+SECURE_SSL_REDIRECT = True          # HTTP -> HTTPS yönlendirme
+SECURE_HSTS_SECONDS = 31536000      # 1 yıl (ÖNCE HTTPS TEST EDİN!)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True          # Tarayıcı preload listesi için
 
 ROOT_URLCONF = "Tales.urls"
 
