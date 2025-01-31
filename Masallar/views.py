@@ -6,7 +6,6 @@ from django.core.paginator import Paginator
 from django.views.decorators.http import require_GET
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
-from django.db.models import Count
 from django.views import View
 from django.db.models import Q
 import requests
@@ -16,6 +15,13 @@ from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, Http
     HttpResponseServerError
 import json
 from django.db.utils import IntegrityError
+
+
+
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
+from django.db.models import Prefetch, Count
+from django.conf import settings
 
 env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
