@@ -8,6 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.views import View
 from django.db.models import Q
+from django.db.models import F
 import requests
 import environ
 import random
