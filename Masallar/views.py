@@ -94,6 +94,20 @@ def NewHome(request):
     return render(request, 'Hepsi/NewHome.html', context)
 
 
+def NewTestHome(request):
+    title = "Bedtime Stories for Kids of All Ages - KidsStoriesHub"
+    description = "Explore KidsStoriesHub.com for captivating bedtime stories. Dive into a world of imagination and learning with our vast collection of stories for children."
+    keywords = "bedtime story, story, bedtime stories for kids, short bedtime stories, bedtime stories to read online, bedtime stories to read online free, free bedtime stories, story for kids, story books, short story bedtime stories to read, bedtime story books, kids books online"
+
+
+    context = {
+        'title': title,
+        'description': description,
+        'keywords': keywords,
+
+    }
+    return render(request, 'newbase.html', context)
+
 def kategori(request):
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
         story_count=Count('story'))
