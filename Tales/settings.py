@@ -50,7 +50,7 @@ SECURE_HSTS_PRELOAD = True
 
 
 INSTALLED_APPS = [
-    'django.middleware.cache.UpdateCacheMiddleware',
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -62,10 +62,11 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "whitenoise.runserver_nostatic",
     "storages",
-    'django.middleware.cache.FetchFromCacheMiddleware',
+
 ]
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -74,6 +75,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 CACHE_MIDDLEWARE_SECONDS = 900  # 15 dakika
 
