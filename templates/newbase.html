@@ -18,24 +18,15 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- ÖN YÜKLEME VE CSS OPTİMİZASYONU -->
-    <!-- CSS Preload -->
-    <link rel="preload" href="{% static 'new/assets/css/style.css' %}" as="style">
-    <link rel="preload" href="{% static 'new/assets/css/responsive.css' %}" as="style">
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'new/assets/css/style.css' %}">
 
-    <!-- Favicon Preload -->
-    <link rel="preload" href="{% static 'new/assets/icon/Favicon.png' %}" as="image" type="image/png">
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'new/assets/css/responsive.css' %}">
 
-
-
-    <!-- Favicon -->
-    <link rel="shortcut icon"
-          href="{% static 'new/assets/icon/Favicon.png' %}"
-          type="image/png"
-          fetchpriority="high">
-
-    <link rel="apple-touch-icon-precomposed"
-          href="{% static 'new/assets/icon/Favicon.png' %}">
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="{% static 'new/assets/icon/Favicon.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'new/assets/icon/Favicon.png' %}">
 
 </head>
 
