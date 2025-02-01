@@ -582,7 +582,7 @@
                                     </a>
 
                                     <div class="featured-countdown">
-                                        <span class="js-countdown" {{ story.Hikaye_Turu.short_title }}></span>
+                                        <span class="js-countdown">{{ story.Hikaye_Turu.short_title }}</span>
                                     </div>
                                     <div class="button-place-bid">
                                         <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -592,18 +592,17 @@
                                 <h5 class="name"><a href="nft-detail-2.html">{{ story.h1 }}</a></h5>
                                 <div class="author flex items-center">
                                     <div class="avatar">
-                                        <img src="https://nasipstorybucket.s3.amazonaws.com/media/image_settings/kapak_resimleri/the-forest-friends-grand-adventure-saving-home-together.webp"
-                                             alt="Image">
+                                        <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-box-07.jpg"
+                                             alt="Avatar">
                                     </div>
                                     <div class="info">
                                         <span>By:</span>
-                                        <h6><a href="author-2.html">Cody Fisher</a></h6>
+                                        <h6><a href="author-2.html">Melih OZKAS</a></h6>
                                     </div>
                                 </div>
                                 <div class="divider"></div>
                                 <div class="meta-info flex items-center justify-between">
-                                    <span class="text-bid">Current Bid</span>
-                                    <h6 class="price gem"><i class="icon-gem"></i>0,34</h6>
+                                    <span class="text-bid">{{ story.olusturma_tarihi|date:"d"  }}</span>
                                 </div>
                             </div>
                         </div>

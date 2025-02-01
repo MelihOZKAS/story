@@ -118,7 +118,7 @@ def NewTestHome(request):
                 'Hikaye_Turu__short_title',  # İlişkili modelden alan
                 'Hikaye_Turu__slug'
             )
-            .order_by('-olusturma_tarihi')[:8]
+            .order_by('-olusturma_tarihi')[:12]
         )
 
         # Tüm Kategoriler (Sıralı ve Sadeleştirilmiş)
