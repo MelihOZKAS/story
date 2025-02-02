@@ -127,24 +127,18 @@ def NewTestHome(request):
             .order_by(F('sirasi').asc(nulls_last=True))  # NULL'ları sona at
             .only('short_title', 'slug')
         )
-
         # SEO Meta
         meta = {
             'title': "Bedtime Stories for Kids - KidsStoriesHub",
             'description': "Discover magical bedtime stories for children...",
             'keywords': "bedtime stories, kids stories, short stories"
         }
-
         context = {
             'latest_stories': latest_stories,
             'categories': categories,
             **meta
         }
-
         cache.set(cache_key, context, 60 * 15)
-
-
-
     return render(request, 'newbase.html', context)
 
 def kategori(request):
