@@ -1,33 +1,105 @@
 {% load static %}
 <!DOCTYPE html>
-<!--[if IE 8 ]>
-<html class="ie" xmlns="https://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<html lang="en">
 <!--<![endif]-->
-
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Kids Story</title>
+    <meta http-equiv="content-language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="author" content="Bedtime Story">
+    <!-- Primary Meta Tags -->
+    <title>Story Unfolds - Interactive Bedtime Stories & Educational Games for Kids</title>
+    <meta name="description" content="Download FREE interactive story app for kids! 100+ magical tales, educational games & sleep-friendly narration. Available on iOS & Android.">
+    <meta name="keywords" content="bedtime stories, kids app, children's stories, educational games, free app, interactive stories">
+    <meta name="author" content="Story Unfolds">
+    <meta name="robots" content="index,follow">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kidsstorieshub.com/">
+    <meta property="og:title" content="Story Unfolds - Magical Kids Stories App">
+    <meta property="og:description" content="FREE interactive story app with 100+ tales & educational games. Perfect for bedtime!">
+    <meta property="og:image" content="{% static 'new/assets/images/og-1200x630.jpg' %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.kidsstorieshub.com/">
+    <meta property="twitter:title" content="Story Unfolds - Interactive Kids Stories">
+    <meta property="twitter:description" content="Download FREE story app with magical tales & games!">
+    <meta property="twitter:image" content="{% static 'new/assets/images/twitter-1200x600.jpg' %}">
 
     <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="apple-mobile-web-app-title" content="StoryUnfolds">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
 
-    <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'new/assets/css/style.css' %}">
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="{% static 'new/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'new/assets/css/responsive.css' %}">
 
-    <!-- Reponsive -->
-    <link rel="stylesheet" type="text/css" href="{% static 'new/assets/css/responsive.css' %}">
+    <!-- Favicon & App Icons -->
+    <link rel="shortcut icon" href="{% static 'new/assets/icon/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'new/assets/icon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'new/assets/icon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'new/assets/icon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'new/assets/icon/site.webmanifest' %}">
 
-    <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{% static 'new/assets/icon/Favicon.png' %}">
-    <link rel="apple-touch-icon-precomposed" href="{% static 'new/assets/icon/Favicon.png' %}">
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Story Unfolds",
+            "url": "https://www.kidsstorieshub.com/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.kidsstorieshub.com/search?q={search_term}",
+                "query-input": "required name=search_term"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "MobileApplication",
+            "name": "Story Unfolds",
+            "description": "Interactive bedtime stories app with educational games for children aged 3-9",
+            "operatingSystem": ["Android", "iOS"],
+            "applicationCategory": ["EducationalApplication", "EntertainmentApplication"],
+            "downloadUrl": [
+                "https://apps.apple.com/app/story-unfolds/id6739774052",
+                "https://play.google.com/store/apps/details?id=com.storyunfolds.app"
+            ],
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Free download with optional in-app purchases"
+            },
+            "applicationSubCategory": "Children's Education",
+            "datePublished": "2024-02-01",
+            "featureList": "Voice narration, Interactive games, Night mode, Parental controls",
+            "author": {
+                "@type": "Organization",
+                "name": "Story Unfolds",
+                "sameAs": [
+                    "https://www.facebook.com/yourpage",
+                    "https://twitter.com/yourhandle",
+                    "https://www.instagram.com/yourprofile"
+                ]
+            }
+        }
+    ]
+    </script>
 
+    <!-- App Indexing Tags -->
+    <link rel="alternate" href="android-app://com.storyunfolds.app">
+    <link rel="alternate" href="ios-app://id6739774052">
 </head>
 
 <body class="body">
