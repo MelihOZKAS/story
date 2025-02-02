@@ -125,7 +125,7 @@ def NewTestHome(request):
         categories = (
             StoryCategory.objects
             .order_by(F('sirasi').asc(nulls_last=True))  # NULL'ları sona at
-            .only('short_title', 'slug')
+            .only('short_title', 'slug')[:9]
         )
         # SEO Meta
         meta = {
