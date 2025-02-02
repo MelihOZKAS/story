@@ -449,7 +449,7 @@
 .featured-countdown {
     position        : absolute;
     top             : 11px;
-    right           : 41px;
+    right           : 10px;
     display         : flex;
     align-items     : center;
     justify-content : center;
@@ -458,7 +458,7 @@
     line-height     : 9px;
     padding         : 8.5px 10px;
     border-radius   : 9999px;
-    background-color: rgba(255, 255, 255, 0.20);
+    background-color: rgba(221, 242, 72, 1);
     backdrop-filter : blur(2px);
     width           : 90px;
 }
