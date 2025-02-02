@@ -8,7 +8,7 @@
                     <div class="wrap-box flex">
                         <div id="site-logo">
                             <div id="site-logo-inner">
-                                <a href="index.html" rel="home" class="main-logo">
+                                <a href="{% url 'yenihome' %}" rel="home" class="main-logo">
                                     <img id="logo_header" src="{% static 'images/kids-bedtime.png' %}"
                                          data-retina="{% static 'images/kids-bedtime.png' %}" loading="lazy"
                                          alt="logo">
@@ -23,7 +23,7 @@
                                 <li class="menu-item menu-item-has-children current-menu-item">
                                     <a>Home</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item current-item"><a href="index.html">Home 1</a></li>
+                                        <li class="menu-item current-item"><a href="{% url 'yenihome' %}">Home 1</a></li>
                                         <li class="menu-item"><a href="home-2.html">Home 2</a></li>
                                         <li class="menu-item"><a href="home-3.html">Home 3</a></li>
                                         <li class="menu-item"><a href="home-4.html">Home 4</a></li>
@@ -146,7 +146,7 @@
     <div class="mobile-nav-wrap">
         <div class="overlay-mobile-nav"></div>
         <div class="inner-mobile-nav">
-            <a href="index.html" rel="home" class="main-logo">
+            <a href="{% url 'yenihome' %}" rel="home" class="main-logo">
                 <img id="mobile-logo_header" src="{% static 'images/kids-bedtime.png' %}"
                      data-retina="{% static 'images/kids-bedtime.png' %}" loading="lazy" alt="logo">
             </a>
@@ -160,7 +160,7 @@
                     <li class="menu-item menu-item-has-children-mobile current-menu-item">
                         <a class="item-menu-mobile">Home</a>
                         <ul class="sub-menu-mobile">
-                            <li class="menu-item current-item"><a href="index.html">Home 1</a></li>
+                            <li class="menu-item current-item"><a href="{% url 'yenihome' %}">Home 1</a></li>
                             <li class="menu-item"><a href="home-2.html">Home 2</a></li>
                             <li class="menu-item"><a href="home-3.html">Home 3</a></li>
                             <li class="menu-item"><a href="home-4.html">Home 4</a></li>
