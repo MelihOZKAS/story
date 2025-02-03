@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from django.views.generic.base import RedirectView
+from django.urls import re_path
+
 
 app_name = 'stories'  # Bu satırı ekleyin
 
@@ -33,7 +35,9 @@ urlpatterns = [
     # Kategorideki Hikayeler
     # Eski URL'i yeni URL'e yönlendir
     path('blog/<str:blog_slug>/', views.blog_getir, name='blogGit'),
-    path('kids-bedtime-story/<str:story_slug>/', RedirectView.as_view(pattern_name='stories:postagit', permanent=True)),
+    # Eski URL'leri yeni URL'lere kalıcı yönlendir
+    re_path(r'^kids-bedtime-story/(?P<story_slug>[\w-]+)/$',
+            RedirectView.as_view(url='/%(story_slug)s/', permanent=True)),
 
     # Yeni URL
     path('<str:story_slug>/', views.post_getir, name='postagit'),
