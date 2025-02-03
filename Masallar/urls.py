@@ -28,6 +28,7 @@ urlpatterns = [
     path('oto-add-categories/', views.oto_hikayekategoriekle),
     path('kids-story-categories-detail/<str:kategori_slug>/', views.kategori_icerik_list, name='kategori_detay'),
     # Kategorideki Hikayeler
+
     path('kids-bedtime-story/<str:story_slug>/', views.post_getir, name='postagit'),
     path('blog/<str:blog_slug>/', views.blog_getir, name='blogGit'),
 ]
