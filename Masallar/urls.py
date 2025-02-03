@@ -10,7 +10,7 @@ urlpatterns = [
     path('most-read-childrens-stories/', views.cokokunan, name='en-cok-okunan'),  # En çok okunan
     path('kids-stories-youtube-videos/', views.video, name='video'),  # Youtube Videoları
     path('mobill-app/', views.app, name='app'),
-    path('testnewhome/', views.NewTestHome, name='yenihome'),
+    path('testnewhome/', views.YeniHome, name='yenihome'),
     path('ekle/', views.ekle, name='ekle'),
     path('blog/', views.blog, name='blog'),
     path("oto-shared/", views.Oto_Paylas),
@@ -27,6 +27,7 @@ urlpatterns = [
     path('about/', views.hakkinda, name='hakkinda'),
     path('story-preview/<slug:slug>/', views.StoryPreviewView.as_view(), name='story_preview'),
 
+    path('categories/', views.YeniKategori, name='kategori'),
     path('oto-add-categories/', views.oto_hikayekategoriekle),
     path('kids-story-categories-detail/<str:kategori_slug>/', views.kategori_icerik_list, name='kategori_detay'),
     # Kategorideki Hikayeler
