@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.views.generic.base import RedirectView
 
+app_name = 'stories'  # Bu satırı ekleyin
 
 urlpatterns = [
     path("", views.NewHome, name="home"),
