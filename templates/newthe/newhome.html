@@ -1,2 +1,158 @@
 {% extends 'newbase.html' %}
 {% load static %}
+
+
+<!-- Block Begin -->
+{% block main %}
+    <div class="flat-pages-title">
+
+        <div class="themesflat-container w1490">
+            <div class="row">
+                <div class="col-12 pages-title">
+                    <div class="content">
+                        <h1 class="wow fadeInUp">Kids Story Free Read!</h1>
+                        <p class="wow fadeInUp">Enjoy a collection of free bedtime stories for kids! Read magical
+                            fairy tales, adventure stories, and more. Download our free mobile app for an even
+                            better reading experience!</p>
+                        <div class=" flat-button flex justify-center">
+                            <a href="https://apps.apple.com/app/story-unfolds/id6739774052" target="_blank"
+                               class="tf-button style-1 h50 w190 mr-16">App Store <img
+                                    src="{% static 'new/assets/images/item-background/apple-store.png' %}"
+                                    alt="Get it on Google Play" width="45" height="45" loading="lazy"></a>
+                            <a href="https://play.google.com/store/apps/details?id=com.storyunfolds.app"
+                               target="_blank" class="tf-button style-1 h50 w190 active"> Google Play <img
+                                    src="{% static 'new/assets/images/item-background/google-play.png' %}"
+                                    alt="Get it on Google Play" width="45" height="45" loading="lazy"></a>
+                        </div>
+                    </div>
+                    <div class="icon-background">
+                        <img class="absolute item1" src="{% static 'new/assets/images/item-background/item1.png' %}"
+                             alt="small star  icon" loading="lazy">
+                        <img class="absolute item2" src="{% static 'new/assets/images/item-background/gem.png' %}"
+                             alt="Gem icon" loading="lazy">
+                        <img class="absolute item3"
+                             src="{% static 'new/assets/images/item-background/tales-wizard.png' %}"
+                             alt="Kids Story Tales Wizard icon" loading="lazy">
+                        <img class="absolute item4"
+                             src="{% static 'new/assets/images/item-background/fairy-tale.png' %}"
+                             alt="Fairy Tales icon" loading="lazy">
+                        <img class="absolute item5"
+                             src="{% static 'new/assets/images/item-background/elephant-animals.png' %}"
+                             alt="Elephant Animals icon" loading="lazy">
+                        <img class="absolute item6" src="{% static 'new/assets/images/item-background/lion.png' %}"
+                             alt="Animals Story Lion icon" loading="lazy">
+                        <img class="absolute item7" src="{% static 'new/assets/images/item-background/item5.png' %}"
+                             alt="Big star icon" loading="lazy">
+                        <img class="absolute item8" src="{% static 'new/assets/images/item-background/item5.png' %}"
+                             alt="Star icon" loading="lazy">
+                    </div>
+
+                    <div class="tf-section-3 seller mt-5">
+                        <div class="themesflat-container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="heading-section pb-30">
+                                        <h2 class="tf-title " style="perspective: 400px;">
+                                            <div style="display: block; text-align: start; position: relative; transform-origin: 144.344px 22px; transform: translate3d(0px, 0px, 0px); opacity: 1;">
+                                                Top <span>
+                                        <span class="btn-selector tf-color">
+                                            <span>Category</span>
+                                        </span>
+
+                                    </span></div>
+                                        </h2>
+                                    </div>
+                                </div>
+                                {% for category in categories %}
+                                    <div data-wow-delay="0s" class="wow fadeInUp col-md-4 animated"
+                                         style="visibility: visible; animation-delay: 0s; animation-name: fadeInUp;">
+                                        <div class="tf-author-box style-2 hv-border mb-30">
+                                            <div class="order">#{{ forloop.counter }}</div>
+                                            <div class="author-avatar ">
+                                                <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png"
+                                                     alt="{{ category.short_title }} icon" class="avatar"
+                                                     height="80" width="80">
+                                            </div>
+                                            <div class="author-infor ">
+                                                <h5><a href="author-2.html">{{ category.short_title }}</a></h5>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tf-section-3 discover-item ">
+        <div class="themesflat-container">
+            <div class="row">
+                {% for story in latest_stories %}
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <div class="tf-card-box style-1">
+                            <div class="card-media">
+                                <a href="#">
+                                    <img src="{{ story.resim.url }}"
+                                         alt="{{ story.title }}" loading="lazy" height="235" width="244">
+                                </a>
+
+                                <div class="featured-countdown">
+                                        <span class="js-countdown"
+                                              style="color: black">{{ story.Hikaye_Turu.short_title }}</span>
+                                </div>
+                                <div class="button-place-bid">
+                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                       class="tf-button"><span>Free Read!</span></a>
+                                </div>
+                            </div>
+                            <h5 class="name"><a href="nft-detail-2.html">{{ story.h1 }}</a></h5>
+                            <div class="author flex items-center">
+                                <div class="avatar">
+                                    <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-box-07.jpg"
+                                         alt="Avatar" height="38" width="38" loading="lazy">
+                                </div>
+                                <div class="info text-center">
+                                    <h6>Melih OZKAS</h6>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="meta-info flex items-center justify-between">
+                                <span class="text-bid">{{ story.olusturma_tarihi|date:"d F Y" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="tf-section action">
+        <div class="themesflat-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="action__body m-0">
+                        <div class="tf-tsparticles">
+                            <div id="tsparticles1" data-color="#161616" data-line="#000">
+                                <canvas class="tsparticles-canvas-el" style="width: 100%; height: 100%;"
+                                        width="1110" height="268"></canvas>
+                            </div>
+                        </div>
+                        <h2 class="text-center capitalize mx-auto mw-667">+1000 Magical Tales and Games - Free
+                            Download</h2>
+                        <div class="flat-button flex justify-center">
+                            <a href="#" class="tf-button style-2 h50 w190">Free Download<i
+                                    class="icon-arrow-up-right2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+
+<!-- Block Finnish -->

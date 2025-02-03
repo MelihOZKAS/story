@@ -139,7 +139,7 @@ def NewTestHome(request):
             **meta
         }
         cache.set(cache_key, context, 60 * 15)
-    return render(request, 'newbase.html', context)
+    return render(request, 'newthe/newhome.html', context)
 
 def kategori(request):
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
