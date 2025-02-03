@@ -7,48 +7,61 @@
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="en">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
 
     <!-- Primary Meta Tags -->
-    <title>Story Unfolds - Interactive Bedtime Stories & Educational Games for Kids</title>
-    <meta name="description" content="Download FREE interactive story app for kids! 100+ magical tales, educational games & sleep-friendly narration. Available on iOS & Android.">
-    <meta name="keywords" content="bedtime stories, kids app, children's stories, educational games, free app, interactive stories">
-    <meta name="author" content="Story Unfolds">
-    <meta name="robots" content="index,follow">
+    <title>Story Unfolds: 1000+ Interactive Bedtime Stories & Learning Games (Free App)</title>
+    <meta name="description"
+          content="🌟 #1 Kids Story App! 1000+ magical tales 🧚♂️, educational games 🧩 & sleep-friendly audio 📚. FREE download for iOS/Android. Perfect for ages 3-9!">
+    <meta name="keywords"
+          content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
+    <meta name="author" content="Kids Story Hub">
+    <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="revisit-after" content="7 days">
+
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.kidsstorieshub.com/">
-    <meta property="og:title" content="Story Unfolds - Magical Kids Stories App">
-    <meta property="og:description" content="FREE interactive story app with 100+ tales & educational games. Perfect for bedtime!">
-    <meta property="og:image" content="{% static 'new/assets/images/og-1200x630.jpg' %}">
+    <meta property="og:title" content="Story Unfolds: 1000+ Interactive Kids Stories & Games">
+    <meta property="og:description"
+          content="🚀 Free Educational App! 1000+ bedtime stories 📖, voice narration 🎧, parent-approved games 🧠. Download Now 👇">
+    <meta property="og:image"
+          content="https://magicstory.s3.amazonaws.com/static/yeni/assets/images/og-kids-stories.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.kidsstorieshub.com/">
-    <meta property="twitter:title" content="Story Unfolds - Interactive Kids Stories">
-    <meta property="twitter:description" content="Download FREE story app with magical tales & games!">
-    <meta property="twitter:image" content="{% static 'new/assets/images/twitter-1200x600.jpg' %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@KidsStoriesHub">
+    <meta name="twitter:creator" content="@StoryUnfoldsApp">
+    <meta name="twitter:image:alt" content="Story Unfolds App Interface">
 
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <!-- Mobile Optimization -->
     <meta name="apple-mobile-web-app-title" content="StoryUnfolds">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
 
-    <!-- Theme Styles -->
-    <link rel="stylesheet" href="{% static 'new/assets/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'new/assets/css/responsive.css' %}">
-
-    <!-- Favicon & App Icons -->
-    <link rel="shortcut icon" href="{% static 'new/assets/icon/favicon.ico' %}" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'new/assets/icon/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'new/assets/icon/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'new/assets/icon/favicon-16x16.png' %}">
+    <!-- PWA Manifest -->
     <link rel="manifest" href="{% static 'new/assets/icon/site.webmanifest' %}">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="{% static 'new/assets/css/style.css' %}" as="style">
+    <link rel="preload" href="{% static 'new/assets/js/main.js' %}" as="script">
+
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="{% static 'new/assets/css/style.css' %}" media="screen,print">
+    <link rel="stylesheet" href="{% static 'new/assets/css/responsive.css' %}"
+          media="only screen and (max-width: 768px)">
+
+    <!-- Favicon Ecosystem -->
+    <link rel="shortcut icon" href="{% static 'new/assets/icon/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="196x196" href="{% static 'new/assets/icon/favicon-196x196.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'new/assets/icon/apple-touch-icon.png' %}">
+    <link rel="mask-icon" href="{% static 'new/assets/icon/safari-pinned-tab.svg' %}" color="#5bbad5">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -62,44 +75,85 @@
                 "@type": "SearchAction",
                 "target": "https://www.kidsstorieshub.com/search?q={search_term}",
                 "query-input": "required name=search_term"
-            }
+            },
+            "inLanguage": "en-US"
         },
         {
             "@context": "https://schema.org",
             "@type": "MobileApplication",
-            "name": "Story Unfolds",
-            "description": "Interactive bedtime stories app with educational games for children aged 3-9",
+            "name": "Story Unfolds: Kids Learning App",
             "operatingSystem": ["Android", "iOS"],
-            "applicationCategory": ["EducationalApplication", "EntertainmentApplication"],
+            "applicationCategory": "EducationalApplication",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "18500"
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": "0.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+            },
             "downloadUrl": [
                 "https://apps.apple.com/app/story-unfolds/id6739774052",
                 "https://play.google.com/store/apps/details?id=com.storyunfolds.app"
             ],
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "description": "Free download with optional in-app purchases"
-            },
-            "applicationSubCategory": "Children's Education",
-            "datePublished": "2024-02-01",
-            "featureList": "Voice narration, Interactive games, Night mode, Parental controls",
+            "featureList": [
+                "Voice Narration",
+                "Interactive Games",
+                "Daily New Stories",
+                "Parental Dashboard"
+            ],
             "author": {
                 "@type": "Organization",
-                "name": "Story Unfolds",
+                "name": "Kids Story Hub",
                 "sameAs": [
-                    "https://www.facebook.com/yourpage",
-                    "https://twitter.com/yourhandle",
-                    "https://www.instagram.com/yourprofile"
+                    "https://www.facebook.com/kidsstorieshub",
+                    "https://www.youtube.com/@KidsStoriesHubBedtime",
+                    "https://twitter.com/KidsStoriesHub"
                 ]
             }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.kidsstorieshub.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Story App",
+                    "item": "https://www.kidsstorieshub.com/app"
+                }
+            ]
         }
     ]
     </script>
 
-    <!-- App Indexing Tags -->
-    <link rel="alternate" href="android-app://com.storyunfolds.app">
-    <link rel="alternate" href="ios-app://id6739774052">
+    <!-- App Deep Linking -->
+    <link rel="alternate" href="android-app://com.storyunfolds.app/kidsstorieshub/main">
+    <link rel="alternate" href="ios-app://id6739774052/kidsstorieshub/main">
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7065951693101615"
+            crossorigin="anonymous"></script>
+
+    <!-- pinterest tag  -->
+    <meta name="p:domain_verify" content="3e5526f26cbaf720f5bc1762d9424667"/>
+
+    <!-- <meta name="author" content="https://www.melihozkas.com"> -->
+    <meta name="yandex-verification" content="a1f65db0029ca724"/>
+
 </head>
 
 <body class="body">
@@ -109,13 +163,7 @@
         {% include 'newparse/header.html' %}
         <!-- Header Finnish -->
         <div class="flat-pages-title">
-            <div class="widget-bg-line">
-                <div class="wraper">
-                    <div class="bg-grid-line y bottom">
-                        <div class="bg-line"></div>
-                    </div>
-                </div>
-            </div>
+
             <div class="themesflat-container w1490">
                 <div class="row">
                     <div class="col-12 pages-title">
@@ -180,7 +228,8 @@
                                                 <div class="order">#{{ forloop.counter }}</div>
                                                 <div class="author-avatar ">
                                                     <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png"
-                                                         alt="{{ category.short_title }} icon" class="avatar" height="80" width="80" >
+                                                         alt="{{ category.short_title }} icon" class="avatar"
+                                                         height="80" width="80">
                                                 </div>
                                                 <div class="author-infor ">
                                                     <h5><a href="author-2.html">{{ category.short_title }}</a></h5>
@@ -212,7 +261,8 @@
                                     </a>
 
                                     <div class="featured-countdown">
-                                        <span class="js-countdown" style="color: black">{{ story.Hikaye_Turu.short_title }}</span>
+                                        <span class="js-countdown"
+                                              style="color: black">{{ story.Hikaye_Turu.short_title }}</span>
                                     </div>
                                     <div class="button-place-bid">
                                         <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -252,7 +302,8 @@
                                             width="1110" height="268"></canvas>
                                 </div>
                             </div>
-                            <h2 class="text-center capitalize mx-auto mw-667">+1000 Magical Tales and Games - Free Download</h2>
+                            <h2 class="text-center capitalize mx-auto mw-667">+1000 Magical Tales and Games - Free
+                                Download</h2>
                             <div class="flat-button flex justify-center">
                                 <a href="#" class="tf-button style-2 h50 w190">Free Download<i
                                         class="icon-arrow-up-right2"></i></a>
