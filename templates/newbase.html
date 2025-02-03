@@ -10,12 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
 
     <!-- Primary Meta Tags -->
-    <title>Story Unfolds: 1000+ Interactive Bedtime Stories & Learning Games (Free App)</title>
-    <meta name="description"
-          content="🌟 #1 Kids Story App! 1000+ magical tales 🧚♂️, educational games 🧩 & sleep-friendly audio 📚. FREE download for iOS/Android. Perfect for ages 3-9!">
-    <meta name="keywords"
-          content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
-    <meta name="author" content="Kids Story Hub">
+    {% block meta %}{% endblock meta %}
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="revisit-after" content="7 days">
 
@@ -23,6 +18,7 @@
 
     <!-- Open Graph / Facebook -->
     {% block OGF %}{% endblock OGF %}
+
     <!-- Twitter -->
     {% block tw %}{% endblock tw %}
 
@@ -152,16 +148,12 @@
         <!-- Header Finnish -->
 
         <!-- Block Begin -->
-        {% block main %}
-        {% endblock main %}
-
+        {% block main %}{% endblock main %}
         <!-- Block Finnish -->
-
 
         <!-- Footer -->
         {% include 'newparse/footer.html' %}
         <!-- /#footer -->
-
     </div>
     <!-- /#page -->
 
@@ -179,17 +171,10 @@
 </div>
 
 <!-- Javascript -->
-<script src="{% static 'new/assets/js/jquery.min.js' %}"></script>
-<script src="{% static 'new/assets/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'new/assets/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'new/assets/js/SplitText.js' %}"></script>
-<script src="{% static 'new/assets/js/simpleParallax.min.js' %}"></script>
-<script src="{% static 'new/assets/js/gsap.js' %}"></script>
-<script src="{% static 'new/assets/js/ScrollTrigger.js' %}"></script>
-<script src="{% static 'new/assets/js/gsap-animation.js' %}"></script>
-<script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
-<script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
-<script src="{% static 'new/assets/js/main.js' %}"></script>
+
+<!-- Javascript -->
+{% block js %}{% endblock js %}
+
 
 </body>
 <!-- Dell -->

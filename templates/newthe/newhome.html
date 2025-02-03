@@ -1,6 +1,16 @@
 {% extends 'newbase.html' %}
 {% load static %}
 
+{% block meta %}
+    <title>Story Unfolds: 1000+ Interactive Bedtime Stories & Learning Games (Free App)</title>
+    <meta name="description"
+          content="🌟 #1 Kids Story App! 1000+ magical tales 🧚♂️, educational games 🧩 & sleep-friendly audio 📚. FREE download for iOS/Android. Perfect for ages 3-9!">
+    <meta name="keywords"
+          content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <meta name="author" content="Kids Story Hub">
+{% endblock meta %}
+
 {% block OGF %}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
@@ -176,3 +186,18 @@
 {% endblock main %}
 
 <!-- Block Finnish -->
+
+<!-- Javascript -->
+{% block js %}
+    <script src="{% static 'new/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/SplitText.js' %}"></script>
+    <script src="{% static 'new/assets/js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/gsap.js' %}"></script>
+    <script src="{% static 'new/assets/js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'new/assets/js/gsap-animation.js' %}"></script>
+    <script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
+    <script src="{% static 'new/assets/js/main.js' %}"></script>
+{% endblock js %}
