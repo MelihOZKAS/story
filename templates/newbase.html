@@ -15,14 +15,11 @@
     <meta name="revisit-after" content="7 days">
 
 
-
     <!-- Open Graph / Facebook -->
     {% block OGF %}{% endblock OGF %}
 
     <!-- Twitter -->
     {% block tw %}{% endblock tw %}
-
-
 
 
     <!-- Mobile Optimization -->
@@ -31,7 +28,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-
 
 
     <!-- PWA Manifest -->
@@ -48,9 +44,11 @@
 
     <!-- Favicon Ecosystem -->
     <link rel="shortcut icon" href="{% static 'new/assets/icon/favicon.ico' %}" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="196x196" href="{% static 'new/assets/icon/favicon-196x196.png' %}">
+    <link rel="icon" type="image/png" sizes="196x196" href="{% static 'new/assets/icon/android-chrome-192x192.png' %}">
     <link rel="apple-touch-icon" href="{% static 'new/assets/icon/apple-touch-icon.png' %}">
-    <link rel="mask-icon" href="{% static 'new/assets/icon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'new/assets/icon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'new/assets/icon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'new/assets/icon/site.webmanifest' %}">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
