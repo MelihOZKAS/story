@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.views.generic.base import RedirectView
+
 
 urlpatterns = [
     path("", views.NewHome, name="home"),
@@ -29,6 +31,11 @@ urlpatterns = [
     path('kids-story-categories-detail/<str:kategori_slug>/', views.kategori_icerik_list, name='kategori_detay'),
     # Kategorideki Hikayeler
 
-    path('kids-bedtime-story/<str:story_slug>/', views.post_getir, name='postagit'),
     path('blog/<str:blog_slug>/', views.blog_getir, name='blogGit'),
+    # Yeni URL yapısı
+    path('<str:story_slug>/', views.post_getir, name='postagit'),
+
+    # Eski URL'ler için redirect (opsiyonel, Nginx ile yapılması daha performanslı)
+    path('kids-bedtime-story/<str:story_slug>/',
+         RedirectView.as_view(url='/%(story_slug)s/', permanent=True))
 ]
