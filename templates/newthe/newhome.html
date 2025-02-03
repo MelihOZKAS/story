@@ -1,6 +1,26 @@
 {% extends 'newbase.html' %}
 {% load static %}
 
+{% block OGF %}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="Story Unfolds: 1000+ Interactive Kids Stories & Games">
+    <meta property="og:description"
+          content="🚀 Free Educational App! 1000+ bedtime stories 📖, voice narration 🎧, parent-approved games 🧠. Download Now 👇">
+    <meta property="og:image"
+          content="https://magicstory.s3.amazonaws.com/static/yeni/assets/images/og-kids-stories.jpg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="400">
+    <meta property="og:locale" content="en_US">
+{% endblock %}
+
+
+{% block tw %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@KidsStoriesHub">
+    <meta name="twitter:creator" content="@StoryUnfoldsApp">
+    <meta name="twitter:image:alt" content="Story Unfolds App Interface">
+{% endblock tw %}
 
 <!-- Block Begin -->
 {% block main %}

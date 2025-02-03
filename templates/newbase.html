@@ -20,23 +20,14 @@
     <meta name="revisit-after" content="7 days">
 
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.kidsstorieshub.com/">
-    <meta property="og:title" content="Story Unfolds: 1000+ Interactive Kids Stories & Games">
-    <meta property="og:description"
-          content="🚀 Free Educational App! 1000+ bedtime stories 📖, voice narration 🎧, parent-approved games 🧠. Download Now 👇">
-    <meta property="og:image"
-          content="https://magicstory.s3.amazonaws.com/static/yeni/assets/images/og-kids-stories.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="en_US">
 
+    <!-- Open Graph / Facebook -->
+    {% block OGF %}{% endblock OGF %}
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@KidsStoriesHub">
-    <meta name="twitter:creator" content="@StoryUnfoldsApp">
-    <meta name="twitter:image:alt" content="Story Unfolds App Interface">
+    {% block tw %}{% endblock tw %}
+
+
+
 
     <!-- Mobile Optimization -->
     <meta name="apple-mobile-web-app-title" content="StoryUnfolds">
@@ -44,6 +35,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
+
+
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="{% static 'new/assets/icon/site.webmanifest' %}">
@@ -124,12 +117,6 @@
                     "position": 1,
                     "name": "Home",
                     "item": "https://www.kidsstorieshub.com/"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Story App",
-                    "item": "https://www.kidsstorieshub.com/app"
                 }
             ]
         }
