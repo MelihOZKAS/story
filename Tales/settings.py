@@ -193,6 +193,14 @@ else:
     IMAGE_SETTING_LOCATION = MEDIA_LOCATION + '/image_settings'
     DOCUMENT_LOCATION = MEDIA_LOCATION + '/documents'
 
+    # GZIP sıkıştırma aktif
+    AWS_IS_GZIPPED = True
+    GZIP_CONTENT_TYPES = [
+        'text/css',
+        'application/javascript',
+        'image/svg+xml'
+    ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
