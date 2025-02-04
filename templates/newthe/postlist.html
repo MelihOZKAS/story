@@ -1,0 +1,166 @@
+{% extends 'newbase.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Story Unfolds: 1000+ Interactive Bedtime Stories & Learning Games (Free App)</title>
+    <meta name="description"
+          content="🌟 #1 Kids Story App! 1000+ magical tales 🧚♂️, educational games 🧩 & sleep-friendly audio 📚. FREE download for iOS/Android. Perfect for ages 3-9!">
+    <meta name="keywords"
+          content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <meta name="author" content="Kids Story Hub">
+{% endblock meta %}
+
+{% block OGF %}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="Story Unfolds: 1000+ Interactive Kids Stories & Games">
+    <meta property="og:description"
+          content="🚀 Free Educational App! 1000+ bedtime stories 📖, voice narration 🎧, parent-approved games 🧠. Download Now 👇">
+    <meta property="og:image"
+          content="https://magicstory.s3.amazonaws.com/static/yeni/assets/images/og-kids-stories.jpg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="400">
+    <meta property="og:locale" content="en_US">
+{% endblock %}
+
+
+{% block tw %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@KidsStoriesHub">
+    <meta name="twitter:creator" content="@StoryUnfoldsApp">
+    <meta name="twitter:image:alt" content="Story Unfolds App Interface">
+{% endblock tw %}
+
+<!-- Block Begin -->
+{% block main %}
+
+    <div class="flat-title-page">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="heading text-center">Blog list #2</h1>
+                            <ul class="breadcrumbs flex justify-center">
+                                <li class="icon-keyboard_arrow_right">
+                                    <a href="{% url 'yenihome' %}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'yenihome' %}">Explore</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <div class="tf-section-5 tf-list-blog">
+                <div class="themesflat-container">
+                    <div class="row flex flex-wrap">
+                        <div class="wrap-inner col-md-8 col-12 ">
+                            <!-- Post Begin -->
+
+                            <article class="tf-card-article style-1">
+                                <div class="card-media mb-20">
+                                    <a href="blog-detail.html">
+                                        <img src="assets/images/blog/blog-list-06.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="inner">
+                                    <div class="meta-info flex">
+                                        <div class="item art active">Digital Art</div>
+                                        <div class="item date">Mon, 08 May </div>
+                                    </div>
+                                    <div class="card-title">
+                                        <h5><a href="nft-detail-2.html">Sascha Zehe on how to explain blockchain gaming</a></h5>
+                                    </div>
+                                    <div class="card-bottom flex items-center justify-between">
+                                        <div class="author flex items-center justify-between">
+                                            <div class="avatar">
+                                                <img src="assets/images/avatar/avatar-box-01.jpg" alt="Image">
+                                            </div>
+                                            <div class="info">
+                                                <span>Posted by:</span>
+                                                <h6><a href="author-2.html">Marvin McKinney</a> </h6>
+                                            </div>
+                                        </div>
+                                        <a class="link" href="#"><i class="icon-arrow-up-right2"></i></a>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- Post Finnis -->
+
+                        </div>
+                        <div class="side-bar col-md-4 col-12">
+                            <div class="widget widget-categories">
+                                <h5 class="title-widget">Categories</h5>
+                                <ul>
+                                    <li>
+                                        <div class="cate-item"><a href="#">NFTs</a></div>
+                                        <div class="number">(1.483)</div>
+                                    </li>
+                                    <li>
+                                        <div class="cate-item"><a href="#">Digital Art</a></div>
+                                        <div class="number">(97)</div>
+                                    </li>
+                                    <li>
+                                        <div class="cate-item"><a href="#">Crypto</a></div>
+                                        <div class="number">(45)</div>
+                                    </li>
+                                    <li>
+                                        <div class="cate-item"><a href="#">Technology</a></div>
+                                        <div class="number">(728)</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widget widget-related-posts">
+                                <h5 class="title-widget">Related posts</h5>
+                                <div class="related-posts-item">
+                                    <div class="card-media">
+                                        <img src="assets/images/blog/sidebar-02.jpg" alt="">
+                                    </div>
+                                    <div class="card-content">
+                                        <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
+                                        <div class="item date">Mon, 08 May </div>
+                                    </div>
+                                </div>
+                                <div class="related-posts-item">
+                                    <div class="card-media">
+                                        <img src="assets/images/blog/sidebar-03.jpg" alt="">
+                                    </div>
+                                    <div class="card-content">
+                                        <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
+                                        <div class="item date">Mon, 08 May </div>
+                                    </div>
+                                </div>
+                                <div class="related-posts-item">
+                                    <div class="card-media">
+                                        <img src="assets/images/blog/sidebar-04.jpg" alt="">
+                                    </div>
+                                    <div class="card-content">
+                                        <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
+                                        <div class="item date">Mon, 08 May </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock main %}
+
+<!-- Block Finnish -->
+
+<!-- Javascript -->
+{% block js %}
+    <script src="{% static 'new/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/SplitText.js' %}"></script>
+    <script src="{% static 'new/assets/js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/gsap.js' %}"></script>
+    <script src="{% static 'new/assets/js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'new/assets/js/gsap-animation.js' %}"></script>
+    <script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
+    <script src="{% static 'new/assets/js/main.js' %}"></script>
+{% endblock js %}

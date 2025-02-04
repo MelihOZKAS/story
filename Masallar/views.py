@@ -144,7 +144,7 @@ def YeniHome(request):
 
 @cache_page(60 * 15)  # 15 dakika cache
 def YeniKategori(request):
-    cache_key = 'home_page_data_optimized'
+    cache_key = 'categories_page_data_optimized'
     context = cache.get(cache_key)
 
     if not context:
@@ -153,6 +153,35 @@ def YeniKategori(request):
         categories = (
             StoryCategory.objects
             .order_by(F('sirasi').asc(nulls_last=True))  # NULL'ları sona at
+            .only('short_title', 'slug')
+        )
+        # SEO Meta
+        meta = {
+            'title': "Bedtime Stories for Kids - KidsStoriesHub",
+            'description': "Discover magical bedtime stories for children...",
+            'keywords': "bedtime stories, kids stories, short stories"
+        }
+        context = {
+            'categories': categories,
+            **meta
+        }
+        cache.set(cache_key, context, 60 * 15)
+    return render(request, 'newthe/kategori.html', context)
+
+
+@cache_page(60 * 15)  # 15 dakika cache
+def YeniKategoriList(request,slug):
+    cache_key = 'categories_list_page_data_optimized'
+    context = cache.get(cache_key)
+
+    if not context:
+        story_categori = get_object_or_404(StoryCategory, slug=slug)
+        allstory = Story.objects.filter(aktif=True, status="Yayinda", Hikaye_Turu=story_categori).order_by(
+            '-guncelleme_tarihi')
+        # Tüm Kategoriler (Sıralı ve Sadeleştirilmiş)
+        categories = (
+            StoryCategory.objects
+            .order_by(F('-guncelleme_tarihi').asc(nulls_last=True))  # NULL'ları sona at
             .only('short_title', 'slug')
         )
         # SEO Meta
