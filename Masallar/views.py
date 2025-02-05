@@ -205,7 +205,7 @@ def CategoryListView(request, slug):
 
     context = {
         'category': category,
-        'stories': stories,
+        'stories': paginator,
         'page_obj': page_obj,
         'seo_title': f"{base_title} - Page {page_number}" if page_obj.number > 1 else base_title,
         'meta_description': meta_description,
