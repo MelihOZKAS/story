@@ -186,6 +186,8 @@ else:
     AWS_LOCATION = 'static'
     #AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_CUSTOM_DOMAIN = 'cdn.kidsstorieshub.com'  # Cloudflare üzerinden
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3-website-us-east-1.amazonaws.com'
+
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     STATIC_ROOT = STATIC_URL
 
