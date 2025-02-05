@@ -62,7 +62,8 @@
                         <article class="tf-card-article style-1">
                             <div class="card-media mb-20">
                                 <a href="blog-detail.html">
-                                    <img src="{{ story.resim.url }}" width="370" height="175" loading="lazy" alt="{{ story.title }} image">
+                                    <img src="{{ story.resim.url }}" width="370" height="175" loading="lazy"
+                                         alt="{{ story.title }} image">
                                 </a>
                             </div>
                             <div class="inner">
@@ -77,7 +78,8 @@
                                 <div class="card-bottom flex items-center justify-between">
                                     <div class="author flex items-center justify-between">
                                         <div class="avatar">
-                                            <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png" loading="lazy" height="38" width="38" alt="Avatar">
+                                            <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png"
+                                                 loading="lazy" height="38" width="38" alt="Avatar">
                                         </div>
                                         <div class="info">
                                             <h6>Tommy Tony</h6>
@@ -100,7 +102,8 @@
                         <ul>
                             {% for c in categories %}
                                 <li>
-                                    <div class="cate-item"><a href="{% url 'kategorislug' slug=c.slug %}">{{ c.short_title }}</a></div>
+                                    <div class="cate-item"><a
+                                            href="{% url 'kategorislug' slug=c.slug %}">{{ c.short_title }}</a></div>
                                     <div class="number">{{ c.story_count }}</div>
                                 </li>
 
@@ -108,6 +111,26 @@
 
 
                         </ul>
+
+                        <div class="row justify-content-between my-4">
+                            <div class="col-auto">
+                                {% if page_obj.has_previous %}
+                                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">
+                                        <i class="fas fa-arrow-left"></i> Previous
+                                    </a>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-auto">
+                                {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">
+                                        Next <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="widget widget-related-posts">
                         <h5 class="title-widget">Related posts</h5>
