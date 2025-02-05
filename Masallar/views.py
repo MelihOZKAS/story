@@ -181,7 +181,7 @@ def CategoryListView(request, slug):
 
     # Get category with optimized query
     category = get_object_or_404(
-        StoryCategory.objects.only('title', 'meta_title', 'meta_description'),
+        StoryCategory.objects.only('Title', 'Hikaye_meta_description'),
         slug=slug,
         aktif=True
     )
