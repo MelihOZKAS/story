@@ -200,8 +200,8 @@ def CategoryListView(request, slug):
         page_obj = paginator.page(1)
 
     # Dynamic SEO elements
-    base_title = f"{category.meta_title or category.title} - Kids Stories Hub"
-    meta_description = category.meta_description or "Best children's stories in {} category".format(category.title)
+    base_title = f"{category.Hikaye_meta_description or category.Title} - Kids Stories Hub"
+    meta_description = category.Hikaye_meta_description or "Best children's stories in {} category".format(category.Title)
 
     context = {
         'category': category,
