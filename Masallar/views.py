@@ -181,11 +181,18 @@ def CategoryListView(request, slug):
 
     # Get category with optimized query
     category = get_object_or_404(
+        StoryCategory.objects.only('Title', 'Hikaye_meta_description'),
+        slug=slug,
+        Aktif=True
+    )
+
+    categories = (
         StoryCategory.objects
         .annotate(
-            story_count=Count('story', filter=models.Q(story__aktif=True)))  # story, Story modelinizin related_name'i
-        .only('Title', 'Hikaye_meta_description')
-        .filter(slug=slug, Aktif=True)
+            story_count=Count('story', filter=models.Q(story__Aktif=True))
+        )
+        .order_by(F('sirasi').asc(nulls_last=True))
+        .only('short_title', 'slug')
     )
 
     # Pagination with efficient count
@@ -207,6 +214,7 @@ def CategoryListView(request, slug):
 
     context = {
         'category': category,
+        'categories': categories,
         'stories': page_obj,
         'page_obj': page_obj,
         'seo_title': f"{base_title} - Page {page_number}" if page_obj.number > 1 else base_title,

@@ -98,7 +98,7 @@
                     <div class="widget widget-categories">
                         <h5 class="title-widget">Categories</h5>
                         <ul>
-                            {% for c in category %}
+                            {% for c in categories %}
                                 <li>
                                     <div class="cate-item"><a href="{% url 'kategorislug' slug=c.slug %}">{{ c.Title }}</a></div>
                                     <div class="number">{{ c.story_count }}</div>
