@@ -185,7 +185,7 @@ def CategoryListView(request, slug):
         .annotate(
             story_count=Count('story', filter=models.Q(story__Aktif=True)))  # story, Story modelinizin related_name'i
         .only('Title', 'Hikaye_meta_description')
-        .filter(slug=slug, Aktif=True)
+        .filter(slug=slug, aktif=True)
     )
 
     # Pagination with efficient count
