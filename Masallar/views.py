@@ -189,7 +189,7 @@ def CategoryListView(request, slug):
     categories = (
         StoryCategory.objects
         .annotate(
-            story_count=Count('story', filter=models.Q(story__Aktif=True))
+            story_count=Count('story', filter=models.Q(story__aktif=True))
         )
         .order_by(F('sirasi').asc(nulls_last=True))
         .only('short_title', 'slug')
