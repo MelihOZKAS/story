@@ -167,10 +167,15 @@ if DEBUG:
 
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 else:
-    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
+    #AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    #AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+    #AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+    #AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
+
+    AWS_ACCESS_KEY_ID = env('cf_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = env('cf_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = env('cf_STORAGE_BUCKET_NAME')
+    AWS_S3_ENDPOINT_URL = env('R2_ENDPOINT_URL')
 
     DEFAULT_FILE_STORAGE = 'resume.custom_storages.MediaStorage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -184,8 +189,8 @@ else:
 
     STATICFILES_LOCATION = 'static'
     AWS_LOCATION = 'static'
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    #AWS_S3_CUSTOM_DOMAIN = 'cdn.kidsstorieshub.com'  # Cloudflare üzerinden
+    #AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_CUSTOM_DOMAIN = 'cdn.kidsstorieshub.com'  # Cloudflare üzerinden
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     STATIC_ROOT = STATIC_URL
 
