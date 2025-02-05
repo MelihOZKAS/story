@@ -72,8 +72,8 @@ class StoryCategory(models.Model):
 # Create your models here.
 class Story(models.Model):
     title = models.CharField(max_length=255, help_text=HELP_TEXTS["title"])
-    slug = models.SlugField(max_length=255, unique=True, blank=True,help_text=HELP_TEXTS["slug"])
-    h1 = models.CharField(max_length=255,blank=True, help_text=HELP_TEXTS["h1"])
+    slug = models.SlugField(max_length=255, unique=True, blank=True, help_text=HELP_TEXTS["slug"])
+    h1 = models.CharField(max_length=255, blank=True, help_text=HELP_TEXTS["h1"])
     Hikaye_Turu = models.ForeignKey(StoryCategory, null=True, on_delete=models.SET_NULL)
     icerik = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])
     icerik2 = RichTextField(null=True, blank=True, help_text=HELP_TEXTS["icerik"])

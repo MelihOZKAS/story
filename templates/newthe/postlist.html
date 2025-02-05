@@ -39,13 +39,13 @@
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="heading text-center">Blog list #2</h1>
+                    <h1 class="heading text-center">{{ category.H1 }}</h1>
                     <ul class="breadcrumbs flex justify-center">
                         <li class="icon-keyboard_arrow_right">
                             <a href="{% url 'yenihome' %}">Home</a>
                         </li>
                         <li>
-                            <a href="{% url 'yenihome' %}">Explore</a>
+                            <a href="{% url 'kategorislug' slug=category.slug %} ">{{ category.short_title }}</a>
                         </li>
                     </ul>
                 </div>
