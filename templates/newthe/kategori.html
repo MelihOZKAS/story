@@ -59,13 +59,13 @@
                     <div class="fl-blog fl-item2 col-lg-4 col-md-6">
                         <article class="tf-card-article">
                             <div class="card-media">
-                                <a href="blog-detail.html">
+                                <a href="{% url 'kategorislug' slug=category.slug %}">
                                     <img src="{% static 'images/bedtime-story/categories/'|add:category.slug|add:'.webp' %}"
                                          alt="{{ category.Title }}" loading="lazy" height="325" width="325" >
                                 </a>
                             </div>
                             <div class="card-title text-center">
-                                <h5><a href="nft-detail-2.html">{{ category.short_title }}</a></h5>
+                                <h5><a href="{% url 'kategorislug' slug=category.slug %}">{{ category.short_title }}</a></h5>
                             </div>
                             <div class="card-bottom flex items-center justify-between">
                                 <div class="author flex items-center justify-between">

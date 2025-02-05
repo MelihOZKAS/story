@@ -72,14 +72,14 @@
                     <div class="col-sm-6 col-md-6" data-animation="fadeInLeft" data-animation-delay="0">
                         <div class="job-listing-box" style="margin-bottom: 20px;">
                             <figure class="job-listing-img">
-                                <a href="{% url 'kategorislug' slug=Category.slug %}">
+                                <a href="{% url 'kategori_detay' kategori_slug=Category.slug %}">
                                     <img src="{% static 'images/bedtime-story/categories/'|add:Category.slug|add:'.webp' %}" loading="lazy" alt="{{ Category.short_title }}" width="255" height="255" >
 
                                 </a>
                             </figure>
                             <div class="job-listing-body">
                                 <div class="name">
-                                    <a href="{% url 'kategorislug' slug=Category.slug %}">
+                                    <a href="{% url 'kategori_detay' kategori_slug=Category.slug %}">
                                         {{ Category.short_title }}
                                     </a>
                                 </div>
