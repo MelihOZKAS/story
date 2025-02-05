@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, reverse
 from .models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.text import slugify
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.http import require_GET
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
@@ -16,6 +16,7 @@ from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, Http
     HttpResponseServerError
 import json
 from django.db.utils import IntegrityError
+
 
 
 
@@ -169,33 +170,52 @@ def YeniKategori(request):
     return render(request, 'newthe/kategori.html', context)
 
 
-@cache_page(60 * 15)  # 15 dakika cache
-def YeniKategoriList(request,slug):
-    cache_key = 'categories_list_page_data_optimized'
-    context = cache.get(cache_key)
+@cache_page(60 * 60 * 2, key_prefix='category_cache')  # 2 hours cache
+def CategoryListView(request, slug):
+    # Cache key with page-aware version
+    page_number = request.GET.get('page', 1)
+    cache_key = f'category_{slug}_v1_{page_number}'
 
-    if not context:
-        story_categori = get_object_or_404(StoryCategory, slug=slug)
-        allstory = Story.objects.filter(aktif=True, status="Yayinda", Hikaye_Turu=story_categori).order_by(
-            '-guncelleme_tarihi')
-        # Tüm Kategoriler (Sıralı ve Sadeleştirilmiş)
-        categories = (
-            StoryCategory.objects
-            .order_by(F('-guncelleme_tarihi').asc(nulls_last=True))  # NULL'ları sona at
-            .only('short_title', 'slug')
-        )
-        # SEO Meta
-        meta = {
-            'title': "Bedtime Stories for Kids - KidsStoriesHub",
-            'description': "Discover magical bedtime stories for children...",
-            'keywords': "bedtime stories, kids stories, short stories"
-        }
-        context = {
-            'categories': categories,
-            **meta
-        }
-        cache.set(cache_key, context, 60 * 15)
-    return render(request, 'newthe/kategori.html', context)
+    if cached := cache.get(cache_key):
+        return cached
+
+    # Get category with optimized query
+    category = get_object_or_404(
+        StoryCategory.objects.only('title', 'meta_title', 'meta_description'),
+        slug=slug,
+        is_active=True
+    )
+
+    # Pagination with efficient count
+    stories = Story.objects.filter(
+        category=category,
+        is_active=True,
+        status="PUBLISHED"
+    ).only('slug', 'title', 'featured_image').order_by('-published_date')
+
+    paginator = Paginator(stories, 10)  # 10 items per page
+    try:
+        page_obj = paginator.page(page_number)
+    except (EmptyPage, PageNotAnInteger):
+        page_obj = paginator.page(1)
+
+    # Dynamic SEO elements
+    base_title = f"{category.meta_title or category.title} - Kids Stories Hub"
+    meta_description = category.meta_description or "Best children's stories in {} category".format(category.title)
+
+    context = {
+        'category': category,
+        'stories': stories,
+        'page_obj': page_obj,
+        'seo_title': f"{base_title} - Page {page_number}" if page_obj.number > 1 else base_title,
+        'meta_description': meta_description,
+        'canonical_url': f"https://www.kidsstorieshub.com/category/{slug}/"
+    }
+
+    response = render(request, 'newthe/postlist.html', context)
+    cache.set(cache_key, response, 60 * 60 * 2)
+
+    return response
 
 def kategori(request):
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
