@@ -77,7 +77,7 @@
                                 <div class="card-bottom flex items-center justify-between">
                                     <div class="author flex items-center justify-between">
                                         <div class="avatar">
-                                            <img src="assets/images/avatar/avatar-box-01.jpg" alt="Avatar">
+                                            <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png" loading="lazy" height="38" width="38" alt="Avatar">
                                         </div>
                                         <div class="info">
                                             <h6>Tommy Tony</h6>
@@ -100,7 +100,7 @@
                         <ul>
                             {% for c in categories %}
                                 <li>
-                                    <div class="cate-item"><a href="{% url 'kategorislug' slug=c.slug %}">{{ c.Title }}</a></div>
+                                    <div class="cate-item"><a href="{% url 'kategorislug' slug=c.slug %}">{{ c.short_title }}</a></div>
                                     <div class="number">{{ c.story_count }}</div>
                                 </li>
 
