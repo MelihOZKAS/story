@@ -183,7 +183,7 @@ def CategoryListView(request, slug):
     category = get_object_or_404(
         StoryCategory.objects.only('Title', 'Hikaye_meta_description'),
         slug=slug,
-        aktif=True
+        Aktif=True
     )
 
     # Pagination with efficient count
