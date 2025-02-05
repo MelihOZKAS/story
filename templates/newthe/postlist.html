@@ -92,6 +92,24 @@
 
                     {% endfor %}
 
+                    <div class="row justify-content-between my-4">
+                        <div class="col-auto">
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </a>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-auto">
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">
+                                    Next <i class="fas fa-arrow-right"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
 
                     <!-- Post Finnis -->
 
@@ -111,24 +129,6 @@
 
 
                         </ul>
-
-                        <div class="row justify-content-between my-4">
-                            <div class="col-auto">
-                                {% if page_obj.has_previous %}
-                                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">
-                                        <i class="fas fa-arrow-left"></i> Previous
-                                    </a>
-                                {% endif %}
-                            </div>
-
-                            <div class="col-auto">
-                                {% if page_obj.has_next %}
-                                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">
-                                        Next <i class="fas fa-arrow-right"></i>
-                                    </a>
-                                {% endif %}
-                            </div>
-                        </div>
 
 
                     </div>
