@@ -98,22 +98,15 @@
                     <div class="widget widget-categories">
                         <h5 class="title-widget">Categories</h5>
                         <ul>
-                            <li>
-                                <div class="cate-item"><a href="#">NFTs</a></div>
-                                <div class="number">(1.483)</div>
-                            </li>
-                            <li>
-                                <div class="cate-item"><a href="#">Digital Art</a></div>
-                                <div class="number">(97)</div>
-                            </li>
-                            <li>
-                                <div class="cate-item"><a href="#">Crypto</a></div>
-                                <div class="number">(45)</div>
-                            </li>
-                            <li>
-                                <div class="cate-item"><a href="#">Technology</a></div>
-                                <div class="number">(728)</div>
-                            </li>
+                            {% for c in category %}
+                                <li>
+                                    <div class="cate-item"><a href="{% url 'kategorislug' slug=c.slug %}">{{ c.Title }}</a></div>
+                                    <div class="number">{{ c.story_count }}</div>
+                                </li>
+
+                            {% endfor %}
+
+
                         </ul>
                     </div>
                     <div class="widget widget-related-posts">

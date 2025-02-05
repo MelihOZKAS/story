@@ -181,9 +181,11 @@ def CategoryListView(request, slug):
 
     # Get category with optimized query
     category = get_object_or_404(
-        StoryCategory.objects.only('Title', 'Hikaye_meta_description'),
-        slug=slug,
-        Aktif=True
+        StoryCategory.objects
+        .annotate(
+            story_count=Count('story', filter=models.Q(story__Aktif=True)))  # story, Story modelinizin related_name'i
+        .only('Title', 'Hikaye_meta_description')
+        .filter(slug=slug, Aktif=True)
     )
 
     # Pagination with efficient count
