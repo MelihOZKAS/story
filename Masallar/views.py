@@ -183,15 +183,15 @@ def CategoryListView(request, slug):
     category = get_object_or_404(
         StoryCategory.objects.only('title', 'meta_title', 'meta_description'),
         slug=slug,
-        is_active=True
+        aktif=True
     )
 
     # Pagination with efficient count
     stories = Story.objects.filter(
-        category=category,
-        is_active=True,
-        status="PUBLISHED"
-    ).only('slug', 'title', 'featured_image').order_by('-published_date')
+        Hikaye_Turu=category,
+        aktif=True,
+        status="Yayinda"
+    ).only('slug', 'title').order_by('-guncelleme_tarihi')
 
     paginator = Paginator(stories, 10)  # 10 items per page
     try:
