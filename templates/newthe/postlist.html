@@ -92,14 +92,14 @@
 
                     {% endfor %}
 
-<div class="row">
+<div class="row my-4">
     <div class="col-6 ps-0">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn-submit w-100">
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn-submit w-100 text-center py-3">
                 <i class="icon-keyboard_arrow_left"></i> Previous
             </a>
         {% else %}
-            <button class="btn-submit w-100 disabled" disabled>
+            <button class="btn-submit w-100 text-center py-3" disabled>
                 <i class="icon-keyboard_arrow_left"></i> Previous
             </button>
         {% endif %}
@@ -107,11 +107,11 @@
 
     <div class="col-6 pe-0">
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="btn-submit w-100">
+            <a href="?page={{ page_obj.next_page_number }}" class="btn-submit w-100 text-center py-3">
                 Next <i class="icon-keyboard_arrow_right"></i>
             </a>
         {% else %}
-            <button class="btn-submit w-100 disabled" disabled>
+            <button class="btn-submit w-100 text-center py-3" disabled>
                 Next <i class="icon-keyboard_arrow_right"></i>
             </button>
         {% endif %}
