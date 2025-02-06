@@ -7,7 +7,7 @@
           content="🌟 #1 Kids Story App! 1000+ magical tales 🧚♂️, educational games 🧩 & sleep-friendly audio 📚. FREE download for iOS/Android. Perfect for ages 3-9!">
     <meta name="keywords"
           content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
-    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <link rel="canonical" href="{{ canonical_url }}">
     <meta name="author" content="Kids Story Hub">
 {% endblock meta %}
 
@@ -92,31 +92,31 @@
 
                     {% endfor %}
 
-<ul class="pagination d-flex justify-content-between">
-    <li class="page-item flex-fill text-center">
+<div class="row">
+    <div class="col-6 ps-0">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="page-link btn-submit">
-                <i class="fas fa-long-arrow-alt-left me-2 rtl-flip"></i>Previous
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn-submit w-100">
+                <i class="icon-keyboard_arrow_left"></i> Previous
             </a>
         {% else %}
-            <span class="page-link btn-submit disabled">
-                <i class="fas fa-long-arrow-alt-left me-2 rtl-flip"></i>Previous
-            </span>
+            <button class="btn-submit w-100 disabled" disabled>
+                <i class="icon-keyboard_arrow_left"></i> Previous
+            </button>
         {% endif %}
-    </li>
+    </div>
 
-    <li class="page-item flex-fill text-center">
+    <div class="col-6 pe-0">
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="page-link btn-submit">
-                Next<i class="fas fa-long-arrow-alt-right ms-2 rtl-flip"></i>
+            <a href="?page={{ page_obj.next_page_number }}" class="btn-submit w-100">
+                Next <i class="icon-keyboard_arrow_right"></i>
             </a>
         {% else %}
-            <span class="page-link btn-submit disabled">
-                Next<i class="fas fa-long-arrow-alt-right ms-2 rtl-flip"></i>
-            </span>
+            <button class="btn-submit w-100 disabled" disabled>
+                Next <i class="icon-keyboard_arrow_right"></i>
+            </button>
         {% endif %}
-    </li>
-</ul>
+    </div>
+</div>
 
 
                     <!-- Post Finnis -->
