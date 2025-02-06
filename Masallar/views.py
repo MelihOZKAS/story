@@ -227,6 +227,38 @@ def CategoryListView(request, slug):
 
     return response
 
+
+def Postagit(request, slug):
+    cache_key = f'story_detail_context_{slug}'
+    context = cache.get(cache_key)
+    if not context:
+        story = get_object_or_404(Story, slug=slug, aktif=True, status='Yayinda')
+
+        categories = (
+            StoryCategory.objects
+            .annotate(
+                story_count=Count('story', filter=models.Q(story__aktif=True))
+            )
+            .order_by(F('sirasi').asc(nulls_last=True))
+            .only('short_title', 'slug')
+        )
+
+        # Pagination with efficient count
+        extra = Story.objects.filter(
+            aktif=True,
+            status="Yayinda"
+        ).only('slug', 'title').order_by('-guncelleme_tarihi')[:6]
+
+        context = {
+            'story': story,
+            'extra': extra,
+            'categories': categories
+        }
+        cache.set(cache_key, context, 60 * 60 * 2)  # 2 saatlik cache
+
+    return render(request, 'newthe/yenienderun.html', context)
+
+
 def kategori(request):
     Categories_ALL = StoryCategory.objects.filter(story__aktif=True, story__status="Yayinda").annotate(
         story_count=Count('story'))

@@ -1,0 +1,216 @@
+{% extends 'newbase.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Story Unfolds: 1000+ Interactive Bedtime Stories & Learning Games (Free App)</title>
+    <meta name="description"
+          content="🌟 #1 Kids Story App! 1000+ magical tales 🧚♂️, educational games 🧩 & sleep-friendly audio 📚. FREE download for iOS/Android. Perfect for ages 3-9!">
+    <meta name="keywords"
+          content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="author" content="Kids Story Hub">
+{% endblock meta %}
+
+{% block OGF %}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="Story Unfolds: 1000+ Interactive Kids Stories & Games">
+    <meta property="og:description"
+          content="🚀 Free Educational App! 1000+ bedtime stories 📖, voice narration 🎧, parent-approved games 🧠. Download Now 👇">
+    <meta property="og:image"
+          content="https://magicstory.s3.amazonaws.com/static/yeni/assets/images/og-kids-stories.jpg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="400">
+    <meta property="og:locale" content="en_US">
+{% endblock %}
+
+
+{% block tw %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@KidsStoriesHub">
+    <meta name="twitter:creator" content="@StoryUnfoldsApp">
+    <meta name="twitter:image:alt" content="Story Unfolds App Interface">
+{% endblock tw %}
+
+
+
+<!-- Block Begin -->
+{% block main %}
+
+    <div class="tf-section tf-blog-detail pb-48">
+        <div class="themesflat-container">
+            <div class="row">
+                <div class="wrapper col-md-8">
+                    <div class="inner-content mr-20">
+                        <h1 class="title-post">{{ post.h1 }}</h1>
+                        <div class="meta-post flex justify-between mt-10 items-center">
+                            <div class="author flex items-center justify-between">
+                                <div class="avatar">
+                                    <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png" loading="lazy" width="38" height="38" alt="avatar">
+                                </div>
+                                <div class="info">
+                                    <h6>Tommy Tony</h6>
+                                </div>
+                            </div>
+                            <div class="meta-info flex">
+                                <div class="item art active">{{ post.Hikaye_Turu.short_title }}</div>
+                                <div class="item date">{{ post.olusturma_tarihi|date:"d F Y" }}</div>
+
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="title">If you are an investor, trying to pick which blockchain game to pour your
+                            money into, how do you tease apart the gold and the mud?
+                        </div>
+                        <div class="image">
+                            <img src="assets/images/blog/blog-detail-01.png" alt="Image">
+                        </div>
+                        <div class="inner-post">
+                            <h3 class="heading">The answer has changed for Yan Liberman over the past few years.</h3>
+                            <p>Yan is a founder at Delphi Digital, an organisation which started out researching crypto,
+                                moved into consulting (actually building stuff) and then moved into full-on investment.
+                                Delphi have financed scores of projects, including Polemos. Eighty-five people say they
+                                work for Delphi on LinkedIn, double what is listed on the website. That speaks to
+                                explosive growth.
+                            </p>
+                            <blockquote>
+                                <span class="icon-quote"></span>
+                                <p>
+                                    Hal: So Yan, you’ve been through some ups and downs because you were in crypto in
+                                    2017. So you experienced the fluctuations of the market a few times since then. I
+                                    think two big downturns, and we’re still in the second of those. Is that exhausting?
+                                </p>
+                            </blockquote>
+                            <div class="image-box">
+                                <img src="assets/images/blog/blog-detail-02.png" alt="Image">
+                            </div>
+                            <p>Yan: I like to invest and something that helps me excel is just having a very large
+                                tolerance for risk. And so the swings up are euphoric and the swings down can be tough.
+                                I think what ends up happening is you just, you’re dead inside from the volatility.</p>
+                        </div>
+                        <div class="inner-post style-1">
+                            <h3 class="heading ">Countdown to Zero</h3>
+                            <p>At a preview of the device days before its launch, Meta gave reporters a glimpse of the
+                                type of user it had in mind by showcasing apps like Tribe XR, a virtual training
+                                environment for DJs learning how to use complex equipment.
+                            </p>
+                            <div class="image-box">
+                                <div class="w-full">
+                                    <img src="assets/images/blog/blog-detail-03.png" alt="Image">
+                                </div>
+                                <div class="w-full">
+                                    <img src="assets/images/blog/blog-detail-04.png" alt="Image">
+                                </div>
+                            </div>
+                            <p>The latest demo version of Illuvium’s city builder Zero was due out in February. It’s
+                                here now, released yesterday, so I can stop whining.</p>
+                            <p>Our experts Caveman and Moggy have been playing and passing on their wisdom. Right now,
+                                there’s only a small group of people who could benefit from knowing exactly how to
+                                maximise resource production by the placement of footpaths, but we’ve got them
+                                covered</p>
+                        </div>
+                        <div class="divider style-1"></div>
+                        <div class="bottom flex justify-between items-center">
+                            <div class="widget-tag flex items-center">
+                                <h3 class="title-widget">Tags:</h3>
+                                <ul class="flex flex-wrap gap4 items-center">
+                                    <li><a href="#">nfts</a></li>
+                                    <li><a href="#">crypto</a></li>
+                                    <li><a href="#">cyfonii</a></li>
+                                    <li><a href="#">collection</a></li>
+                                </ul>
+                            </div>
+                            <div class="widget-social">
+                                <ul class="flex">
+                                    <li><a href="#" class="icon-facebook"></a></li>
+                                    <li><a href="#" class="icon-twitter"></a></li>
+                                    <li><a href="#" class="icon-linkedin2"></a></li>
+                                    <li><a href="#" class="icon-instagram"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="related-post">
+                            <div class="prev">
+                                <a href="#"><i class="icon-keyboard_arrow_left"></i>Previous post</a>
+                                <div class="action items-center left flex mt-16">
+                                    <img src="assets/images/blog/related-01.jpg" alt="">
+                                    <div class="content">
+                                        <h5>Unreal Engine for Fortnite is a big deal</h5>
+                                        <div class="meta-info flex">
+                                            <div class="item date">Mon, 08 May</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="next text-end">
+                                <a href="#">Next post<i class="icon-keyboard_arrow_right"></i></a>
+                                <div class="action items-center right flex mt-16">
+                                    <div class="content">
+                                        <h5>Regulators step in, mayhem ensues</h5>
+                                        <div class="meta-info flex justify-end">
+                                            <div class="item date">Mon, 08 May</div>
+                                        </div>
+                                    </div>
+                                    <img src="assets/images/blog/related-02.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widget-reply">
+                            <h3 class="heading">
+                                Leave A Reply
+                            </h3>
+                            <p>Your email address will not be published. Required fields are marked *</p>
+                            <form id="commentform" class="comment-form">
+                                <div class="flex justify-between">
+                                    <fieldset class="name">
+                                        <input type="text" id="name" placeholder="Your name*" class="style-1"
+                                               name="name" tabindex="2" value="" aria-required="true" required>
+                                    </fieldset>
+                                    <fieldset class="email">
+                                        <input type="email" id="email" placeholder="Email address*" class="style-1"
+                                               name="email" tabindex="2" value="" aria-required="true" required>
+                                    </fieldset>
+                                </div>
+                                <fieldset class="message">
+                                    <textarea id="message" name="message" rows="4" placeholder="Your comment*"
+                                              class="style-1 m-0" tabindex="4" aria-required="true" required></textarea>
+                                </fieldset>
+                                <div class="btn-submit text-center">
+                                    <button class="" type="submit">
+                                        Submit comment
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- right -->
+                {% include 'newparse/sag.html' %}
+                <!-- right -->
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock main %}
+
+<!-- Block Finnish -->
+
+<!-- Javascript -->
+{% block js %}
+    <script src="{% static 'new/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/SplitText.js' %}"></script>
+    <script src="{% static 'new/assets/js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/gsap.js' %}"></script>
+    <script src="{% static 'new/assets/js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'new/assets/js/gsap-animation.js' %}"></script>
+    <script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
+    <script src="{% static 'new/assets/js/main.js' %}"></script>
+{% endblock js %}

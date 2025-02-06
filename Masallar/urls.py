@@ -29,6 +29,7 @@ urlpatterns = [
 
     path('categories/', views.YeniKategori, name='kategori'),
     path('categories/<str:slug>/', views.CategoryListView, name='kategorislug'),
+    path('sil/<str:slug>/', views.Postagit, name='sil'),
     path('oto-add-categories/', views.oto_hikayekategoriekle),
     path('kids-story-categories-detail/<str:kategori_slug>/', views.kategori_icerik_list, name='kategori_detay'),
     # Kategorideki Hikayeler

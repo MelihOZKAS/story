@@ -1,0 +1,49 @@
+{% load static %}
+
+<div class="side-bar col-md-4 col-12">
+    <div class="widget widget-categories">
+        <h5 class="title-widget">Categories</h5>
+        <ul>
+            {% for c in categories %}
+                <li>
+                    <div class="cate-item"><a
+                            href="{% url 'kategorislug' slug=c.slug %}">{{ c.short_title }}</a></div>
+                    <div class="number">{{ c.story_count }}</div>
+                </li>
+
+            {% endfor %}
+
+
+        </ul>
+    </div>
+    <div class="widget widget-related-posts">
+        <h5 class="title-widget">Related posts</h5>
+        <div class="related-posts-item">
+            <div class="card-media">
+                <img src="assets/images/blog/sidebar-02.jpg" alt="">
+            </div>
+            <div class="card-content">
+                <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
+                <div class="item date">Mon, 08 May</div>
+            </div>
+        </div>
+        <div class="related-posts-item">
+            <div class="card-media">
+                <img src="assets/images/blog/sidebar-03.jpg" alt="">
+            </div>
+            <div class="card-content">
+                <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
+                <div class="item date">Mon, 08 May</div>
+            </div>
+        </div>
+        <div class="related-posts-item">
+            <div class="card-media">
+                <img src="assets/images/blog/sidebar-04.jpg" alt="">
+            </div>
+            <div class="card-content">
+                <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
+                <div class="item date">Mon, 08 May</div>
+            </div>
+        </div>
+    </div>
+</div>

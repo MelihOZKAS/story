@@ -63,18 +63,18 @@
                     {% for story in stories %}
                         <article class="tf-card-article style-1">
                             <div class="card-media mb-20">
-                                <a href="blog-detail.html">
+                                <a href="{% url 'sil' slug=story.slug %}">
                                     <img src="{{ story.resim.url }}" width="370" height="175" loading="lazy"
                                          alt="{{ story.title }} image">
                                 </a>
                             </div>
                             <div class="inner">
                                 <div class="meta-info flex">
-                                    <div class="item art active">Digital Art</div>
+                                    <div class="item art active">{{ category.short_title }}</div>
                                     <div class="item date">{{ story.olusturma_tarihi|date:"d F Y" }}</div>
                                 </div>
                                 <div class="card-title">
-                                    <h5><a href="nft-detail-2.html">{{ story.h1 }}</a>
+                                    <h5><a href="{% url 'sil' slug=story.slug %}">{{ story.h1 }}</a>
                                     </h5>
                                 </div>
                                 <div class="card-bottom flex items-center justify-between">
@@ -87,93 +87,49 @@
                                             <h6>Tommy Tony</h6>
                                         </div>
                                     </div>
-                                    <a class="link" href="#"><i class="icon-arrow-up-right2"></i></a>
+                                    <a class="link" href="{% url 'sil' slug=story.slug %}"><i class="icon-arrow-up-right2"></i></a>
                                 </div>
                             </div>
                         </article>
 
                     {% endfor %}
 
-<div class="row my-4">
-    <div class="col-6 ps-0">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="tf-button style-1 w-100 text-center py-3">
-                <i class="icon-keyboard_arrow_left"></i> Previous
-            </a>
-        {% else %}
-            <button class="tf-button style-1 w-100 text-center py-3" style="color: black" disabled>
-                <i class="icon-keyboard_arrow_left"></i> Previous
-            </button>
-        {% endif %}
-    </div>
+                    <div class="row my-4">
+                        <div class="col-6 ps-0">
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}"
+                                   class="tf-button style-1 w-100 text-center py-3">
+                                    <i class="icon-keyboard_arrow_left"></i> Previous
+                                </a>
+                            {% else %}
+                                <button class="tf-button style-1 w-100 text-center py-3" style="color: black" disabled>
+                                    <i class="icon-keyboard_arrow_left"></i> Previous
+                                </button>
+                            {% endif %}
+                        </div>
 
-    <div class="col-6 pe-0">
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="tf-button style-1 w-100 text-center py-3">
-                Next <i class="icon-keyboard_arrow_right"></i>
-            </a>
-        {% else %}
-            <button class="tf-button style-1 w-100 text-center py-3" style="color: black" disabled>
-                Next <i class="icon-keyboard_arrow_right"></i>
-            </button>
-        {% endif %}
-    </div>
-</div>
-
+                        <div class="col-6 pe-0">
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}"
+                                   class="tf-button style-1 w-100 text-center py-3">
+                                    Next <i class="icon-keyboard_arrow_right"></i>
+                                </a>
+                            {% else %}
+                                <button class="tf-button style-1 w-100 text-center py-3" style="color: black" disabled>
+                                    Next <i class="icon-keyboard_arrow_right"></i>
+                                </button>
+                            {% endif %}
+                        </div>
+                    </div>
 
 
                     <!-- Post Finnis -->
 
                 </div>
-                <div class="side-bar col-md-4 col-12">
-                    <div class="widget widget-categories">
-                        <h5 class="title-widget">Categories</h5>
-                        <ul>
-                            {% for c in categories %}
-                                <li>
-                                    <div class="cate-item"><a
-                                            href="{% url 'kategorislug' slug=c.slug %}">{{ c.short_title }}</a></div>
-                                    <div class="number">{{ c.story_count }}</div>
-                                </li>
 
-                            {% endfor %}
-
-
-                        </ul>
-
-
-                    </div>
-                    <div class="widget widget-related-posts">
-                        <h5 class="title-widget">Related posts</h5>
-                        <div class="related-posts-item">
-                            <div class="card-media">
-                                <img src="assets/images/blog/sidebar-02.jpg" alt="">
-                            </div>
-                            <div class="card-content">
-                                <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
-                                <div class="item date">Mon, 08 May</div>
-                            </div>
-                        </div>
-                        <div class="related-posts-item">
-                            <div class="card-media">
-                                <img src="assets/images/blog/sidebar-03.jpg" alt="">
-                            </div>
-                            <div class="card-content">
-                                <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
-                                <div class="item date">Mon, 08 May</div>
-                            </div>
-                        </div>
-                        <div class="related-posts-item">
-                            <div class="card-media">
-                                <img src="assets/images/blog/sidebar-04.jpg" alt="">
-                            </div>
-                            <div class="card-content">
-                                <h5><a href="nft-detail-2.html">Explore Arc8: Web3 Concepts Meet Gaming</a></h5>
-                                <div class="item date">Mon, 08 May</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- right -->
+                {% include 'newparse/sag.html' %}
+                <!-- right -->
             </div>
         </div>
     </div>
