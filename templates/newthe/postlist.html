@@ -32,17 +32,7 @@
     <meta name="twitter:image:alt" content="Story Unfolds App Interface">
 {% endblock tw %}
 
-<style>
-a.tf-button {
-    display: inline-block;
-    text-decoration: none;
-    color: inherit; /* Buton rengini koru */
-    background: var(--btn-bg-color); /* Buton arkaplan rengi */
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-}
-</style>
+
 
 <!-- Block Begin -->
 {% block main %}
@@ -111,7 +101,7 @@ a.tf-button {
                 <i class="icon-keyboard_arrow_left"></i> Previous
             </a>
         {% else %}
-            <button class="tf-button style-1 w-100 text-center py-3" disabled>
+            <button class="tf-button style-1 w-100 text-center py-3" style="color: black" disabled>
                 <i class="icon-keyboard_arrow_left"></i> Previous
             </button>
         {% endif %}
@@ -123,7 +113,7 @@ a.tf-button {
                 Next <i class="icon-keyboard_arrow_right"></i>
             </a>
         {% else %}
-            <button class="tf-button style-1 w-100 text-center py-3" disabled>
+            <button class="tf-button style-1 w-100 text-center py-3" style="color: black" disabled>
                 Next <i class="icon-keyboard_arrow_right"></i>
             </button>
         {% endif %}
