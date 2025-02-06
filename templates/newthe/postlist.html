@@ -92,23 +92,31 @@
 
                     {% endfor %}
 
-                    <div class="row justify-content-between my-4">
-                        <div class="col-auto">
-                            {% if page_obj.has_previous %}
-                                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary">
-                                    <i class="fas fa-arrow-left"></i> Previous
-                                </a>
-                            {% endif %}
-                        </div>
+<ul class="pagination d-flex justify-content-between">
+    <li class="page-item flex-fill text-center">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-link btn-submit">
+                <i class="fas fa-long-arrow-alt-left me-2 rtl-flip"></i>Previous
+            </a>
+        {% else %}
+            <span class="page-link btn-submit disabled">
+                <i class="fas fa-long-arrow-alt-left me-2 rtl-flip"></i>Previous
+            </span>
+        {% endif %}
+    </li>
 
-                        <div class="col-auto">
-                            {% if page_obj.has_next %}
-                                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">
-                                    Next <i class="fas fa-arrow-right"></i>
-                                </a>
-                            {% endif %}
-                        </div>
-                    </div>
+    <li class="page-item flex-fill text-center">
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link btn-submit">
+                Next<i class="fas fa-long-arrow-alt-right ms-2 rtl-flip"></i>
+            </a>
+        {% else %}
+            <span class="page-link btn-submit disabled">
+                Next<i class="fas fa-long-arrow-alt-right ms-2 rtl-flip"></i>
+            </span>
+        {% endif %}
+    </li>
+</ul>
 
 
                     <!-- Post Finnis -->
