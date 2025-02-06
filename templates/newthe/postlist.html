@@ -32,6 +32,12 @@
     <meta name="twitter:image:alt" content="Story Unfolds App Interface">
 {% endblock tw %}
 
+<style>
+    .btn-submit[href] {
+    display: block;
+    text-decoration: none;
+}
+</style>
 <!-- Block Begin -->
 {% block main %}
 
@@ -95,7 +101,7 @@
 <div class="row my-4">
     <div class="col-6 ps-0">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn-submit w-100 text-center py-3">
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn-submit w-100 text-center py-3" style="display: block; text-decoration: none;">
                 <i class="icon-keyboard_arrow_left"></i> Previous
             </a>
         {% else %}
@@ -107,7 +113,7 @@
 
     <div class="col-6 pe-0">
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="btn-submit w-100 text-center py-3">
+            <a href="?page={{ page_obj.next_page_number }}" class="btn-submit w-100 text-center py-3" style="display: block; text-decoration: none;">
                 Next <i class="icon-keyboard_arrow_right"></i>
             </a>
         {% else %}
