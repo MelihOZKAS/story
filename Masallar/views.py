@@ -200,7 +200,7 @@ def CategoryListView(request, slug):
         Hikaye_Turu=category,
         aktif=True,
         status="Yayinda"
-    ).only('slug', 'title').order_by('guncelleme_tarihi')
+    ).only('slug', 'title').order_by('-guncelleme_tarihi')
 
     paginator = Paginator(stories, 10)  # 10 items per page
     try:
