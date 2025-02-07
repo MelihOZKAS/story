@@ -250,7 +250,7 @@ def Postagit(request, slug):
         ).only('slug', 'title').order_by('-guncelleme_tarihi')[:6]
 
         context = {
-            'story': story,
+            'post': story,
             'extra': extra,
             'categories': categories
         }
