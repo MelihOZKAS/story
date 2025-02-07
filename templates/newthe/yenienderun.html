@@ -46,7 +46,8 @@
                         <div class="meta-post flex justify-between mt-10 items-center">
                             <div class="author flex items-center justify-between">
                                 <div class="avatar">
-                                    <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png" loading="lazy" width="38" height="38" alt="avatar">
+                                    <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png"
+                                         loading="lazy" width="38" height="38" alt="avatar">
                                 </div>
                                 <div class="info">
                                     <h6>Tommy Tony</h6>
@@ -59,68 +60,152 @@
                             </div>
                         </div>
                         <div class="divider"></div>
-                        <div class="title">If you are an investor, trying to pick which blockchain game to pour your
-                            money into, how do you tease apart the gold and the mud?
-                        </div>
-                        <div class="image">
-                            <img src="assets/images/blog/blog-detail-01.png" alt="Image">
-                        </div>
-                        <div class="inner-post">
-                            <h3 class="heading">The answer has changed for Yan Liberman over the past few years.</h3>
-                            <p>Yan is a founder at Delphi Digital, an organisation which started out researching crypto,
-                                moved into consulting (actually building stuff) and then moved into full-on investment.
-                                Delphi have financed scores of projects, including Polemos. Eighty-five people say they
-                                work for Delphi on LinkedIn, double what is listed on the website. That speaks to
-                                explosive growth.
-                            </p>
-                            <blockquote>
-                                <span class="icon-quote"></span>
-                                <p>
-                                    Hal: So Yan, you’ve been through some ups and downs because you were in crypto in
-                                    2017. So you experienced the fluctuations of the market a few times since then. I
-                                    think two big downturns, and we’re still in the second of those. Is that exhausting?
-                                </p>
-                            </blockquote>
-                            <div class="image-box">
-                                <img src="assets/images/blog/blog-detail-02.png" alt="Image">
-                            </div>
-                            <p>Yan: I like to invest and something that helps me excel is just having a very large
-                                tolerance for risk. And so the swings up are euphoric and the swings down can be tough.
-                                I think what ends up happening is you just, you’re dead inside from the volatility.</p>
-                        </div>
-                        <div class="inner-post style-1">
-                            <h3 class="heading ">Countdown to Zero</h3>
-                            <p>At a preview of the device days before its launch, Meta gave reporters a glimpse of the
-                                type of user it had in mind by showcasing apps like Tribe XR, a virtual training
-                                environment for DJs learning how to use complex equipment.
-                            </p>
-                            <div class="image-box">
-                                <div class="w-full">
-                                    <img src="assets/images/blog/blog-detail-03.png" alt="Image">
-                                </div>
-                                <div class="w-full">
-                                    <img src="assets/images/blog/blog-detail-04.png" alt="Image">
-                                </div>
-                            </div>
-                            <p>The latest demo version of Illuvium’s city builder Zero was due out in February. It’s
-                                here now, released yesterday, so I can stop whining.</p>
-                            <p>Our experts Caveman and Moggy have been playing and passing on their wisdom. Right now,
-                                there’s only a small group of people who could benefit from knowing exactly how to
-                                maximise resource production by the placement of footpaths, but we’ve got them
-                                covered</p>
-                        </div>
+
+                        <!-- Post Begin -->
+
+                        {{ post.icerik|safe }}
+
+
+                        {% if post.resim2 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim2.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 2" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik2 %}
+                            {% include 'parcali/yatayreklam.html' %}
+
+                            {{ post.icerik2|safe }}
+
+                        {% endif %}
+
+
+                        {% if post.resim3 %}
+                            <figure class="alignnone entry-thumb mt-4">
+                                    <span><img src="{{ post.resim3.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 3" width="858" height="400"> </span>
+                            </figure>
+                        {% endif %}
+
+                        {% if post.icerik3 %}
+                            {% include 'parcali/yatayreklam.html' %}
+                            {{ post.icerik3|safe }}
+                        {% endif %}
+
+
+                        {% if post.resim4 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim4.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 4" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik4 %}
+                            <div class="mt-4"> {{ post.icerik4|safe }}</div>
+                        {% endif %}
+
+                        {% if post.resim5 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim5.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 5" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik5 %}
+                            <div class="mt-4"> {{ post.icerik5|safe }}</div>
+                        {% endif %}
+
+                        {% if post.resim6 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim6.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 6" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik6 %}
+                            <div class="mt-4"> {{ post.icerik6|safe }}</div>
+                        {% endif %}
+
+
+
+                        {% if post.resim7 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim7.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 7" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik7 %}
+                            <div class="mt-4"> {{ post.icerik7|safe }}</div>
+                        {% endif %}
+
+                        {% if post.resim8 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim8.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 8" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik8 %}
+                            <div class="mt-4"> {{ post.icerik8|safe }}</div>
+                        {% endif %}
+
+
+                        {% if post.resim9 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim9.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 9" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik9 %}
+                            <div class="mt-4"> {{ post.icerik9|safe }}</div>
+                        {% endif %}
+
+                        {% if post.resim10 %}
+                            <br>
+                            <figure class="alignnone entry-thumb">
+                                    <span><img src="{{ post.resim10.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 10" width="858" height="400"> </span>
+                            </figure>
+                            <br>
+                        {% endif %}
+
+                        {% if post.icerik10 %}
+                            <div class="mt-4"> {{ post.icerik10|safe }}</div>
+                        {% endif %}
+
+                        <!-- Post Finnish -->
+
                         <div class="divider style-1"></div>
                         <div class="bottom flex justify-between items-center">
                             <div class="widget-tag flex items-center">
-                                <h3 class="title-widget">Tags:</h3>
-                                <!-- sil
+                                <h3 class="title-widget">Share:</h3>
+
                                 <ul class="flex flex-wrap gap4 items-center">
-                                    <li><a href="#">nfts</a></li>
-                                    <li><a href="#">crypto</a></li>
-                                    <li><a href="#">cyfonii</a></li>
-                                    <li><a href="#">collection</a></li>
-                                </ul>-->
+                                    <li><a href="#" class="icon-facebook"></a></li>
+                                    <li><a href="#" class="icon-twitter"></a></li>
+                                    <li><a href="#" class="icon-linkedin2"></a></li>
+                                    <li><a href="#" class="icon-instagram"></a></li>
+                                </ul>
+                                -
                             </div>
+                            <!-- sil
                             <div class="widget-social">
                                 <ul class="flex">
                                     <li><a href="#" class="icon-facebook"></a></li>
@@ -128,7 +213,7 @@
                                     <li><a href="#" class="icon-linkedin2"></a></li>
                                     <li><a href="#" class="icon-instagram"></a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="related-post">
                             <div class="prev">
