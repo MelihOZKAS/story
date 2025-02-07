@@ -62,16 +62,19 @@
                         <div class="divider"></div>
 
                         <!-- Post Begin -->
-
+                        <figure class="image">
+                                    <span><img src="{{ post.resim.url }}" loading="lazy"
+                                               alt="{{ post.title }} - 1" width="858" height="400"> </span>
+                        </figure>
                         {{ post.icerik|safe }}
 
 
                         {% if post.resim2 %}
-                            <figure class="alignnone entry-thumb">
+                            <figure class="image">
                                     <span><img src="{{ post.resim2.url }}" loading="lazy"
                                                alt="{{ post.title }} - 2" width="858" height="400"> </span>
                             </figure>
-                            <br>
+
                         {% endif %}
 
                         {% if post.icerik2 %}
