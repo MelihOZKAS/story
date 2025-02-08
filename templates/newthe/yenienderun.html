@@ -9,6 +9,8 @@
           content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
     <link rel="canonical" href="{{ canonical_url }}">
     <meta name="author" content="Kids Story Hub">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 {% endblock meta %}
 
 {% block OGF %}
@@ -198,56 +200,16 @@
                             <div class="widget-tag flex items-center">
                                 <h3 class="title-widget">Share:</h3>
 
-                                <ul>
-                                    <!-- Facebook -->
-                                    <li>
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
-                                           class="icon-facebook" target="_blank" rel="noopener noreferrer">
-                                        </a>
-                                    </li>
+                             <ul class="social-links">
+    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+    <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+    <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="https://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+    <li><a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+    <li><a href="https://t.me/share/url?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-telegram"></i></a></li>
+</ul>
 
-                                    <!-- Twitter (X) -->
-                                    <li>
-                                        <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}"
-                                           class="icon-twitter" target="_blank" rel="noopener noreferrer">
-                                        </a>
-                                    </li>
-
-                                    <!-- LinkedIn -->
-                                    <li>
-                                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}"
-                                           class="icon-linkedin2" target="_blank" rel="noopener noreferrer">
-                                        </a>
-                                    </li>
-
-                                    <!-- Instagram (Direkt paylaşma yok, profil yönlendirmesi ekledim) -->
-                                    <li>
-                                        <a href="https://www.instagram.com/"
-                                           class="icon-instagram" target="_blank" rel="noopener noreferrer">
-                                        </a>
-                                    </li>
-
-                                    <!-- Pinterest -->
-                                    <li>
-                                        <a href="https://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}"
-                                           class="icon-pinterest" target="_blank" rel="noopener noreferrer">
-                                        </a>
-                                    </li>
-
-                                    <!-- WhatsApp (Mobil & Web) -->
-                                    <li>
-                                        <a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}"
-                                           class="icon-whatsapp" target="_blank" rel="noopener noreferrer">
-                                        </a>
-                                    </li>
-
-                                    <!-- Telegram -->
-                                    <li>
-                                        <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}"
-                                           class="icon-telegram" target="_blank" rel="noopener noreferrer">
-                                        </a>
-                                    </li>
-                                </ul>
 
                             </div>
 
