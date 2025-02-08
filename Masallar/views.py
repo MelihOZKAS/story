@@ -243,15 +243,21 @@ def Postagit(request, slug):
             .only('short_title', 'slug')
         )
 
-        # Pagination with efficient count
-        extra = Story.objects.filter(
+        # En son eklenen 6 postu olusturma_tarihi'ne göre çek
+        latest_stories = list(Story.objects.filter(
             aktif=True,
             status="Yayinda"
-        ).only('slug', 'title').order_by('-guncelleme_tarihi')[:6]
+        ).only('slug', 'title').order_by('-olusturma_tarihi')[:6])
+
+        first_four = latest_stories[:4]  # İlk 4 post
+        fifth_post = latest_stories[4] if len(latest_stories) > 4 else None  # 5. post
+        sixth_post = latest_stories[5] if len(latest_stories) > 5 else None  # 6. post
 
         context = {
             'post': story,
-            'extra': extra,
+            'first_four': first_four,
+            'fifth_post': fifth_post,
+            'sixth_post': sixth_post,
             'categories': categories
         }
         cache.set(cache_key, context, 60 * 60 * 2)  # 2 saatlik cache
