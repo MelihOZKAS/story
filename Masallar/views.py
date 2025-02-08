@@ -227,7 +227,7 @@ def CategoryListView(request, slug):
 
     return response
 
-
+@csrf_exempt
 class IncreaseReadCountView(View):
     """Hikayenin okunma sayısını artıran API"""
 
