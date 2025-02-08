@@ -32,6 +32,32 @@
     <meta name="twitter:site" content="@KidsStoriesHub">
     <meta name="twitter:creator" content="@StoryUnfoldsApp">
     <meta name="twitter:image:alt" content="Story Unfolds App Interface">
+
+    <style>
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 10px; /* İkonlar arasına boşluk ekler */
+        }
+
+        .social-links li {
+            display: inline-block;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            font-size: 20px;
+            color: #333; /* İkon rengi */
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #007bff; /* Üzerine gelince renk değişir */
+        }
+
+    </style>
 {% endblock tw %}
 
 
@@ -200,15 +226,25 @@
                             <div class="widget-tag flex items-center">
                                 <h3 class="title-widget">Share:</h3>
 
-                             <ul class="social-links">
-    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-    <li><a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
-    <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-    <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-    <li><a href="https://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-    <li><a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-    <li><a href="https://t.me/share/url?url={{ request.build_absolute_uri }}" target="_blank"><i class="fab fa-telegram"></i></a></li>
-</ul>
+                                <ul class="social-links">
+                                    <li>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                                           target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}"
+                                           target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}"
+                                           target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="https://www.instagram.com/" target="_blank"><i
+                                            class="fab fa-instagram"></i></a></li>
+                                    <li>
+                                        <a href="https://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}"
+                                           target="_blank"><i class="fab fa-pinterest"></i></a></li>
+                                    <li><a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}"
+                                           target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                    <li><a href="https://t.me/share/url?url={{ request.build_absolute_uri }}"
+                                           target="_blank"><i class="fab fa-telegram"></i></a></li>
+                                </ul>
 
 
                             </div>
@@ -216,17 +252,20 @@
                         </div>
                         <div class="related-post">
                             <div class="prev">
-                                <a href="{% url 'sil' slug=fifth_post.slug %}"><i class="icon-keyboard_arrow_left"></i>Previous post
-                                <div class="action items-center left flex mt-16">
-                                    <img src="{{ fifth_post.resim.url }}" alt="{{ fifth_post.title }}">
-                                    <div class="content">
-                                        <h5>{{ fifth_post.title }}</h5>
+                                <a href="{% url 'sil' slug=fifth_post.slug %}"><i class="icon-keyboard_arrow_left"></i>Previous
+                                    post
+                                    <div class="action items-center left flex mt-16">
+                                        <img src="{{ fifth_post.resim.url }}" alt="{{ fifth_post.title }}">
+                                        <div class="content">
+                                            <h5>{{ fifth_post.title }}</h5>
 
+                                        </div>
                                     </div>
-                                </div></a>
+                                </a>
                             </div>
                             <div class="next text-end">
-                                <a href="{% url 'sil' slug=sixth_post.slug %}">Next post<i class="icon-keyboard_arrow_right"></i></a>
+                                <a href="{% url 'sil' slug=sixth_post.slug %}">Next post<i
+                                        class="icon-keyboard_arrow_right"></i></a>
                                 <div class="action items-center right flex mt-16">
                                     <div class="content">
                                         <h5>{{ sixth_post.title }}</h5>
