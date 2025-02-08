@@ -228,6 +228,19 @@ def CategoryListView(request, slug):
     return response
 
 
+class IncreaseReadCountView(View):
+    """Hikayenin okunma sayısını artıran API"""
+
+    def post(self, request, slug):
+        try:
+            story = Story.objects.get(slug=slug)  # get() kullanarak tek bir obje alıyoruz
+            story.okunma_sayisi += 1  # Sayacı 1 artır
+            story.save(update_fields=["okunma_sayisi"])  # Sadece okunma_sayisi alanını güncelle
+            return JsonResponse({"status": "success", "okunma_sayisi": story.okunma_sayisi})
+        except Story.DoesNotExist:
+            return JsonResponse({"status": "error"}, status=404)
+
+
 def Postagit(request, slug):
     cache_key = f'story_detail_context_{slug}'
     context = cache.get(cache_key)

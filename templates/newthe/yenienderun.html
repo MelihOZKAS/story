@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block meta %}
-    <title>Story Unfolds: 1000+ Interactive Bedtime Stories & Learning Games (Free App)</title>
+    <title>{{ post.title }}</title>
     <meta name="description"
-          content="🌟 #1 Kids Story App! 1000+ magical tales 🧚♂️, educational games 🧩 & sleep-friendly audio 📚. FREE download for iOS/Android. Perfect for ages 3-9!">
+          content="{{ post.meta_description }}">
     <meta name="keywords"
-          content="bedtime stories, kids stories app, free children's books, educational games, interactive stories, preschool learning">
+          content="{{ post.keywords }}">
     <link rel="canonical" href="{{ canonical_url }}">
     <meta name="author" content="Kids Story Hub">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -16,11 +16,11 @@
 {% block OGF %}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:title" content="Story Unfolds: 1000+ Interactive Kids Stories & Games">
+    <meta property="og:title" content="{{ post.title }}">
     <meta property="og:description"
-          content="🚀 Free Educational App! 1000+ bedtime stories 📖, voice narration 🎧, parent-approved games 🧠. Download Now 👇">
+          content="{{ post.meta_description }}">
     <meta property="og:image"
-          content="https://magicstory.s3.amazonaws.com/static/yeni/assets/images/og-kids-stories.jpg">
+          content="{{ post.resim.url }}">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="400">
     <meta property="og:locale" content="en_US">
@@ -265,13 +265,14 @@
                             </div>
                             <div class="next text-end">
                                 <a href="{% url 'sil' slug=sixth_post.slug %}">Next post<i
-                                        class="icon-keyboard_arrow_right"></i></a>
-                                <div class="action items-center right flex mt-16">
-                                    <div class="content">
-                                        <h5>{{ sixth_post.title }}</h5>
+                                        class="icon-keyboard_arrow_right"></i>
+                                    <div class="action items-center right flex mt-16">
+                                        <div class="content">
+                                            <h5>{{ sixth_post.title }}</h5>
+                                        </div>
+                                        <img src="{{ sixth_post.resim.url }}" alt="{{ sixth_post.title }}">
                                     </div>
-                                    <img src="{{ sixth_post.resim.url }}" alt="{{ sixth_post.title }}">
-                                </div>
+                                </a>
                             </div>
                         </div>
 
@@ -305,4 +306,20 @@
     <script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
     <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
     <script src="{% static 'new/assets/js/main.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/read-control/{{ post.slug }}/", {
+                method: "POST",
+                credentials: "same-origin"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        console.log("Okunma sayısı artırıldı:", data.okunma_sayisi);
+                    }
+                })
+                .catch(error => console.error("Hata:", error));
+        });
+    </script>
+
 {% endblock js %}
