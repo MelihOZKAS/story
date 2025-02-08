@@ -308,7 +308,7 @@
     <script src="{% static 'new/assets/js/main.js' %}"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch("/read-control/{{ post.slug }}/", {
+            fetch("read-control/{{ post.slug }}/", {
                 method: "POST",
                 credentials: "same-origin"
             })
