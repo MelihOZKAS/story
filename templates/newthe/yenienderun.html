@@ -306,20 +306,26 @@
     <script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
     <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
     <script src="{% static 'new/assets/js/main.js' %}"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch("read-control/{{ post.slug }}/", {
-                method: "POST",
-                credentials: "same-origin"
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "success") {
-                        console.log("Okunma sayısı artırıldı:", data.okunma_sayisi);
-                    }
-                })
-                .catch(error => console.error("Hata:", error));
-        });
-    </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("/read-control/{{ post.slug }}/", {  // ✅ URL doğru mu?
+        method: "POST",
+        credentials: "same-origin"
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Sunucu hatası: " + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.status === "success") {
+            console.log("Okunma sayısı artırıldı:", data.okunma_sayisi);
+        }
+    })
+    .catch(error => console.error("Hata:", error));
+});
+</script>
+
 
 {% endblock js %}
