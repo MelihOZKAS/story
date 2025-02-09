@@ -29,8 +29,12 @@
 
 {% block tw %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@KidsStoriesHub">
-    <meta name="twitter:creator" content="@StoryUnfoldsApp">
+    <meta name="twitter:title" content="{{ post.title }}">
+    <meta name="twitter:description" content="{{ post.meta_description }}">
+    <meta name="twitter:image" content="{{ post.resim.url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@kidsstorieshub">
+    <meta name="twitter:creator" content="@kidsstorieshub">
     <meta name="twitter:image:alt" content="Story Unfolds App Interface">
 
 
@@ -91,7 +95,7 @@
                         <div class="divider"></div>
 
                         <!-- Post Begin -->
-                        <figure class="image mt-3">
+                        <figure class="image mt-5">
                                     <span><img src="{{ post.resim.url }}" loading="lazy"
                                                alt="{{ post.title }} - 1" width="858" height="400"> </span>
                         </figure>
@@ -99,17 +103,15 @@
 
 
                         {% if post.resim2 %}
-                            <figure class="image mt-3">
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim2.url }}" loading="lazy"
                                                alt="{{ post.title }} - 2" width="858" height="400"> </span>
                             </figure>
-
                         {% endif %}
 
                         {% if post.icerik2 %}
                             {% include 'parcali/yatayreklam.html' %}
                             {{ post.icerik2|safe }}
-
                         {% endif %}
 
 
@@ -127,7 +129,7 @@
 
 
                         {% if post.resim4 %}
-                            <figure class="image mt-3">
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim4.url }}" loading="lazy"
                                                alt="{{ post.title }} - 4" width="858" height="400"> </span>
                             </figure>
@@ -138,7 +140,7 @@
                         {% endif %}
 
                         {% if post.resim5 %}
-                            <figure class="image mt-3">
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim5.url }}" loading="lazy"
                                                alt="{{ post.title }} - 5" width="858" height="400"> </span>
                             </figure>
@@ -149,12 +151,12 @@
                         {% endif %}
 
                         {% if post.resim6 %}
-                            
-                            <figure class="image mt-3">
+
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim6.url }}" loading="lazy"
                                                alt="{{ post.title }} - 6" width="858" height="400"> </span>
                             </figure>
-                            
+
                         {% endif %}
 
                         {% if post.icerik6 %}
@@ -164,12 +166,12 @@
 
 
                         {% if post.resim7 %}
-                            
-                            <figure class="image mt-3">
+
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim7.url }}" loading="lazy"
                                                alt="{{ post.title }} - 7" width="858" height="400"> </span>
                             </figure>
-                            
+
                         {% endif %}
 
                         {% if post.icerik7 %}
@@ -177,12 +179,10 @@
                         {% endif %}
 
                         {% if post.resim8 %}
-                            
-                            <figure class="image mt-3">
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim8.url }}" loading="lazy"
                                                alt="{{ post.title }} - 8" width="858" height="400"> </span>
                             </figure>
-                            
                         {% endif %}
 
                         {% if post.icerik8 %}
@@ -191,25 +191,23 @@
 
 
                         {% if post.resim9 %}
-
-                            <figure class="image mt-3">
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim9.url }}" loading="lazy"
                                                alt="{{ post.title }} - 9" width="858" height="400"> </span>
                             </figure>
-
                         {% endif %}
 
                         {% if post.icerik9 %}
-                            <div class="mt-4"> {{ post.icerik9|safe }}</div>
+                            <div class="mt-5"> {{ post.icerik9|safe }}</div>
                         {% endif %}
 
                         {% if post.resim10 %}
 
-                            <figure class="image mt-3">
+                            <figure class="image mt-5">
                                     <span><img src="{{ post.resim10.url }}" loading="lazy"
                                                alt="{{ post.title }} - 10" width="858" height="400"> </span>
                             </figure>
-                            
+
                         {% endif %}
 
                         {% if post.icerik10 %}
@@ -303,16 +301,16 @@
     <script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
     <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
     <script src="{% static 'new/assets/js/main.js' %}"></script>
-<script>
-    fetch('/read-control/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: JSON.stringify({ object_id: {{ post.id }} })
-    });
-</script>
+    <script>
+        fetch('/read-control/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({object_id: {{ post.id }}})
+        });
+    </script>
 
 
 
