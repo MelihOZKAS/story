@@ -311,10 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // URL'yi Django'nun url templatetag'iyle oluşturmak hata ihtimalini azaltır
     fetch("{% url 'read-control' post.slug %}", {
         method: "POST",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        }
+
     })
     .then(response => response.json())
     .then(data => {
