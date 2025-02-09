@@ -229,25 +229,16 @@ def CategoryListView(request, slug):
 
 @csrf_exempt
 class IncreaseReadCountView(View):
+    """Hikayenin okunma sayısını artıran API"""
+
     def post(self, request, slug):
         try:
-            story = Story.objects.get(slug=slug)
-            story.okunma_sayisi += 1
-            story.save(update_fields=["okunma_sayisi"])
-            return JsonResponse({
-                "status": "success",
-                "okunma_sayisi": story.okunma_sayisi
-            })
+            story = Story.objects.filter(slug=slug)  # get() kullanarak tek bir obje alıyoruz
+            story.okunma_sayisi += 1  # Sayacı 1 artır
+            story.save(update_fields=["okunma_sayisi"])  # Sadece okunma_sayisi alanını güncelle
+            return JsonResponse({"status": "success", "okunma_sayisi": story.okunma_sayisi})
         except Story.DoesNotExist:
-            return JsonResponse({
-                "status": "error",
-                "message": "Story not found"
-            }, status=404)
-        except Exception as e:
-            return JsonResponse({
-                "status": "error",
-                "message": str(e)
-            }, status=500)
+            return JsonResponse({"status": "error"}, status=404)
 
 
 def Postagit(request, slug):

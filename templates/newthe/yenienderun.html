@@ -308,14 +308,15 @@
     <script src="{% static 'new/assets/js/main.js' %}"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("https://www.kidsstorieshub.com/read-control/{{ post.slug }}/",
-        {method: "POST"})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Sunucu hatası: " + response.status);
+    // URL'yi Django'nun url templatetag'iyle oluşturmak hata ihtimalini azaltır
+    fetch("{% url 'read-control' post.slug %}", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
         }
-        return response.json();
     })
+    .then(response => response.json())
     .then(data => {
         if (data.status === "success") {
             console.log("Okunma sayısı artırıldı:", data.okunma_sayisi);
@@ -324,6 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => console.error("Hata:", error));
 });
 </script>
+
 
 
 {% endblock js %}
