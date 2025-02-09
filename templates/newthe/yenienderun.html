@@ -308,7 +308,7 @@
     <script src="{% static 'new/assets/js/main.js' %}"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("read-control/{{ post.slug }}/",
+    fetch("https://www.kidsstorieshub.com/read-control/{{ post.slug }}/",
         {method: "POST"})
     .then(response => {
         if (!response.ok) {
