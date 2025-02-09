@@ -314,7 +314,7 @@
             'Content-Type': 'application/json',
             'X-CSRFToken': '{{ csrf_token }}'
         },
-        body: JSON.stringify({ object_id: {{ object.id }} })
+        body: JSON.stringify({ object_id: {{ post.id }} })
     });
 </script>
 
