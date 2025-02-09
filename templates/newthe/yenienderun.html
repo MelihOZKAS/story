@@ -306,22 +306,7 @@
     <script src="{% static 'new/assets/js/tsparticles.min.js' %}"></script>
     <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
     <script src="{% static 'new/assets/js/main.js' %}"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // URL'yi Django'nun url templatetag'iyle oluşturmak hata ihtimalini azaltır
-    fetch("{% url 'read-control' post.slug %}", {
-        method: "POST",
 
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "success") {
-            console.log("Okunma sayısı artırıldı:", data.okunma_sayisi);
-        }
-    })
-    .catch(error => console.error("Hata:", error));
-});
-</script>
 
 
 
