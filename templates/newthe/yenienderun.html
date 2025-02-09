@@ -308,7 +308,7 @@
     <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
     <script src="{% static 'new/assets/js/main.js' %}"></script>
 <script>
-    fetch({% url 'okunma_arttir' %} }, {
+    fetch('read-control/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
