@@ -12,6 +12,7 @@ from django.db.models import F
 import requests
 import environ
 import random
+from django.utils.decorators import method_decorator
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseBadRequest, \
     HttpResponseServerError
 import json
@@ -227,15 +228,15 @@ def CategoryListView(request, slug):
 
     return response
 
-@csrf_exempt
+@method_decorator(csrf_exempt, name='dispatch')
 class IncreaseReadCountView(View):
     """Hikayenin okunma sayısını artıran API"""
 
     def post(self, request, slug):
         try:
-            story = Story.objects.get(slug=slug)  # get() ile tek bir obje alıyoruz
-            story.okunma_sayisi += 1  # Sayacı 1 artır
-            story.save(update_fields=["okunma_sayisi"])  # Sadece okunma_sayisi alanını güncelle
+            story = Story.objects.get(slug=slug)
+            story.okunma_sayisi += 1
+            story.save(update_fields=["okunma_sayisi"])
             return JsonResponse({"status": "success", "okunma_sayisi": story.okunma_sayisi})
         except Story.DoesNotExist:
             return JsonResponse({"status": "error", "message": "Story not found."}, status=404)
