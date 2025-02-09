@@ -229,20 +229,19 @@ def CategoryListView(request, slug):
 
     return response
 
-@method_decorator(csrf_exempt, name='dispatch')
-class IncreaseReadCountView(View):
-    """Hikayenin okunma sayısını artıran API"""
-
-    def post(self, request, slug):
+@csrf_exempt
+def increase_view_count(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        object_id = data.get('object_id')
         try:
-            story = Story.objects.get(slug=slug)
-            story.okunma_sayisi += 1
-            story.save(update_fields=["okunma_sayisi"])
-            return JsonResponse({"status": "success", "okunma_sayisi": story.okunma_sayisi})
+            obj = Story.objects.get(id=object_id)
+            obj.okunma_sayisi += 1
+            obj.save(update_fields=["okunma_sayisi"])
+            return JsonResponse({'status': 'success'})
         except Story.DoesNotExist:
-            return JsonResponse({"status": "error", "message": "Story not found."}, status=404)
-        except Exception as e:
-            return JsonResponse({"status": "error", "message": str(e)}, status=500)
+            return JsonResponse({'status': 'error', 'message': 'Object not found'}, status=404)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
 
 

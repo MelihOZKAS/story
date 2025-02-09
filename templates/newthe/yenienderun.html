@@ -32,7 +32,7 @@
     <meta name="twitter:site" content="@KidsStoriesHub">
     <meta name="twitter:creator" content="@StoryUnfoldsApp">
     <meta name="twitter:image:alt" content="Story Unfolds App Interface">
-    <meta name="csrf-token" content="{{ csrf_token }}">
+
 
     <style>
         .social-links {
@@ -308,25 +308,13 @@
     <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
     <script src="{% static 'new/assets/js/main.js' %}"></script>
 <script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-
-        fetch("{% url 'okunma_arttir' post.slug %}", {
-            method: "POST",
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": csrfToken
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "success") {
-                console.log("Okunma sayısı artırıldı:", data.okunma_sayisi);
-            }
-        })
-        .catch(error => console.error("Hata:", error));
+    fetch('read-control', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ object_id: {{ object.id }} })
     });
 </script>
 

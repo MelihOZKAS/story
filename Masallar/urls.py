@@ -20,7 +20,7 @@ urlpatterns = [
     path("twitter-cek/", views.twitter_var_mi, name="twitterver"),
     path("pint-cek/", views.pinterest_var_mi, name="pintver"),
     path("add-story/", views.apiyle_ekle),
-    path("read-control/<slug:slug>/", views.IncreaseReadCountView, name="okunma_arttir"),
+    path("read-control/", views.increase_view_count, name="okunma_arttir"),
     path('contact/', views.iletisim, name='iletisim'),
     path('cookie-policy/', views.cerez, name='cerez'),
     path('privacy-policy/', views.gizlilik, name='gizlilik'),
