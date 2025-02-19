@@ -32,8 +32,8 @@ urlpatterns = [
     path('sil/<str:slug>/', views.Postagit, name='sil'),
     path('oto-add-categories/', views.oto_hikayekategoriekle),
     path('kids-story-categories-detail/<str:kategori_slug>/', views.kategori_icerik_list, name='kategori_detay'),
-    # Kategorideki Hikayeler
 
+    # Kategorideki Hikayeler
     path('blog/<str:blog_slug>/', views.blog_getir, name='blogGit'),
     # Yeni URL yapısı
     path('<str:story_slug>/', views.post_getir, name='postagit'),
