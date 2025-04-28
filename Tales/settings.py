@@ -34,15 +34,37 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', cast=list)
 
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # Proxy arkasındayken HTTPS algılama
+SECURE_SSL_REDIRECT = True  # HTTP isteklerini HTTPS'e yönlendirir
+SECURE_HSTS_SECONDS = 31536000  # 1 yıl HSTS politikası
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Alt alanları da HSTS politikasına dahil et
+SECURE_HSTS_PRELOAD = True  # Tarayıcı HSTS ön yükleme listesine eklenebilme
 
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# Çerez Güvenliği
+SESSION_COOKIE_SECURE = True  # Oturum çerezlerini sadece HTTPS üzerinden gönder
+CSRF_COOKIE_SECURE = True  # CSRF token çerezlerini sadece HTTPS üzerinden gönder
+SESSION_COOKIE_HTTPONLY = True  # JavaScript'in session çerezlerine erişimini engeller
+CSRF_COOKIE_HTTPONLY = True  # JavaScript'in CSRF çerezlerine erişimini engeller (API kullanan siteler için False yapın)
+SESSION_COOKIE_SAMESITE = 'Lax'   # Üçüncü taraf isteklere kısıtlama getirir :contentReference[oaicite:11]{index=11}
+CSRF_COOKIE_SAMESITE    = 'Lax'   # CSRF korumasını güçlendirir :contentReference[oaicite:12]{index=12}
 
+
+# İçerik Güvenliği
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Tarayıcının içerik tipini tahmin etmesini engeller (XSS koruması)
+SECURE_BROWSER_XSS_FILTER = True  # Tarayıcıların XSS korumasını etkinleştirir
+SECURE_REFERRER_POLICY = 'same-origin'  # Referer bilgisini sınırla :contentReference[oaicite:15]{index=15}
+# Tarayıcıların sayfayı bir frame veya iframe içinde göstermesini engeller (Clickjacking koruması).
+# 'DENY' (hiçbir zaman) veya 'SAMEORIGIN' (sadece kendi sitenizden) seçenekleri vardır.
+# 'SAMEORIGIN' genellikle daha kullanışlıdır.
+X_FRAME_OPTIONS = 'SAMEORIGIN' # veya 'DENY'
+
+# Form verileri sınırlamaları
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000  # Formda izin verilen maksimum alan sayısı
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # Yükleme bellek limiti (5MB)
+
+# Oturum güvenliği
+#SESSION_COOKIE_AGE = 1209600  # Oturum süresi (2 hafta / saniye cinsinden)
+#SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Tarayıcı kapandığında oturumun sonlanmaması
 
 
 
@@ -75,15 +97,7 @@ MIDDLEWARE = [
 ]
 
 
-# settings.py
-SECURE_CONTENT_TYPE_NOSNIFF = True  # XSS koruması (MUTLAKA AKTİF)
-CSRF_COOKIE_SECURE = True           # HTTPS üzerinde CSRF cookie
-SESSION_COOKIE_SECURE = True        # HTTPS üzerinde session cookie
-# HTTPS aktifse ekleyin (CDN/Reverse Proxy ile bile olsa)
-SECURE_SSL_REDIRECT = True          # HTTP -> HTTPS yönlendirme
-SECURE_HSTS_SECONDS = 31536000      # 1 yıl (ÖNCE HTTPS TEST EDİN!)
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True          # Tarayıcı preload listesi için
+
 
 ROOT_URLCONF = "Tales.urls"
 
