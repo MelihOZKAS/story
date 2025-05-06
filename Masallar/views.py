@@ -970,7 +970,6 @@ def ekle(request):
     # Gerekli alanların doğrulanması
     if not title or not slug:
         return HttpResponseBadRequest("Title and slug are required")
-
     try:
         # Yeni bir Post oluştur
         post = Story.objects.create(
