@@ -944,6 +944,12 @@ def ekle(request):
     content9 = request.POST.get('content9')
     content10 = request.POST.get('content10')
 
+    faq = request.POST.get('faq')
+    try:
+        faq = json.loads(faq)
+    except:
+        faq = None
+
     # short_title al ve kategori belirle
     short_title = request.POST.get('short_title')
     kategori = None
@@ -985,6 +991,7 @@ def ekle(request):
             icerik9=content9,
             icerik10=content10,
             Hikaye_Turu=kategori,
+            faq=faq,
         )
 
         # Slug çakışmalarını engelle
