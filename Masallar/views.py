@@ -27,7 +27,6 @@ from django.conf import settings
 env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
 
-
 def create_unique_title_slug(title):
     slug = slugify(title)
     unique_slug = slug
@@ -39,13 +38,11 @@ def create_unique_title_slug(title):
         num += 1
     return unique_title, unique_slug
 
-
 def get_youtube_id(url):
     # YouTube video URL'sinden video ID'sini çıkaran bir regex deseni
     link = url.replace("https://www.youtube.com/embed/", "")
     youtube_id = link.split("?")
     return youtube_id[0] if youtube_id else None
-
 
 # Create your views here.
 def home(request):
@@ -168,7 +165,6 @@ def YeniKategori(request):
         cache.set(cache_key, context, 60 * 15)
     return render(request, 'newthe/kategori.html', context)
 
-
 @cache_page(60 * 60 * 2, key_prefix='category_cache')  # 2 hours cache
 def CategoryListView(request, slug):
     # Cache key with page-aware version
@@ -239,8 +235,6 @@ def increase_view_count(request):
         except Story.DoesNotExist:
             return JsonResponse({'status': 'error', 'message': 'Object not found'}, status=404)
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
-
-
 
 def Postagit(request, slug):
     cache_key = f'story_detail_context_{slug}'
@@ -788,7 +782,6 @@ Allow: /
 Sitemap: https://www.kidsstorieshub.com/sitemap.xml
 """
 
-
 def Oto_Paylas(request):
     post = Story.objects.filter(Q(status="oto") & (Q(yayin_tarihi__lte=timezone.now()) | Q(yayin_tarihi=None))).first()
 
@@ -803,7 +796,6 @@ def Oto_Paylas(request):
     else:
         return HttpResponse('Paylaşılacak Post Bulunamadı.')
 
-
 @csrf_exempt
 def indexing_var_mi(request):
     post = Story.objects.filter(indexing=True, aktif=True, status="Yayinda").first()
@@ -815,13 +807,10 @@ def indexing_var_mi(request):
     else:
         return HttpResponse("post bulunamadı.")
 
-
 def ads(request):
     return HttpResponse(ads_content, content_type="text/plain")
 
-
 ads_content = """google.com, pub-7065951693101615, DIRECT, f08c47fec0942fa0"""
-
 
 @csrf_exempt
 def apiyle_ekle(request):
@@ -917,8 +906,6 @@ def twitter_var_mi(request):
         return HttpResponse("Paylaşılacak Twitter içerik bulunamadı")
 
 
-
-
 @csrf_exempt
 def ekle(request):
     if request.method != "POST":
@@ -1012,3 +999,112 @@ def ekle(request):
 
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)}, status=500)
+
+
+# Flutter API Endpoints
+
+@csrf_exempt
+@cache_page(60 * 60 * 12)  # 12 saat cache
+def api_stories_list(request):
+    """
+    Masalları liste halinde döndüren API
+    Query parametreleri: page (sayfa numarası)
+    """
+    if request.method != 'GET':
+        return JsonResponse({'error': 'Sadece GET istekleri kabul edilir'}, status=405)
+    
+    try:
+        page = int(request.GET.get('page', 1))
+        if page < 1:
+            page = 1
+    except ValueError:
+        return JsonResponse({'error': 'Geçersiz sayfa numarası'}, status=400)
+    
+    # Aktif ve yayında olan masalları güncelleme tarihine göre sırala
+    stories = Story.objects.filter(
+        aktif=True, 
+        status="Yayinda"
+    ).order_by('-guncelleme_tarihi').only(
+        'title', 'slug', 'resim', 'meta_description', 'guncelleme_tarihi'
+    )
+    
+    # Sayfalama
+    per_page = 100
+    start = (page - 1) * per_page
+    end = start + per_page
+    stories_page = stories[start:end]
+    
+    # JSON verisi hazırla
+    stories_data = []
+    for story in stories_page:
+        story_data = {
+            'title': story.title,
+            'slug': story.slug,
+            'resim': story.resim.url if story.resim else None,
+            'meta_description': story.meta_description,
+            'guncelleme_tarihi': story.guncelleme_tarihi.isoformat() if story.guncelleme_tarihi else None
+        }
+        stories_data.append(story_data)
+    
+    # Toplam sayfa sayısını hesapla
+    total_stories = stories.count()
+    total_pages = (total_stories + per_page - 1) // per_page
+    
+    response_data = {
+        'success': True,
+        'data': stories_data,
+        'pagination': {
+            'current_page': page,
+            'total_pages': total_pages,
+            'total_stories': total_stories,
+            'per_page': per_page,
+            'has_next': page < total_pages,
+            'has_previous': page > 1
+        }
+    }
+    
+    return JsonResponse(response_data, safe=False)
+
+
+@csrf_exempt
+@cache_page(60 * 60 * 12)  # 12 saat cache
+def api_story_detail(request, slug):
+    """
+    Slug'a göre tek masalın detayını döndüren API
+    """
+    if request.method != 'GET':
+        return JsonResponse({'error': 'Sadece GET istekleri kabul edilir'}, status=405)
+    
+    try:
+        story = Story.objects.get(slug=slug, aktif=True, status="Yayinda")
+    except Story.DoesNotExist:
+        return JsonResponse({'error': 'Masal bulunamadı'}, status=404)
+    
+    # Resimleri topla
+    resimler = {}
+    for i in range(1, 11):
+        resim_field = f'resim{i}' if i > 1 else 'resim'
+        resim = getattr(story, resim_field, None)
+        resimler[resim_field] = resim.url if resim else None
+    
+    # İçerikleri topla
+    icerikler = {}
+    for i in range(1, 11):
+        icerik_field = f'icerik{i}' if i > 1 else 'icerik'
+        icerik = getattr(story, icerik_field, None)
+        icerikler[icerik_field] = icerik if icerik else None
+    
+    response_data = {
+        'success': True,
+        'data': {
+            'title': story.title,
+            'slug': story.slug,
+            'h1': story.h1,
+            'faq': story.faq,
+            'resimler': resimler,
+            'icerikler': icerikler,
+            'guncelleme_tarihi': story.guncelleme_tarihi.isoformat() if story.guncelleme_tarihi else None
+        }
+    }
+    
+    return JsonResponse(response_data, safe=False)

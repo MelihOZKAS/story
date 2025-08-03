@@ -21,6 +21,10 @@ urlpatterns = [
     path("pint-cek/", views.pinterest_var_mi, name="pintver"),
     path("add-story/", views.apiyle_ekle),
     path("read-control/", views.increase_view_count, name="okunma_arttir"),
+    
+    # Flutter API endpoints
+    path('api/stories/', views.api_stories_list, name='api_stories_list'),
+    path('api/stories/<str:slug>/', views.api_story_detail, name='api_story_detail'),
     path('contact/', views.iletisim, name='iletisim'),
     path('cookie-policy/', views.cerez, name='cerez'),
     path('privacy-policy/', views.gizlilik, name='gizlilik'),
