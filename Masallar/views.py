@@ -26,20 +26,58 @@ from django.conf import settings
 from django.utils.html import strip_tags
 from django.utils.encoding import force_str
 import html
+import re
 
 env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
 
 def clean_content(content):
-    """İçerikleri temizleyen yardımcı fonksiyon"""
-    if content:
-        # HTML taglarını temizle
-        content = strip_tags(content)
-        # HTML entityleri düzelt (örn: &ccedil; -> ç)
-        content = html.unescape(content)
-        # String'e çevir
-        content = force_str(content)
-    return content
+    """İçerikleri kapsamlı şekilde temizleyen yardımcı fonksiyon"""
+    if not content:
+        return None
+        
+    # String'e çevir
+    content = force_str(content)
+    
+    # HTML taglarını temizle
+    content = strip_tags(content)
+    
+    # HTML entityleri düzelt (örn: &ccedil; -> ç, &amp; -> &)
+    content = html.unescape(content)
+    
+    # Yaygın HTML entity'leri manuel düzelt
+    content = content.replace('&nbsp;', ' ')
+    content = content.replace('&hellip;', '...')
+    content = content.replace('&mdash;', '—')
+    content = content.replace('&ndash;', '–')
+    content = content.replace('&ldquo;', '"')
+    content = content.replace('&rdquo;', '"')
+    content = content.replace('&lsquo;', "'")
+    content = content.replace('&rsquo;', "'")
+    
+    # Unicode sorunlu karakterleri düzelt
+    content = content.replace(''', "'")
+    content = content.replace(''', "'")
+    content = content.replace('"', '"')
+    content = content.replace('"', '"')
+    content = content.replace('–', '-')
+    content = content.replace('—', '-')
+    content = content.replace('…', '...')
+    
+    # Fazla boşlukları temizle
+    content = re.sub(r'\s+', ' ', content)
+    
+    # Satır başı ve sonundaki boşlukları temizle
+    content = content.strip()
+    
+    # Noktalama işaretlerinden önce/sonra uygun boşluklar
+    content = re.sub(r'\s*([.,;:!?])\s*', r'\1 ', content)
+    content = re.sub(r'\s+([.,;:!?])', r'\1', content)
+    
+    # Son boşluğu temizle
+    content = content.strip()
+    
+    return content if content else None
 
 def create_unique_title_slug(title):
     slug = slugify(title)
