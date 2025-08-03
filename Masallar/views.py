@@ -24,9 +24,22 @@ from django.core.cache import cache
 from django.db.models import Prefetch, Count
 from django.conf import settings
 from django.utils.html import strip_tags
+from django.utils.encoding import force_str
+import html
 
 env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
+
+def clean_content(content):
+    """İçerikleri temizleyen yardımcı fonksiyon"""
+    if content:
+        # HTML taglarını temizle
+        content = strip_tags(content)
+        # HTML entityleri düzelt (örn: &ccedil; -> ç)
+        content = html.unescape(content)
+        # String'e çevir
+        content = force_str(content)
+    return content
 
 def create_unique_title_slug(title):
     slug = slugify(title)
@@ -1042,7 +1055,7 @@ def api_stories_list(request):
             'title': story.title,
             'slug': story.slug,
             'resim': story.resim.url if story.resim else None,
-            'meta_description': strip_tags(story.meta_description) if story.meta_description else None,
+            'meta_description': clean_content(story.meta_description),
             'guncelleme_tarihi': story.guncelleme_tarihi.isoformat() if story.guncelleme_tarihi else None
         }
         stories_data.append(story_data)
@@ -1093,7 +1106,7 @@ def api_story_detail(request, slug):
     for i in range(1, 11):
         icerik_field = f'icerik{i}' if i > 1 else 'icerik'
         icerik = getattr(story, icerik_field, None)
-        icerikler[icerik_field] = strip_tags(icerik) if icerik else None
+        icerikler[icerik_field] = clean_content(icerik)
     
     response_data = {
         'success': True,
