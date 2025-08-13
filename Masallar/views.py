@@ -318,7 +318,8 @@ def Postagit(request, slug):
             'first_four': first_four,
             'fifth_post': fifth_post,
             'sixth_post': sixth_post,
-            'categories': categories
+            'categories': categories,
+            'canonical_url': request.build_absolute_uri()
         }
         cache.set(cache_key, context, 60 * 60 * 2)  # 2 saatlik cache
 

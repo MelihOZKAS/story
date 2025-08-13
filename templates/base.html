@@ -8,14 +8,14 @@
 <html class="not-ie no-js" lang="en">  <!--<![endif]-->
 <head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
     <title>{% block title %}Site Başlığı{% endblock %}</title>
     <meta name="description" content="{% block description %}Site description{% endblock %}">
     <meta name="keywords" content="{% block keywords %}Site keywords{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
     <!-- Robots Etiketi -->
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://{{ request.get_host }}{{ request.path }}"/>
     <meta name="author" content="{% block yazar %}Kids Bedtime Story{% endblock %}">
 
@@ -31,7 +31,6 @@
 
 
     <!-- Twitter Card Etiketleri -->
-    <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@kidsstorieshub">
     <meta name="twitter:title" content="{% block twtitle %}tw title{% endblock %}">
     <meta name="twitter:description" content="{% block twdesc %}tw description{% endblock %}">
@@ -40,7 +39,7 @@
         <meta name="twitter:image" content="{% static 'images/bedtime-story.png' %}">{% endblock %}
     <meta property="og:image:width" content="800"/>
     <meta property="og:image:height" content="400"/>
-    <meta property="og:site_name" content="@kidsstorieshub">
+    <meta property="og:site_name" content="Kids Stories Hub">
     <meta name="twitter:creator" content="@kidsstorieshub">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -95,6 +94,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7065951693101615"
             crossorigin="anonymous"></script>
 
+    {% block alternates %}{% endblock %}
     <!-- schema.org -->
     {% block extra_head %}{% endblock %}
     {% block extra_Two_head %}{% endblock extra_Two_head %}

@@ -48,7 +48,11 @@
     <link rel="apple-touch-icon" href="{% static 'new/assets/favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'new/assets/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'new/assets/favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'new/assets/favicon/site.webmanifest' %}">
+    {# canonical ve hreflang/alternate blokları #}
+    {% block alternates %}{% endblock alternates %}
+
+    {# structured data için esnek blok #}
+    {% block structured_data %}{% endblock structured_data %}
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">

@@ -28,7 +28,6 @@
 
 
 {% block tw %}
-    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ post.title }}">
     <meta name="twitter:description" content="{{ post.meta_description }}">
     <meta name="twitter:image" content="{{ post.resim.url }}">
@@ -64,6 +63,49 @@
 
     </style>
 {% endblock tw %}
+
+{% block alternates %}
+    <link rel="alternate" href="{{ canonical_url }}" hreflang="x-default">
+    <link rel="alternate" href="{{ canonical_url }}" hreflang="en">
+{% endblock alternates %}
+
+{% block structured_data %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ request.build_absolute_uri }}"
+      },
+      "headline": "{{ post.title|escapejs }}",
+      "description": "{{ post.meta_description|default:post.ozet_kisa|striptags|truncatechars:300|escapejs }}",
+      "image": ["{% if post.resim %}{{ post.resim.url }}{% else %}{{ request.build_absolute_uri }}{% endif %}"],
+      "datePublished": "{{ post.olusturma_tarihi|date:'c' }}",
+      "dateModified": "{{ post.guncelleme_tarihi|date:'c' }}",
+      "author": {"@type": "Organization", "name": "Kids Story Hub"},
+      "publisher": {"@type": "Organization", "name": "Kids Story Hub", "logo": {"@type": "ImageObject", "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.png' %}"}}
+    }
+    </script>
+
+    {% if post.faq %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for qa in post.faq %}
+        {
+          "@type": "Question",
+          "name": "{{ qa.question|default:qa.q|striptags|escapejs }}",
+          "acceptedAnswer": {"@type": "Answer", "text": "{{ qa.answer|default:qa.a|striptags|escapejs }}"}
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+    </script>
+    {% endif %}
+{% endblock structured_data %}
 
 
 
@@ -302,14 +344,17 @@
     <script src="{% static 'new/assets/js/tsparticles.js' %}"></script>
     <script src="{% static 'new/assets/js/main.js' %}"></script>
     <script>
-        fetch('/read-control/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-            body: JSON.stringify({object_id: {{ post.id }}})
-        });
+        (function(){
+            const objectId = parseInt('{{ post.id|default:0 }}', 10) || 0;
+            fetch('/read-control/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ object_id: objectId })
+            });
+        })();
     </script>
 
 
