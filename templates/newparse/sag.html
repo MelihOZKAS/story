@@ -21,7 +21,7 @@
         {% for four in first_four %}
             <div class="related-posts-item">
                 <div class="card-media">
-                    <img src="{{ four.resim.url }}" alt="{{ four.title|truncatechars:35 }}">
+                    <img src="{{ four.resim.url }}" alt="{{ four.title|truncatechars:35 }}" loading="lazy" width="244" height="135">
                 </div>
                 <div class="card-content">
                     <h5><a href="{% url 'sil' slug=four.slug %}">{{ four.title }}</a></h5>

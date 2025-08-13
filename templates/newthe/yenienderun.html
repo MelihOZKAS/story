@@ -138,7 +138,7 @@
 
                         <!-- Post Begin -->
                         <figure class="image mt-5">
-                                    <span><img src="{{ post.resim.url }}" loading="lazy"
+                                    <span><img src="{{ post.resim.url }}" loading="eager" fetchpriority="high" decoding="async"
                                                alt="{{ post.title }} - 1" width="858" height="400"> </span>
                         </figure>
                         {{ post.icerik|safe }}
@@ -292,7 +292,7 @@
                                 <a href="{% url 'sil' slug=fifth_post.slug %}"><i class="icon-keyboard_arrow_left"></i>Previous
                                     post
                                     <div class="action items-center left flex mt-16">
-                                        <img src="{{ fifth_post.resim.url }}" alt="{{ fifth_post.title }}">
+                                        <img src="{{ fifth_post.resim.url }}" alt="{{ fifth_post.title }}" loading="lazy" width="120" height="67">
                                         <div class="content">
                                             <h5>{{ fifth_post.title }}</h5>
 
@@ -307,7 +307,7 @@
                                         <div class="content">
                                             <h5>{{ sixth_post.title }}</h5>
                                         </div>
-                                        <img src="{{ sixth_post.resim.url }}" alt="{{ sixth_post.title }}">
+                                        <img src="{{ sixth_post.resim.url }}" alt="{{ sixth_post.title }}" loading="lazy" width="120" height="67">
                                     </div>
                                 </a>
                             </div>

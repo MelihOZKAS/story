@@ -10,8 +10,8 @@
                             <div id="site-logo-inner">
                                 <a href="{% url 'yenihome' %}" rel="home" class="main-logo">
                                     <img id="logo_header" src="{% static 'images/kids-bedtime.png' %}"
-                                         data-retina="{% static 'images/kids-bedtime.png' %}" loading="lazy"
-                                         alt="logo" height="57" width="220">
+                                         data-retina="{% static 'images/kids-bedtime.png' %}"
+                                         alt="logo" height="57" width="220" fetchpriority="high" decoding="async">
                                 </a>
                             </div>
                         </div><!-- logo -->
@@ -72,8 +72,8 @@
         <div class="inner-mobile-nav">
             <a href="{% url 'yenihome' %}" rel="home" class="main-logo">
                 <img id="mobile-logo_header" src="{% static 'images/kids-bedtime.png' %}"
-                     data-retina="{% static 'images/kids-bedtime.png' %}" loading="lazy" alt="logo" width="165"
-                     height="44">
+                     data-retina="{% static 'images/kids-bedtime.png' %}" alt="logo" width="165"
+                     height="44" decoding="async">
             </a>
             <div class="mobile-nav-close">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="white"

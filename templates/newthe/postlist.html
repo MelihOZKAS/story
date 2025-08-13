@@ -32,6 +32,39 @@
     <meta name="twitter:image:alt" content="Story Unfolds App Interface">
 {% endblock tw %}
 
+{% block alternates %}
+    <link rel="alternate" href="{{ canonical_url }}" hreflang="x-default">
+    <link rel="alternate" href="{{ canonical_url }}" hreflang="en">
+{% endblock alternates %}
+
+{% block structured_data %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "{{ category.Title|default:category.short_title|escapejs }}",
+      "description": "{{ meta_description|striptags|truncatechars:300|escapejs }}",
+      "url": "{{ canonical_url }}",
+      "hasPart": [
+        {% for story in stories %}
+        {
+          "@type": "Article",
+          "headline": "{{ story.title|escapejs }}",
+          "url": "{% url 'sil' slug=story.slug %}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "{% url 'yenihome' %}"},
+          {"@type": "ListItem", "position": 2, "name": "{{ category.short_title|escapejs }}", "item": "{{ canonical_url }}"}
+        ]
+      }
+    }
+    </script>
+{% endblock structured_data %}
+
 
 
 <!-- Block Begin -->
@@ -64,7 +97,7 @@
                         <article class="tf-card-article style-1">
                             <div class="card-media mb-20">
                                 <a href="{% url 'sil' slug=story.slug %}">
-                                    <img src="{{ story.resim.url }}" width="370" height="175" loading="lazy"
+                                    <img src="{{ story.resim.url }}" width="370" height="175" loading="lazy" decoding="async"
                                          alt="{{ story.title }} image">
                                 </a>
                             </div>
@@ -81,7 +114,7 @@
                                     <div class="author flex items-center justify-between">
                                         <div class="avatar">
                                             <img src="https://themesflat.co/html/open9/assets/images/avatar/avatar-09.png"
-                                                 loading="lazy" height="38" width="38" alt="Avatar">
+                                                 loading="lazy" height="38" width="38" alt="Avatar" decoding="async">
                                         </div>
                                         <div class="info">
                                             <h6>Tommy Tony</h6>
